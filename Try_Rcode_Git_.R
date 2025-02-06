@@ -1,3 +1,4 @@
+## Qustion 4: Complete all tasks in an R script and push it to GitHub.
 ## Intro to R coding challenge
 
 ## Create a vector named 'z' with the values 1 to 200
@@ -40,6 +41,8 @@ zdf[180, "zsquared"]
 
 ## Completion of question 4.
 
+## Question 5 Tips.csv file
+csv_tips <- read.csv(file.choose(), na.strings = "na") 
 
 
 
