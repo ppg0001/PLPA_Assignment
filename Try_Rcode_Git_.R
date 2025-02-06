@@ -44,5 +44,10 @@ zdf[180, "zsquared"]
 ## Question 5 Tips.csv file
 csv_tips <- read.csv(file.choose(), na.strings = "na") 
 
+csv_tips[csv_tips == "."] <- NA
+
+
+###### End of Assignment Code #########
+
 
 
