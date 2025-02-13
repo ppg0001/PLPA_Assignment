@@ -44,7 +44,7 @@ head(csv)
     geom_boxplot() + 
     xlab("") +
     ylab("DON (ppm)")+
-    geom_point(shape = 21, poisition = position_jitterdodge())
+    geom_point(shape = 21, position = position_jitterdodge())
   
 ##barplot
     
@@ -53,22 +53,45 @@ head(csv)
     stat_summary(fun.data = mean_se, geom = "errorbar")+
     xlab("") +
     ylab("DON (ppm)") +
-    geom_point(shape = 21, poisition = position_jitterdodge())
+    geom_point(shape = 21, position = position_jitterdodge())
     
     
 ## Question 5
 ##Change the fill color of the points and boxplots to match some colors in the following colorblind pallet. 
-  ##cbbPalette <- c("#000000", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
+
+  cbbPalette <- c("#000000", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
   
   
-  ggplot(csv, aes(x = Treatment, y = DON, color = Cultivar))+
+  ggplot(csv, aes(x = Treatment, y = DON, fill = Cultivar))+
     geom_boxplot() + 
     xlab("") +
     ylab("DON (ppm)") +
-    geom_point(fill = "#E69F00", shape = 21, poisition = position_jitterdodge())
+    geom_point(shape = 21, position = position_jitterdodge()) +
+    scale_fill_manual (values = cbbPalette)
+    
   
   
   
+  ## Question 6
+## Add a facet to the plots based on cultivar.  
+  
+  ggplot(csv, aes(x = Treatment, y = DON, fill = Cultivar))+
+    geom_boxplot() + 
+    xlab("") +
+    ylab("DON (ppm)") +
+    geom_point(shape = 21, position = position_jitterdodge()) +
+    scale_fill_manual (values = cbbPalette)
+   facet_wrap(~Cultivar) 
+
+
+## Question 6 
+## Add transparency to the points so you can still see the boxplot or bar in the background. 
+  ggplot(csv, aes(x = Treatment, y = DON, fill = "#56B4E9", color = Cultivar))+
+    geom_boxplot() + 
+    xlab("") +
+    ylab("DON (ppm)") +
+    geom_point(alpha = 1, fill = "#000000", shape = 21, position = position_jitterdodge())+
+    facet_wrap(~Cultivar) 
   
   
   
