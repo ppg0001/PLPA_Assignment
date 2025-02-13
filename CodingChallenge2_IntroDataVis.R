@@ -65,7 +65,7 @@ head(csv)
     geom_boxplot() + 
     xlab("") +
     ylab("DON (ppm)") +
-    geom_point(shape = 21, poisition = position_jitterdodge())
+    geom_point(fill = "#E69F00", shape = 21, poisition = position_jitterdodge())
   
   
   
