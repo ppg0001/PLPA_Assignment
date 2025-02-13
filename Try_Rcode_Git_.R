@@ -1,9 +1,9 @@
-## Qustion 4: Complete all tasks in an R script and push it to GitHub. ###
+## Qustion 4: Complete all tasks in an R script and push it to GitHub. ####
 ## Intro to R coding challenge
 
 ## Create a vector named 'z' with the values 1 to 200
 z <- 1:200
-## Print the mean and standard deviation of z on the console
+## Print the mean and standard deviation of z on the console.
 mean(z)
 sd(z)
 
