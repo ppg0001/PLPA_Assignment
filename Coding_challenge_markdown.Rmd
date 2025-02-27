@@ -3,7 +3,7 @@ title: "Coding_Challenge4_Markdown"
 author: "Pankaj Gaonkar"
 date: "2025-02-27"
 output:
-    html_document:
+  html_document:
     toc: true
     toc_float: true
   pdf_document:
@@ -16,11 +16,11 @@ output:
 
 Q1) Explain the following
 a.	YAML header
-
-
+YAMLS helps in writing the configuration of the files and is on the top of the markdown files.
 
 
 b.	Literate programming
+In literate programming along with our code we will have its explanations and provide the chunks of codes. Itexplains the codes in bettwe way.
 
 Q2)
 
@@ -29,27 +29,100 @@ Q2)
 [Noel et al., 2022. Endophytic fungi as promising biocontrol agent to protect wheat from Fusarium graminearum head blight. Plant Disease](https://doi.org/10.1094/PDIS-06-21-1253-RE)
 
 
-```{r}
+```{r coding}
+## Load libraries
+library(tidyverse)
+library(ggpubr)
+library("knitr")  # required for knitting
+
+
 ## Reading data by reative path
 
 csv <- read.csv("MycotoxinData.csv", na.strings = "na")
 head (csv)
 
+## Codes needed for complete analysis
 
-## Code from coding challenge 3, question 5
+#Plot1 Treatment on Y
+
+P1 <- ggplot(csv, aes(x = Treatment, y = DON, fill = Cultivar))+
+  theme_classic() +                # removes the grids
+  geom_boxplot() + 
+  xlab("") +
+  ylab("DON (ppm)") +
+  geom_point(alpha = 0.6, shape = 21, position = position_jitterdodge()) +
+  scale_fill_manual (values = c("#56B4E9", "#009E73")) +
+  facet_wrap(~ Cultivar) 
+
+str(csv)
+
+csv$Treatment <- factor(csv$Treatment, levels = c("NTC", "Fg","Fg + 37", "Fg + 40", "Fg + 70"))
+
+
+#Plot2 X15ADON on Y
+
+P2 <- ggplot(csv, aes(x = Treatment, y = X15ADON, fill = Cultivar))+
+  theme_classic() +                # removes the grids
+  geom_boxplot() + 
+  xlab("") +
+  ylab("15ADON") +
+  geom_point(alpha = 0.6, shape = 21, position = position_jitterdodge()) +
+  scale_fill_manual (values = c("#56B4E9", "#009E73")) +
+  facet_wrap(~ Cultivar) 
+
+
+#Plot3 MassperSeed_mg on Y
+
+P3 <- ggplot(csv, aes(x = Treatment, y = MassperSeed_mg, fill = Cultivar))+
+  theme_classic() +                # removes the grids
+  geom_boxplot() + 
+  xlab("") +
+  ylab("Seed Mass (mg)") +
+  geom_point(alpha = 0.6, shape = 21, position = position_jitterdodge()) +
+  scale_fill_manual (values = c("#56B4E9", "#009E73")) +
+  facet_wrap(~ Cultivar)
+```
+
+
+## Code from coding challenge 3, question 5 & sepreated code chunks for each plit
+
+
+```{r P1}
 
 P1_stat <- P1 + 
             geom_pwc(aes(group = Treatment), method = "t_test", label = "p.adj.format")
 P1_stat
 
+```
 
+```{r P2}
 P2_stat <- P2 + 
   geom_pwc(aes(group = Treatment), method = "t_test", label = "p.adj.format")
 P2_stat
+```
 
-
+```{r P3}
 P3_stat <- P3 + 
   geom_pwc(aes(group = Treatment), method = "t_test", label = "p.adj.format")
 P3_stat
 ```
+
+
+
+```{r Combined}
+#combining
+Combined_plot_stat <- ggarrange(
+  P1_stat,   ## add the plots onf interest subsequently
+  P2_stat,
+  P3_stat,
+  labels = "auto",  # Automatically label the plots (A, B, C, etc.)
+  nrow = 1,  # Arrange the plots in # rows
+  ncol = 3,  # Arrange the plots in # column
+  common.legend = T
+)
+
+
+```
+
+
 
