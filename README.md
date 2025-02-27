@@ -3,9 +3,54 @@ This is repository for PLPA class. I use it store my assignments and to try diff
 
 # For coding challenge 4
 
+## File tree
+
+```
+.
+├── Coding Pracitce Assignment2_Datavis1
+│   ├── Assignment_DataVis1.docx
+│   ├── Assingmner_DataVis2.pdf
+│   ├── Bull_richness.csv
+│   └── Coding_Assignment2_DataVis.R
+├── Coding Practice Assignment1_Intro
+│   ├── PLPA_assignment_R1.R
+│   └── TipsR.csv
+├── CodingChalleng3_AdvancedVis.R
+├── CodingChallenge2_IntroDataVis.R
+├── Coding_Challenge1_Assignment_.R
+├── Coding_challenge_4                  #ASSIGNMENT4 Main FOLDER
+│   ├── Coding_challenge_markdown.md
+│   └── Coding_challenge_markdown.pdf
+├── Coding_challenge_markdown.html
+├── Coding_challenge_markdown.md
+├── Coding_challenge_markdown.pdf
+├── Coding_challenge_markdown.Rmd
+├── Coding_challenge_markdown_files
+│   └── figure-gfm
+│       ├── P1-1.png
+│       ├── P2-1.png
+│       └── P3-1.png
+├── Coding_practice_Rmarkdown.html
+├── Coding_practice_Rmarkdown.md
+├── Coding_practice_Rmarkdown.Rmd
+├── Coding_practice_Rmarkdown.tex
+├── Coding_practice_Rmarkdown_files
+│   └── figure-gfm
+│       └── include the figures-1.png
+├── Dummy_markdown_repo_edit_PG.Rmd
+├── MycotoxinData.csv
+├── PLPA_Assignment.Rproj
+├── README.html
+├── README.md
+└── shrek.jpg
+```
+
+## A clickable link in your README to your GitHub flavored .md file
 
 
+[Readme.md Click me](https://github.com/ppg0001/PLPA_Assignment/blob/main/Coding_challenge_4/Coding_challenge_markdown.md)
 
+[Clickable link to GitHub main Repository](https://github.com/ppg0001/PLPA_Assignment/tree/main)
 
 
 
