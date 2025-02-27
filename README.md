@@ -53,29 +53,10 @@ This is repository for PLPA class. I use it store my assignments and to try diff
 [Clickable link to GitHub main Repository](https://github.com/ppg0001/PLPA_Assignment/tree/main)
 
 
+----------------------------------------------------------------------------------------------------------
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# Other
 
 # DOI
 [![DOI](https://zenodo.org/badge/924493573.svg)](https://doi.org/10.5281/zenodo.14935003)

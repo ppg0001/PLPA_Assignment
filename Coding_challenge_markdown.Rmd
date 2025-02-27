@@ -3,13 +3,13 @@ title: "Coding_Challenge4_Markdown"
 author: "Pankaj Gaonkar"
 date: "2025-02-27"
 output:
-  html_document:
-    toc: true
-    toc_float: true
+  pdf_document:
   md_document:
     variant: gfm
   word_document:
-  pdf_document:
+  html_document:
+    toc: true
+    toc_float: true
 ---
 
 # Coding Challenge 4 Answers
