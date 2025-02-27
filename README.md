@@ -1,6 +1,8 @@
 # PLPA_Repository
 This is repository for PLPA class. I use it store my assignments and to try different tutorials.
 
+# DOI
+[![DOI](https://zenodo.org/badge/924493573.svg)](https://doi.org/10.5281/zenodo.14935003)
 
 ## **Organizing a repository and editing a readme using Markdown**
 #### Instead of dummy I will arrange this repository
@@ -24,8 +26,6 @@ Note: This will print the directory structure since I am in my root directory. O
 install.packages("fs")
 fs::dir_tree()
 ```
-
-
 
 
 To add text in box use:   forward single  quotes **```**
@@ -57,4 +57,12 @@ Note good habit to describe folders/file in the below structure (example#)
 ├── README.md                             #Top level directory README
 └── shrek.jpg
 ```
+
+
+### **Zendo**
+
+DOI created by zenodo:
+[![DOI](https://zenodo.org/badge/924493573.svg)](https://doi.org/10.5281/zenodo.14935003)
+
+
 
