@@ -1,0 +1,55 @@
+---
+title: "Coding_Challenge4_Markdown"
+author: "Pankaj Gaonkar"
+date: "2025-02-27"
+output:
+    html_document:
+    toc: true
+    toc_float: true
+  pdf_document:
+  word_document:
+  md_document:
+    variant: gfm
+---
+
+# Coding Challenge 4 Answers
+
+Q1) Explain the following
+a.	YAML header
+
+
+
+
+b.	Literate programming
+
+Q2)
+
+## Clickable link to manuscript where these data are published
+
+[Noel et al., 2022. Endophytic fungi as promising biocontrol agent to protect wheat from Fusarium graminearum head blight. Plant Disease](https://doi.org/10.1094/PDIS-06-21-1253-RE)
+
+
+```{r}
+## Reading data by reative path
+
+csv <- read.csv("MycotoxinData.csv", na.strings = "na")
+head (csv)
+
+
+## Code from coding challenge 3, question 5
+
+P1_stat <- P1 + 
+            geom_pwc(aes(group = Treatment), method = "t_test", label = "p.adj.format")
+P1_stat
+
+
+P2_stat <- P2 + 
+  geom_pwc(aes(group = Treatment), method = "t_test", label = "p.adj.format")
+P2_stat
+
+
+P3_stat <- P3 + 
+  geom_pwc(aes(group = Treatment), method = "t_test", label = "p.adj.format")
+P3_stat
+```
+
