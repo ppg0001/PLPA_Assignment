@@ -3,9 +3,9 @@ title: "Coding_Challenge4_Markdown"
 author: "Pankaj Gaonkar"
 date: "2025-02-27"
 output:
+  pdf_document:
   md_document:
     variant: gfm
-  pdf_document:
   word_document:
   html_document:
     toc: true
@@ -137,8 +137,8 @@ A clickable link in your README to your GitHub flavored .md file
 [Readme.md Click me](https://github.com/ppg0001/PLPA_Assignment/blob/main/Coding_challenge_4/Coding_challenge_markdown.md)
 
 A file tree of your GitHub repository.
+
 ```
-.
 ├── Coding Pracitce Assignment2_Datavis1
 │   ├── Assignment_DataVis1.docx
 │   ├── Assingmner_DataVis2.pdf
