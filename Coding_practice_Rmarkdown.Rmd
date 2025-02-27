@@ -2,19 +2,12 @@
 title: "R markdown _ PG"
 author: "Pankaj"
 date: "2025-02-27"
-output: html_document
----
-
----
-title: "R markdown tutorial_PG"
-author: "Pankaj"
-date: "2025-02-27"
-output: 
+output:
+  md_document:
+    variant: gfm
   html_document:
     toc: true
     toc_float: true
-  md_document:
-    variant: gfm
   word_document:
   pdf_document:
 ---

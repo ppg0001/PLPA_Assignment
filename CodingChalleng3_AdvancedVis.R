@@ -2,10 +2,10 @@
 ## Student name: Pankaj Gaonkar
 
 
-## load required library
+## load library
 library(tidyverse)
 library(ggpubr)  #integrating stats in multiple plots
-library(ggrepel) # for labelling points
+#library(ggrepel) # for labelling points
 
 ## Load Palette
 cbbPalette <- c("#000000", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
