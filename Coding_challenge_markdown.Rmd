@@ -24,7 +24,7 @@ In literate programming along with our code we will have its explanations and pr
 
 Q2)
 
-## Clickable link to manuscript where these data are published
+## Below is the clickable link to manuscript where these data are published
 
 [Noel et al., 2022. Endophytic fungi as promising biocontrol agent to protect wheat from Fusarium graminearum head blight. Plant Disease](https://doi.org/10.1094/PDIS-06-21-1253-RE)
 
