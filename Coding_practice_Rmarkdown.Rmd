@@ -1,0 +1,105 @@
+---
+title: "R markdown _ PG"
+author: "Pankaj"
+date: "2025-02-27"
+output: html_document
+---
+
+---
+title: "R markdown tutorial_PG"
+author: "Pankaj"
+date: "2025-02-27"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+  md_document:
+    variant: gfm
+  word_document:
+  pdf_document:
+---
+
+
+## Notes:
+Above line are YAML
+WE CAN CHANGE OUTPUT AS PER REQUIREMENT (E.G pdf, wprd, html)
+
+Example:
+  output: 
+  html_document:
+    toc: true         # gives headers
+    toc_float: true  # give header on side which we can use to navigate
+  md_document:
+    variant: gfm
+  word_document:
+  pdf_document:
+
+OR
+
+  md_document:                     
+      variant: gfm   ### for github__the GitHub flavored markdown (gfm) .md file for viewing on GitHub,                         and we can generate a Word document as well. 
+
+
+# R code chunk
+
+  
+```{r R  code example1}
+#{r R  code example1, include=FALSE}   wont show code and output
+#{r R  code example1, echo=FALSE}      wont show code but output will be showm
+
+# this is R code
+summary(mtcars)
+
+```
+This is how to include the figures
+
+```{r include the figures}
+library(ggplot2)
+
+data("mtcars")
+ggplot(mtcars, aes(x = wt, y = mpg)) +
+  geom_point()
+
+```
+
+R markdown formatting options
+
+# First level header
+
+Example test
+
+*italics test
+
+**bold text_between double astreix**
+
+- one item
+- another stuff
+
+1. one item
+2. another item
+
+## Second level header
+### Third level header
+
+## Adding the clickable links
+
+[Link to my GitHub](https://github.com/ppg0001/PLPA_Assignment)
+
+## Images (Note can be relative pah or same directory)
+
+![Shrek](C:/Users/panka/OneDrive - Auburn University/PLPA_class/shrek.jpg)
+
+
+
+
+## Formatted tables
+
+```{r}
+library("knitr")
+kable(mtcars, digits = 3, format = "markdown")
+```
+
+
+
+
+## **Organizing a repository and editing a readme using Markdown**
