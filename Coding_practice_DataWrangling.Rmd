@@ -136,6 +136,7 @@ microbiome.fungi %>%
 ```
 
 #Joining
+
 # left_join() - Keep all rows of X and add matching rows from Y. Any rows in Y that don’t match X are excluded.
 # right_join() - reverse of left_join() -inner_join() - only keep rows that are common to both X AND Y, remove everything else.
 # full_join() - Keep any columns that are in either X or Y
