@@ -28,11 +28,9 @@ library(tidyverse)
 
 ```{r load data}
 DiversityData <- read.csv("DiversityData.csv")
-
-
 str(DiversityData)
-
 ```
+
 
 ```{r}
 Metadata <- read.csv("Metadata.csv")
