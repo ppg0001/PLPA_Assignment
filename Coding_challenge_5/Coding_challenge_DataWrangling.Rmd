@@ -138,3 +138,10 @@ alpha_average2 %>%
 
 ```
 
+
+
+# Below is the clickable link to manuscript where these data are published
+
+[Coding_challenge_5 Folder](https://github.com/ppg0001/PLPA_Assignment/tree/main/Coding_challenge_5)
+
+
