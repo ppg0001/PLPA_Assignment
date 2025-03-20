@@ -137,7 +137,7 @@ alpha_average2 %>%
 
 ![](Coding_challenge_DataWrangling_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
 
-# Below is the clickable link to manuscript where these data are published
+## Below is the clickable link to GitHub Folder where these files are published
 
 [Coding_challenge_5
 Folder](https://github.com/ppg0001/PLPA_Assignment/tree/main/Coding_challenge_5)
