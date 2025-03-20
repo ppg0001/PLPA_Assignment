@@ -1501,9 +1501,10 @@ library(tidyverse)</code></pre>
 ## ✖ dplyr::filter() masks stats::filter()
 ## ✖ dplyr::lag()    masks stats::lag()
 ## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-<p>#1. 3 pts. Download two .csv files from Canvas called
+<div id="pts.-download-two-.csv-files-from-canvas-called-diversitydata.csv-and-metadata.csv-and-read-them-into-r-using-relative-file-paths." class="section level1">
+<h1>1. 3 pts. Download two .csv files from Canvas called
 DiversityData.csv and Metadata.csv, and read them into R using relative
-file paths.</p>
+file paths.</h1>
 <pre class="r"><code>DiversityData &lt;- read.csv(&quot;DiversityData.csv&quot;)
 str(DiversityData)</code></pre>
 <pre><code>## &#39;data.frame&#39;:    70 obs. of  5 variables:
@@ -1521,23 +1522,29 @@ str(Metadata)</code></pre>
 ##  $ Time_Point   : int  0 0 0 0 0 0 6 6 6 6 ...
 ##  $ Replicate    : int  1 2 3 4 5 6 1 2 3 4 ...
 ##  $ Water_Imbibed: chr  &quot;na&quot; &quot;na&quot; &quot;na&quot; &quot;na&quot; ...</code></pre>
-<p>#2. 4 pts. Join the two dataframes together by the common column
-‘Code’. Name the resulting dataframe alpha.</p>
+</div>
+<div id="pts.-join-the-two-dataframes-together-by-the-common-column-code.-name-the-resulting-dataframe-alpha." class="section level1">
+<h1>2. 4 pts. Join the two dataframes together by the common column
+‘Code’. Name the resulting dataframe alpha.</h1>
 <pre class="r"><code>alpha  &lt;- left_join(Metadata, DiversityData, by = &quot;Code&quot;)</code></pre>
-<p>#3. 4 pts. Calculate Pielou’s evenness index: Pielou’s evenness is an
+</div>
+<div id="pts.-calculate-pielous-evenness-index-pielous-evenness-is-an-ecological-parameter-calculated-by-the-shannon-diversity-index-column-shannon-divided-by-the-log-of-the-richness-column." class="section level1">
+<h1>3. 4 pts. Calculate Pielou’s evenness index: Pielou’s evenness is an
 ecological parameter calculated by the Shannon diversity index (column
-Shannon) divided by the log of the richness column. #a. Using mutate,
-create a new column to calculate Pielou’s evenness index. #b. Name the
-resulting dataframe alpha_even.</p>
+Shannon) divided by the log of the richness column.</h1>
+<p>#a. Using mutate, create a new column to calculate Pielou’s evenness
+index. #b. Name the resulting dataframe alpha_even.</p>
 <pre class="r"><code># Creating a new column
 alpha_even  &lt;-  mutate(alpha, Pielou_eveness = shannon / log(richness))</code></pre>
-<p>#4 4. Pts. Using tidyverse language of functions and the pipe, use
+</div>
+<div id="pts.-using-tidyverse-language-of-functions-and-the-pipe-use-the-summarise-function-and-tell-me-the-mean-and-standard-error-evenness-grouped-by-crop-over-time." class="section level1">
+<h1>4 4. Pts. Using tidyverse language of functions and the pipe, use
 the summarise function and tell me the mean and standard error evenness
-grouped by crop over time. #a. Start with the alpha_even dataframe #b.
-Group the data: group the data by Crop and Time_Point. #c. Summarize the
-data: Calculate the mean, count, standard deviation, and standard error
-for the even variable within each group. #d. Name the resulting
-dataframe alpha_average</p>
+grouped by crop over time.</h1>
+<p>#a. Start with the alpha_even dataframe #b. Group the data: group the
+data by Crop and Time_Point. #c. Summarize the data: Calculate the mean,
+count, standard deviation, and standard error for the even variable
+within each group. #d. Name the resulting dataframe alpha_average</p>
 <pre class="r"><code>#summary statistics
 
 alpha_average  &lt;-  alpha_even %&gt;%
@@ -1548,9 +1555,12 @@ alpha_average  &lt;-  alpha_even %&gt;%
     mutate(std.err = sd.dev/sqrt(n))</code></pre>
 <pre><code>## `summarise()` has grouped output by &#39;Crop&#39;. You can override using the
 ## `.groups` argument.</code></pre>
-<p>#5. 4. Pts. Calculate the difference between the soybean column, the
+</div>
+<div id="pts.-calculate-the-difference-between-the-soybean-column-the-soil-column-and-the-difference-between-the-cotton-column-and-the-soil-column" class="section level1">
+<h1>5. 4. Pts. Calculate the difference between the soybean column, the
 soil column, and the difference between the cotton column and the soil
-column #a. Start with the alpha_average dataframe #b. Select relevant
+column</h1>
+<p>#a. Start with the alpha_average dataframe #b. Select relevant
 columns: select the columns Time_Point, Crop, and mean.even. #c. Reshape
 the data: Use the pivot_wider function to transform the data from long
 to wide format, creating new columns for each Crop with values from
@@ -1563,6 +1573,7 @@ the resulting dataframe alpha_average2</p>
               pivot_wider(names_from = Crop, values_from = mean.even) %&gt;%
               mutate(diff.cotton.even = Soil - Cotton) %&gt;%
               mutate(diff.soybean.even = Soil - Soybean)</code></pre>
+</div>
 <div id="pts.-connecting-it-to-plots" class="section level1">
 <h1>6. 4 pts. Connecting it to plots</h1>
 <p>#a. Start with the alpha_average2 dataframe #b. Select relevant
