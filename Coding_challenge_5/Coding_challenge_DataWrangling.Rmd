@@ -3,11 +3,11 @@ title: "Coding_Challenge_DataWrangling"
 author: "Pankaj Gaonkar"
 date: "2025-03-20"
 output: 
+  md_document:
+    variant: gfm
   html_document:
     toc: true
     toc_float: true
-  md_document:
-    variant: gfm
   word_document:
   pdf_document:
 ---
