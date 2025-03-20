@@ -3,18 +3,16 @@ title: "Coding_Challenge_DataWrangling"
 author: "Pankaj Gaonkar"
 date: "2025-03-20"
 output: 
+  md_document:
+    variant: gfm
+  pdf_document:
+  word_document:
   html_document:
     toc: true
     toc_float: true
-  md_document:
-    variant: gfm
-  word_document:
-  pdf_document:
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+#Coding Challenge _ Data Wrangling
 
 
 ```{r Packages}

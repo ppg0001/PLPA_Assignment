@@ -1,3 +1,5 @@
+\#Coding Challenge \_ Data Wrangling
+
 ``` r
 #install.packages("tidyverse")
 library(tidyverse)
@@ -20,8 +22,7 @@ library(tidyverse)
     ## ✖ dplyr::lag()    masks stats::lag()
     ## ℹ Use the conflicted package (<http://conflicted.r-lib.org/>) to force all conflicts to become errors
 
-\#1. 3 pts. Download two .csv files from Canvas called DiversityData.csv
-and Metadata.csv, and read them into R using relative file paths.
+# 1. 3 pts. Download two .csv files from Canvas called DiversityData.csv and Metadata.csv, and read them into R using relative file paths.
 
 ``` r
 DiversityData <- read.csv("DiversityData.csv")
@@ -48,31 +49,29 @@ str(Metadata)
     ##  $ Replicate    : int  1 2 3 4 5 6 1 2 3 4 ...
     ##  $ Water_Imbibed: chr  "na" "na" "na" "na" ...
 
-\#2. 4 pts. Join the two dataframes together by the common column
-‘Code’. Name the resulting dataframe alpha.
+# 2. 4 pts. Join the two dataframes together by the common column ‘Code’. Name the resulting dataframe alpha.
 
 ``` r
 alpha  <- left_join(Metadata, DiversityData, by = "Code")
 ```
 
-\#3. 4 pts. Calculate Pielou’s evenness index: Pielou’s evenness is an
-ecological parameter calculated by the Shannon diversity index (column
-Shannon) divided by the log of the richness column. \#a. Using mutate,
-create a new column to calculate Pielou’s evenness index. \#b. Name the
-resulting dataframe alpha_even.
+# 3. 4 pts. Calculate Pielou’s evenness index: Pielou’s evenness is an ecological parameter calculated by the Shannon diversity index (column Shannon) divided by the log of the richness column.
+
+\#a. Using mutate, create a new column to calculate Pielou’s evenness
+index. \#b. Name the resulting dataframe alpha_even.
 
 ``` r
 # Creating a new column
 alpha_even  <-  mutate(alpha, Pielou_eveness = shannon / log(richness))
 ```
 
-\#4 4. Pts. Using tidyverse language of functions and the pipe, use the
-summarise function and tell me the mean and standard error evenness
-grouped by crop over time. \#a. Start with the alpha_even dataframe \#b.
-Group the data: group the data by Crop and Time_Point. \#c. Summarize
-the data: Calculate the mean, count, standard deviation, and standard
-error for the even variable within each group. \#d. Name the resulting
-dataframe alpha_average
+# 4 4. Pts. Using tidyverse language of functions and the pipe, use the summarise function and tell me the mean and standard error evenness grouped by crop over time.
+
+\#a. Start with the alpha_even dataframe \#b. Group the data: group the
+data by Crop and Time_Point. \#c. Summarize the data: Calculate the
+mean, count, standard deviation, and standard error for the even
+variable within each group. \#d. Name the resulting dataframe
+alpha_average
 
 ``` r
 #summary statistics
@@ -88,9 +87,9 @@ alpha_average  <-  alpha_even %>%
     ## `summarise()` has grouped output by 'Crop'. You can override using the
     ## `.groups` argument.
 
-\#5. 4. Pts. Calculate the difference between the soybean column, the
-soil column, and the difference between the cotton column and the soil
-column \#a. Start with the alpha_average dataframe \#b. Select relevant
+# 5. 4. Pts. Calculate the difference between the soybean column, the soil column, and the difference between the cotton column and the soil column
+
+\#a. Start with the alpha_average dataframe \#b. Select relevant
 columns: select the columns Time_Point, Crop, and mean.even.
 \#c. Reshape the data: Use the pivot_wider function to transform the
 data from long to wide format, creating new columns for each Crop with
