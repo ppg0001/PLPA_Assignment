@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 #We willbe playing wiht data manipulating them. With major focus on "tidyverse"
 
 ```{r Packages}
-install.packages("tidyverse")
+#install.packages("tidyverse")
 library(tidyverse)
 
 ```
