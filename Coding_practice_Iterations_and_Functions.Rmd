@@ -1,0 +1,79 @@
+---
+title: "Iteration & Function_Practice"
+author: "Pankaj Gaonkar"
+date: "2025-03-26"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+#load packages
+
+#install.packages("drc")
+
+library(drc)
+library(tidyverse)
+library(ggplot2)
+
+
+```
+
+# Fuctions
+## Functions are like those written into packages. They are useful when you need to perform the same code on different data and you want to avoid copy and paste errors.
+
+```{r}
+# Function to convert Fahrenheit to Celsius. Lets say degree_f=Fahrenheit
+#Example (5*(degree_f - 32)/9)   < formula for Fahrenheit to Celsius
+
+(5*(32 - 32)/9) #if degree_f is 32
+
+(5*(80 - 32)/9) # if degree_f is 80
+
+(5*(40 - 32)/9) # if degree_f is 40
+
+#But then we end up doing lots of copy paste everytime we want to convert the temperature, prone to errors. So to avoid this we can use the "Functions".
+
+```
+
+# Converting it to a function
+```{r}
+# I broke it down in step by step. Just for my understanding
+
+#Step 1
+F_to_C <- function(f_temp){      
+  (5*(f_temp - 32)/9)       #What will happen is when we input a value for f_temp for "F_to_C" we will get the answer to formula in function.
+}
+
+#Step 2 (This is complete function)
+F_to_C <- function(f_temp){      
+  celsius <- (5*(f_temp - 32)/9)    # we are saving value in the celsius
+  return(celsius)
+}
+
+#Step3_using/calling function
+
+F_to_C(32) #Here we wil get the 32F to its celsius value.
+F_to_C(82)
+
+
+```
+
+# Task _ Write a function to convert celsius to fahrenheiht using the conversion of F = C x (9/5)+32
+```{r}
+
+C_to_F <- function(c_temp){
+  farhenheit <- (c_temp*(9/5)+32)
+  return(farhenheit)
+}
+
+C_to_F(0)
+
+```
+
+
+```{r}
+```
+
