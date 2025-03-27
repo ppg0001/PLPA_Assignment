@@ -9,22 +9,73 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
 
-```{r cars}
-summary(cars)
+1. 2 pts. Regarding reproducibility, what is the main point of writing your own functions
+and iterations?
+
+
+
+
+2. 2 pts. In your own words, describe how to write a function and a for loop in R and how
+they work. Give me specifics like syntax, where to write code, and how the results are
+returned
+
+
+
+
+
+
+
+3. 2 pts. Read in the Cities.csv file from Canvas using a relative file path.
+
+```{r}
+#load data
+
+datum <- read.csv("Cities.csv")
+
+head(datum)
+
+
 ```
 
-## Including Plots
 
-You can also embed plots, for example:
+4. 6 pts. Write a function to calculate the distance between two pairs of coordinates based
+on the Haversine formula (see below). The input into the function should be lat1, lon1,
+lat2, and lon2. The function should return the object distance_km. All the code below
+needs to go into the function.
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+
+
+```{r}
+
+Distance_pair <- function(lat1, lon1, lat2, lon2){      
+  # convert to radians
+  rad.lat1 <- lat1 * pi/180
+  rad.lon1 <- lon1 * pi/180
+  rad.lat2 <- lat2 * pi/180
+  rad.lon2 <- lon2 * pi/180
+  # Haversine formula
+  delta_lat <- rad.lat2 - rad.lat1
+  delta_lon <- rad.lon2 - rad.lon1
+  a <- sin(delta_lat / 2)^2 + cos(rad.lat1) * cos(rad.lat2) * sin(delta_lon / 2)^2
+  c <- 2 * asin(sqrt(a))
+  # Earth's radius in kilometers
+  earth_radius <- 6378137
+  # Calculate the distance
+  distance_km <- (earth_radius * c)/1000
+
+  return(distance_km)
+}
+
 ```
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+```{r}
+```
+
+
+
+
+
