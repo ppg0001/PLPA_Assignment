@@ -3,58 +3,49 @@ title: "CodingChallenge6_Loops and iterations"
 author: "Pankaj Gaonkar"
 date: "2025-03-27"
 output: 
-  pdf_document:
   md_document:
     variant: gfm
+  pdf_document:
   word_document:
   html_document:
     toc: true
     toc_float: true
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
-
-1. 2 pts. Regarding reproducibility, what is the main point of writing your own functions
-and iterations?
+**1. 2 pts. Regarding reproducibility, what is the main point of writing your own functions and iterations?**
 
 Answer: They are useful when you need to perform the same code on different data and you want to avoid copy and paste errors. Especially with function we can specify the formula to be performed and with iterations we can have several repetitions which wont be practically possible to write without error. Overall they help in reproducibility by avoiding the errors.
 
 
 
-2. 2 pts. In your own words, describe how to write a function and a for loop in R and how
-they work. Give me specifics like syntax, where to write code, and how the results are
-returned
+**2. 2 pts. In your own words, describe how to write a function and a for loop in R and how they work. Give me specifics like syntax, where to write code, and how the results are returned. **
 
 Answer:
-Example:
 
-We write a code in R chunk in R markdown.
-Example:
+We write a code in R chunk in R markdown.I have explained the functions and loop using the example.
 
-## Function:
+Example of Function:
+
+**Function:**
 
 ```
 
 F_to_C <- function(f_temp){      
-  celsius <- (5*(f_temp - 32)/9)    # we are saving value in the celsius
-  return(celsius)                   # gives the answer to the input after running the functions. We get Farheneit converted to censius.
+  celsius <- (5*(f_temp - 32)/9)  # we are saving value in the celsius
+  return(celsius)             # gives the answer to the input after running the functions. We get Farheneit converted to censius.
 }
 
 ```
 
-*Function is defined as F_to_C
-*f_temp is our input
+* Function is defined as F_to_C
+* f_temp is our input
+* Calling the function by giving input as 32 for this example:
+* F_to_C(32) . Here we wil get the 32F to its celsius value.
 
-*Calling the function by giving input as 32 for this example:
-*F_to_C(32) #Here we wil get the 32F to its celsius value.
 
+**Loop:**
 
-## Loop:
-
-Example of loop:
+Example of "for" loop:
 
 ```
 celcius.df <- NULL 
@@ -67,11 +58,11 @@ for (i in -30:100){
 celcius.df
 ```
 
-*We start by creating a NULL object so that we can call that dataframe and we can have to output values.
-*for (i in -30:100) -- This is a for loop where it will go through every value between -30 tp 100 Farheneit.
-*We create results as data.frame as per desired column arrangement.
-*Finally we input the results in the initial NULL dataframe.
-*cecius,df will print out our entire dataframe with our loop output.
+* We start by creating a NULL object so that we can call that dataframe and we can have to output values.
+* for (i in -30:100) -- This is a for loop where it will go through every value between -30 tp 100 Farheneit.
+* We create results as data.frame as per desired column arrangement.
+* Finally we input the results in the initial NULL dataframe.
+* cecius,df will print out our entire dataframe with our loop output.
 
 
 
@@ -87,7 +78,7 @@ library("dplyr")
 
 
 
-3. 2 pts. Read in the Cities.csv file from Canvas using a relative file path.
+**3. 2 pts. Read in the Cities.csv file from Canvas using a relative file path.**
 
 ```{r}
 #load data
@@ -100,10 +91,7 @@ head(datum)
 ```
 
 
-4. 6 pts. Write a function to calculate the distance between two pairs of coordinates based
-on the Haversine formula (see below). The input into the function should be lat1, lon1,
-lat2, and lon2. The function should return the object distance_km. All the code below
-needs to go into the function.
+**4. 6 pts. Write a function to calculate the distance between two pairs of coordinates based on the Haversine formula (see below). The input into the function should be lat1, lon1, lat2, and lon2. The function should return the object distance_km. All the code below needs to go into the function.**
 
 
 
@@ -132,8 +120,7 @@ Distance_pair <- function(lat1, lon1, lat2, lon2){
 
 
 
-5. 5 pts. Using your function, compute the distance between Auburn, AL and New York
-City
+**5. 5 pts. Using your function, compute the distance between Auburn, AL and New York City**
 a. Subset/filter the Cities.csv data to include only the latitude and longitude values
 you need and input as input to your function.
 b. The output of your function should be 1367.854 km
@@ -141,7 +128,7 @@ b. The output of your function should be 1367.854 km
 
 
 ```{r}
-# 5a) Subsetting data to include only new york and auburn
+#Subsetting data to include only new york and auburn
 
   lat1 <- datum$lat[datum$city_ascii == "Auburn"]
   lon1 <- datum$long[datum$city_ascii == "Auburn"]
@@ -155,8 +142,7 @@ Distance_pair(lat1, lon1, lat2, lon2)
 
 ```
 
-6. 6 pts. Now, use your function within a for loop to calculate the distance between all other
-cities in the data
+**6. 6 pts. Now, use your function within a for loop to calculate the distance between all other cities in the data. **
 
 ```{r}
 #looping
@@ -181,10 +167,7 @@ Distance_all_cities.df
 ```
 
 
-Q) Bonus point if you can have the output of each iteration append a new row to a
-dataframe, generating a new column of data. In other words, the loop should create a
-dataframe with three columns called city1, city2, and distance_km, as shown below. The
-first six rows of the dataframe are shown below
+**Q) Bonus point if you can have the output of each iteration append a new row to a dataframe, generating a new column of data. In other words, the loop should create a dataframe with three columns called city1, city2, and distance_km, as shown below. The first six rows of the dataframe are shown below.**
 
 ```{r}
 #Bonus
@@ -209,11 +192,10 @@ Distance_all_cities.df
 
 
 
-7. 2 pts. Commit and push a gfm .md file to GitHub inside a directory called Coding Challenge 6.
-Provide me a link to your github written as a clickable link in your .pdf or .docx
+**7. 2 pts. Commit and push a gfm .md file to GitHub inside a directory called Coding Challenge 6. Provide me a link to your github written as a clickable link in your .pdf or .docx**
 
 
-
+[Coding_challenge_6 Folder](https://github.com/ppg0001/PLPA_Assignment/tree/main/Coding_Challenge_6)
 
 
 
