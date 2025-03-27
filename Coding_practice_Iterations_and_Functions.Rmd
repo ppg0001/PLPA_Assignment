@@ -124,7 +124,7 @@ seq_along(LETTERS[1:5]) # will return 1,2,3,4,5 not the actual letters.
 # The "For" loop
 
 ```{r}
-for (i in 1:10){    # i commonly used can be anything
+for (i in 1:10){    # i commonly used can be anything, we will define our iteration
   print(i*2)        #for each value of i will be iterated till it gets to 10 while multiplying with 2.
 }
 
@@ -133,11 +133,43 @@ for (i in 1:10){    # i commonly used can be anything
 
 
 
+Complicated example combining function in our loop.
+
+```{r}
+
+# Note: F_to_C is the function that we already defined earlier for temperature conversiont
+
+for(i in -30:100){     #setting up sequence
+  result <- F_to_C(i)   #For each value in sequence will substituted in i as iteration
+  print(result)
+}
+
+```
+
+This was great, but this only printed to the console, and we cannot really do anything with those values. What if we wanted to do something with the result of the iteration?
+
+Step 1. Set a R object to NULL
+
+Step 2. Set your for loop
+
+Step 3. Save the result of your for loop into a dataframe each iteration
+
+Step 4. append one row of the dataframe to the null object each iteration of the loop. 
 
 
+```{r}
+
+celcius.df <- NULL 
+for (i in -30:100){   
+  result <- data.frame(F_to_C(i), i)   #create one row dataframe called data.frame contain two columns "F_to_C(i)" and "i".
+  celcius.df <- rbind.data.frame(celcius.df, result)  #binding celsius.df to result
+
+}
 
 
+celcius.df
 
+```
 
 
 
