@@ -26,6 +26,15 @@ returned
 
 
 
+```{r}
+#load packages
+
+library("dplyr")
+
+```
+
+
+
 
 
 3. 2 pts. Read in the Cities.csv file from Canvas using a relative file path.
@@ -68,6 +77,57 @@ Distance_pair <- function(lat1, lon1, lat2, lon2){
 
   return(distance_km)
 }
+
+```
+
+
+
+5. 5 pts. Using your function, compute the distance between Auburn, AL and New York
+City
+a. Subset/filter the Cities.csv data to include only the latitude and longitude values
+you need and input as input to your function.
+b. The output of your function should be 1367.854 km
+
+
+
+```{r}
+# 5a) Subsetting data to include only new york and auburn
+
+
+Subset_Auburn_Nyork <- 
+  datum %>%
+  subset(city_ascii == "Auburn" | city_ascii == "New York")
+
+print(Subset_Auburn_Nyork)
+
+#Running Distance_pain function
+
+
+Distance_pair(32.6087, -85.4903, 40.6943,	-73.9249)
+
+
+
+```
+
+6. 6 pts. Now, use your function within a for loop to calculate the distance between all other
+cities in the data
+
+```{r}
+#looping
+
+Distance_all_cities.df <- NULL 
+for (i in city_ascii){   
+  result <- data.frame(Distance_pair(i), i)
+  Distance_all_cities.df <- rbind.data.frame(Distance_all_cities.df, result)
+
+}
+
+
+Distance_all_cities
+
+
+
+
 
 ```
 
