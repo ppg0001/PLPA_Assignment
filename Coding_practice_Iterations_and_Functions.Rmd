@@ -73,7 +73,83 @@ C_to_F(0)
 
 ```
 
+#Iterations
+1. rep() 
+
+2. seq() & seq_along() 
+
+3. for loops map() *nested map()
 
 ```{r}
+#Repetition
+#rep() COMMAND
+
+rep("A", 3) # repeats A three times 
+
+rep(c("A", "B"), 5) # repeats A and B, times
+
+rep(c(1,2,3,4), times = 4) # repeats 1,2,3,4, 4 times 
+
+rep(c(1,2,5,2), times = 4, each = 4) # repeats 1 four times, 2 four times, 5 four times, and 2 four times. 
+
+
 ```
+```{r}
+#sequences of numbers easily
+# seq() COMMAND
+
+seq(from = 1, to = 7) # sequence of numbers 1 to 7
+
+seq(from = 0, to = 10, by = 2) # sequence of numbers from 0 to 10 by 2s 
+
+rep(seq(from = 0, to = 10, by = 2), times = 3, each = 2) # combined seq() and rep()
+
+
+```
+
+
+```{r}
+# The seq_along() function 
+## It allows you to generate a sequence of numbers based on non-integer values. This will become very useful when we want to loop over elements within a dataframe.
+
+LETTERS  # # use the built in LETTERS vector for an example. 
+
+seq_along(LETTERS)
+seq_along(LETTERS[1:5]) # will return 1,2,3,4,5 not the actual letters. 
+#This will help in loops, knwoing the sequence number in the vector while looping. To be continued in loop section.
+
+
+```
+
+# The "For" loop
+
+```{r}
+for (i in 1:10){    # i commonly used can be anything
+  print(i*2)        #for each value of i will be iterated till it gets to 10 while multiplying with 2.
+}
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
