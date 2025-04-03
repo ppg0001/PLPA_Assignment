@@ -3,18 +3,14 @@ title: "Coding_challenge_7"
 author: "Pankaj Gaonkar"
 date: "2025-04-03"
 output:
+  pdf_document:
   md_document:
     variant: gfm
-  pdf_document:
   word_document:
   html_document:
     toc: true
     toc_float: true
 ---
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
 
 1.	4 pts. Read in the data called “PlantEmergence.csv” using a relative file path and load the following libraries. tidyverse, lme4, emmeans, multcomp, and multcompView. Turn the Treatment , DaysAfterPlanting  and Rep into factors using the function as.factor
 STAND$Treatment <- as.factor(STAND$Treatment) # example shown here. 
