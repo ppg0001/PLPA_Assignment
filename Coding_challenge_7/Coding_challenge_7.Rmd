@@ -2,7 +2,14 @@
 title: "Coding_challenge_7"
 author: "Pankaj Gaonkar"
 date: "2025-04-03"
-output: html_document
+output:
+  md_document:
+    variant: gfm
+  pdf_document:
+  word_document:
+  html_document:
+    toc: true
+    toc_float: true
 ---
 
 ```{r setup, include=FALSE}
@@ -139,25 +146,9 @@ plot_cldbars_onefactor(model2, "Treatment") #I realized functions can make life 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 6.	2 pts. Generate the gfm .md file along with a .html, .docx, or .pdf. Commit, and push the .md file to github and turn in the .html, .docx, or .pdf to Canvas. Provide me a link here to your github.
+
+[Coding_challenge_7 Folder](https://github.com/ppg0001/PLPA_Assignment/tree/main/Coding_challenge_7)
+
+
+
