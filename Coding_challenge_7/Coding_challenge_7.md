@@ -182,6 +182,20 @@ anova(model1)
     ## ---
     ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
+``` r
+#OR
+
+summary(aov(Emergence ~ Treatment + DaysAfterPlanting + Treatment:DaysAfterPlanting, data = datum))
+```
+
+    ##                              Df Sum Sq Mean Sq F value   Pr(>F)    
+    ## Treatment                     8 279366   34921 307.952  < 2e-16 ***
+    ## DaysAfterPlanting             3   3116    1039   9.160 1.88e-05 ***
+    ## Treatment:DaysAfterPlanting  24    142       6   0.052        1    
+    ## Residuals                   108  12247     113                     
+    ## ---
+    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
 # 3. 5 pts. Based on the results of the linear model in question 2, do you need to fit the interaction term? Provide a simplified linear model without the interaction term but still testing both main effects. Provide the summary and ANOVA results. Then, interpret the intercept and the coefficient for Treatment 2.
 
 ## Answer:

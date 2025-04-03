@@ -58,6 +58,10 @@ summary(model1)
 
 anova(model1)
 
+#OR
+
+summary(aov(Emergence ~ Treatment + DaysAfterPlanting + Treatment:DaysAfterPlanting, data = datum))
+
 
 ```
 
