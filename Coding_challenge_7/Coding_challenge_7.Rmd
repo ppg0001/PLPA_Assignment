@@ -4,6 +4,7 @@ author: "Pankaj Gaonkar"
 date: "2025-04-03"
 output:
   pdf_document:
+    toc: true
   md_document:
     variant: gfm
   word_document:
