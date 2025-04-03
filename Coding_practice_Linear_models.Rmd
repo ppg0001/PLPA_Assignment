@@ -75,8 +75,10 @@ ggplot(model, aes(y = .resid, x = .fitted)) +
 
 
 ```
-#We will use bull_richness.csv data for further analysis
-#Note: poisonn better for count data (example richness variable has all integer, its a count data. In ANOVA assumed distribution is gausiaan distribution that can take any value between negative infinity and infinity but integer values dont fit that, so poisson better for our variable of richness. BUT WE WILL JUST GO AHEAD WITH REGULAR THINGY AND WONT DO glm-poissson)
+
+### We will use bull_richness.csv data for further analysis.
+
+### Note: poisonn better for count data (example richness variable has all integer, its a count data. In ANOVA assumed distribution is gausiaan distribution that can take any value between negative infinity and infinity but integer values dont fit that, so poisson better for our variable of richness. BUT WE WILL JUST GO AHEAD WITH REGULAR THINGY AND WONT DO glm-poissson).
 
 ```{r}
 #Load data
@@ -97,9 +99,9 @@ summary(lm(richness~Fungicide, data = bull.rich.sub))  #runnig as linear model
 
 ```
 
-## ANOVA
+### ANOVA
 
-## ANOVAs would have continuous y and multinomial categorical x. Meaning, more than two groups.
+### ANOVAs would have continuous y and multinomial categorical x. Meaning, more than two groups.
 
 
 ```{r}
@@ -130,7 +132,7 @@ summary(aov(richness ~ GrowthStage, data = bull.rich.sub2))
 
 ```
 
-## how do we know which is different from the the other group? By post-hoc. Using 'means' and 'multcomp' package
+### How do we know which is different from the the other group? By post-hoc. Using 'means' and 'multcomp' package
 
 ```{r}
 #Using MEANS
@@ -182,7 +184,7 @@ bull.rich.sub3 %>%
 ```
 
 # Mixed effects models
-#Important things to understand is 'fixed and random effects terms'. 
+### Important things to understand is 'fixed and random effects terms'. 
 
 ```{r}
 lme0 <- lm(richness ~ GrowthStage*Fungicide, data = bull.rich.sub3)
