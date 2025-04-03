@@ -15,6 +15,8 @@ knitr::opts_chunk$set(echo = TRUE)
 #Load packages
 library(tidyverse)
 library(lme4)
+
+#install.packages("multcompView")
 library(multcomp)
 
 #install.packages("emmeans")
@@ -73,4 +75,153 @@ ggplot(model, aes(y = .resid, x = .fitted)) +
 
 
 ```
+#We will use bull_richness.csv data for further analysis
+#Note: poisonn better for count data (example richness variable has all integer, its a count data. In ANOVA assumed distribution is gausiaan distribution that can take any value between negative infinity and infinity but integer values dont fit that, so poisson better for our variable of richness. BUT WE WILL JUST GO AHEAD WITH REGULAR THINGY AND WONT DO glm-poissson)
+
+```{r}
+#Load data
+
+bull.rich <- read.csv("Bull_richness.csv")
+
+```
+
+
+```{r}
+bull.rich.sub <- bull.rich %>%
+  filter(GrowthStage == "V8" & Treatment == "Conv.")
+
+t.test(richness~Fungicide, data = bull.rich.sub)  #For just running t-test
+
+summary(lm(richness~Fungicide, data = bull.rich.sub))  #runnig as linear model
+  
+
+```
+
+## ANOVA
+
+## ANOVAs would have continuous y and multinomial categorical x. Meaning, more than two groups.
+
+
+```{r}
+#Filtering dataset
+
+bull.rich.sub2 <- bull.rich %>%
+  filter(Fungicide == "C" & Treatment == "Conv." & Crop == "Corn")
+
+bull.rich.sub2$GrowthStage <- factor(bull.rich.sub2$GrowthStage, levels = c("V6", "V8", "V15"))
+
+ggplot(bull.rich.sub2, aes(x = GrowthStage, y = richness)) +
+  geom_boxplot()
+
+
+```
+
+
+```{r}
+#Now lets set up LINEAR MODELS instead of ANOVA. 
+#Same result as ANOVA because ANOVA is a regression.
+
+lm.growth <- lm(richness ~ GrowthStage, data = bull.rich.sub2)
+summary(lm.growth)
+
+anova(lm.growth)
+summary(aov(richness ~ GrowthStage, data = bull.rich.sub2))
+
+
+```
+
+## how do we know which is different from the the other group? By post-hoc. Using 'means' and 'multcomp' package
+
+```{r}
+#Using MEANS
+
+lsmeans <- emmeans(lm.growth, ~GrowthStage) # estimate lsmeans
+Results_lsmeans <- cld(lsmeans, alpha = 0.05, reversed = TRUE, details = TRUE) # contrast with Tukey ajustment by default. 
+Results_lsmeans
+
+
+
+```
+## Interaction terms
+
+```{r}
+#Filter dataset
+bull.rich.sub3 <- bull.rich %>%
+  filter(Treatment == "Conv." & Crop == "Corn")
+
+bull.rich.sub3$GrowthStage <- factor(bull.rich.sub3$GrowthStage, levels = c("V6", "V8", "V15"))
+
+```
+
+
+```{r}
+# Set up our linear model with fungicide interaction factor
+#Style 1
+lm.inter <- lm(richness ~ GrowthStage + Fungicide + GrowthStage:Fungicide, data = bull.rich.sub3)
+summary(lm.inter)
+
+#Style 2
+lm(richness ~ GrowthStage*Fungicide, data = bull.rich.sub3)
+summary(lm(richness ~ GrowthStage*Fungicide, data = bull.rich.sub3))
+
+anova(lm.inter) # The interaction term is significant. But why to run this again?
+
+
+
+```
+
+
+```{r}
+# For this study we more care about the effect of fungicide over the levels of growthstage so we can plot that easily.
+bull.rich.sub3 %>%
+  ggplot(aes(x = GrowthStage, y = richness, fill = Fungicide)) +
+  geom_boxplot()
+
+#Note: So, by visualization, we can see that it looks like the V8 fungicide affected richness more than others, and by V15, they recovered.But how do we know? In this case, we have to do a post-hoc test within the levels of growthstage.
+
+```
+
+# Mixed effects models
+#Important things to understand is 'fixed and random effects terms'. 
+
+```{r}
+lme0 <- lm(richness ~ GrowthStage*Fungicide, data = bull.rich.sub3)
+
+#How to include random effect in 'lme0'?
+#using lmer function
+
+lme1 <- lmer(richness ~ GrowthStage*Fungicide + (1|Rep), data = bull.rich.sub3)
+summary(lme1)
+
+
+```
+
+
+```{r}
+summary(lme0)
+
+summary(lme1)
+```
+
+
+```{r}
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
