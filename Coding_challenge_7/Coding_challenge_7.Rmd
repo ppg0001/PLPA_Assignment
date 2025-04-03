@@ -14,7 +14,15 @@ STAND$Treatment <- as.factor(STAND$Treatment) # example shown here.
 
 ```{r}
 #load libraries
+#Load packages
+library(tidyverse)
+library(lme4)
 
+#install.packages("multcompView")
+library(multcomp)
+
+#install.packages("emmeans")
+library(emmeans)
 ```
 
 
@@ -26,30 +34,130 @@ head(datum)
 
 ```
 
+```{r}
+#Turn the Treatment , DaysAfterPlanting  and Rep into factors using the function as.factor
+
+datum$Treatment <- as.factor(datum$Treatment)
+datum$DaysAfterPlanting <- as.factor(datum$DaysAfterPlanting)
+datum$Rep <- as.factor(datum$Rep)
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+```
 
 
 
 2.	5 pts. Fit a linear model to predict Emergence using Treatment and DaysAfterPlanting along with the interaction. Provide the summary of the linear model and ANOVA results. 
 
+```{r}
+model1 <- lm(Emergence ~ Treatment + DaysAfterPlanting + Treatment:DaysAfterPlanting, data = datum)
+summary(model1)
+
+anova(model1)
+
+
+```
+
+
 3.	5 pts. Based on the results of the linear model in question 2, do you need to fit the interaction term? Provide a simplified linear model without the interaction term but still testing both main effects. Provide the summary and ANOVA results. Then, interpret the intercept and the coefficient for Treatment 2.
+
+```{r}
+
+model2 <- lm(Emergence ~ Treatment + DaysAfterPlanting, data = datum)
+summary(model2)
+anova(model2)
+
+```
+
 
 4.	5 pts. Calculate the least square means for Treatment using the emmeans package and perform a Tukey separation with the compact letter display using the cld function. Interpret the results.
 
+```{r}
+
+lsmeans <- emmeans(model2, ~ Treatment) # estimate lsmeans
+Results_lsmeans <- cld(lsmeans, alpha = 0.05, reversed = TRUE, details = TRUE) 
+Results_lsmeans
+
+
+```
+
+
+
+
 5.	4 pts. The provided function lets you dynamically add a linear model plus one factor from that model and plots a bar chart with letters denoting treatment differences. Use this model to generate the plot shown below. Explain the significance of the letters. 
+
+
+# Function defined (from assignment)
+
+```{r}
+plot_cldbars_onefactor <- function(lm_model, factor) {
+  data <- lm_model$model
+  variables <- colnames(lm_model$model)
+  dependent_var <- variables[1]
+  independent_var <- variables[2:length(variables)]
+
+  lsmeans <- emmeans(lm_model, as.formula(paste("~", factor))) # estimate lsmeans 
+  Results_lsmeans <- cld(lsmeans, alpha = 0.05, reversed = TRUE, details = TRUE, Letters = letters) # contrast with Tukey adjustment by default.
+  
+  # Extracting the letters for the bars
+  sig.diff.letters <- data.frame(Results_lsmeans$emmeans[,1], 
+                                 str_trim(Results_lsmeans$emmeans[,7]))
+  colnames(sig.diff.letters) <- c(factor, "Letters")
+  
+  # for plotting with letters from significance test
+  ave_stand2 <- lm_model$model %>%
+    group_by(!!sym(factor)) %>%
+    dplyr::summarize(
+      ave.emerge = mean(.data[[dependent_var]], na.rm = TRUE),
+      se = sd(.data[[dependent_var]]) / sqrt(n())
+    ) %>%
+    left_join(sig.diff.letters, by = factor) %>%
+    mutate(letter_position = ave.emerge + 10 * se)
+  
+  plot <- ggplot(data, aes(x = !! sym(factor), y = !! sym(dependent_var))) + 
+    stat_summary(fun = mean, geom = "bar") +
+    stat_summary(fun.data = mean_se, geom = "errorbar", width = 0.5) +
+    ylab("Number of emerged plants") + 
+    geom_jitter(width = 0.02, alpha = 0.5) +
+    geom_text(data = ave_stand2, aes(label = Letters, y = letter_position), size = 5) +
+    xlab(as.character(factor)) +
+    theme_classic()
+  
+  return(plot)
+}
+
+```
+
+
+
+
+```{r}
+
+plot_cldbars_onefactor(model2, "Treatment") #I realized functions can make life easier
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+6.	2 pts. Generate the gfm .md file along with a .html, .docx, or .pdf. Commit, and push the .md file to github and turn in the .html, .docx, or .pdf to Canvas. Provide me a link here to your github.
