@@ -1,0 +1,76 @@
+---
+title: "Coding_Practice_Linear_Model"
+author: "Pankaj Gaonkar"
+date: "2025-04-03"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Linear Modelling
+
+```{r}
+#Load packages
+library(tidyverse)
+library(lme4)
+library(multcomp)
+
+#install.packages("emmeans")
+library(emmeans)
+
+```
+
+
+```{r}
+data("mtcars")
+
+#The first step is always to visualize your data.
+
+#If you have two continuous variables, you will want a scatter plot
+ggplot(mtcars, aes(x = wt, y = mpg)) +    #plotting weight against mpg
+  geom_smooth(method = lm, se = FALSE, color = "grey") +
+  geom_point(aes(color = wt)) +
+  xlab("Weight") + 
+  ylab("Miles per gallon") +
+  scale_colour_gradient(low = "forestgreen", high = "black") +
+  theme_classic()
+
+```
+#Does it look like there is a relationship? But how do we know?
+#By running the liear model (lm)
+
+```{r}
+
+#Continious Y and continious X example. Runnig linear model we would call it a regression
+
+lm(mpg ~ wt, data = mtcars)
+
+lm1 <- lm(mpg ~ wt, data = mtcars)
+
+summary(lm1)
+
+```
+
+
+```{r}
+#Correlation analysis- it will be it a cause-and-effect relationship.
+
+cor.test(mtcars$wt, mtcars$mpg)
+
+
+```
+
+
+```{r}
+#Getting residuals from linear model
+model <- lm(mpg~wt, data = mtcars)
+
+ggplot(model, aes(y = .resid, x = .fitted)) +
+  geom_point() +
+  geom_hline(yintercept = 0)
+
+
+```
+
