@@ -67,6 +67,17 @@ anova(model1)
 
 3.	5 pts. Based on the results of the linear model in question 2, do you need to fit the interaction term? Provide a simplified linear model without the interaction term but still testing both main effects. Provide the summary and ANOVA results. Then, interpret the intercept and the coefficient for Treatment 2.
 
+## Answer:
+**None of the interactions were significant so we can exclude the interactions. Lets consider with-interaction as 'complicated model'(model 1) and without-interaction as 'simple model'(model 2). So we will proceed with simple model for our analysis.**
+
+**Interpretation:**
+
+- **Intercept is showing that Emergence value is 182.163 units when other independet variables(Treament, DaysAfterPlanting) are considered to be zero.**
+
+- **Treatment 2: Plant that received treatment 2 had 134.531 units (SE +/- 3.42) lesser emergence. (p < < 2e-16)**
+
+
+
 ```{r}
 
 model2 <- lm(Emergence ~ Treatment + DaysAfterPlanting, data = datum)
@@ -78,12 +89,18 @@ anova(model2)
 
 4.	5 pts. Calculate the least square means for Treatment using the emmeans package and perform a Tukey separation with the compact letter display using the cld function. Interpret the results.
 
+
+## Answer:
+
+** Interpretation **
+**Based on multiple comparison we found that statistically significant differences were only observed between Treatment 2 and other treatment groups.There was lower Emergence in group 2 compared to other groups.**
+
+
 ```{r}
 
 lsmeans <- emmeans(model2, ~ Treatment) # estimate lsmeans
 Results_lsmeans <- cld(lsmeans, alpha = 0.05, reversed = TRUE, details = TRUE) 
 Results_lsmeans
-
 
 ```
 
@@ -92,6 +109,14 @@ Results_lsmeans
 
 5.	4 pts. The provided function lets you dynamically add a linear model plus one factor from that model and plots a bar chart with letters denoting treatment differences. Use this model to generate the plot shown below. Explain the significance of the letters. 
 
+
+## Answer:
+**Significance of letters: if the letters are same then there is no statically significant difference between groups. If letters are different between two groups then they are statistically signifcantly different from each other.
+
+**Example:**
+**Treament 2 (letter-c) versus Treamet 9 (letter- ab) -- They are statically significantly different from each other.**
+
+**Treatment 8 (letter-ab) versus Treament 9 (letter- ab) - There is NO statiically signficant differnce between them**
 
 # Function defined (from assignment)
 
