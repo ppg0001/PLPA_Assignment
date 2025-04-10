@@ -27,7 +27,9 @@ NOTE: This document is for class purpose and is intended to be updated
 Preparing work environment
 
 ```{r loading packages, echo=TRUE, results='hide'}
-# #Loading Packages
+# Loading Packages
+# Note: Uncomment and install/load the packages if required
+
 # if(!requireNamespace("BiocManager")){
 #   install.packages("BiocManager")
 # }
@@ -73,28 +75,19 @@ library(tidyr)
 #install.packages("VennDiagram")
 library(VennDiagram)
 library(grid)
+
 ```
 
 
 
 setting work directory and loading necessary input files
 
-```{r setting workdir}
-# setting workdir
 
-#for work PC
-# setwd("C:/Users/ppg0001/Box/Lab shared/Shotgun_poultry_final/MicrobiomeReconstruction")
-#for personal laptop
-# setwd("C:/Users/panka/Box/Lab shared/Shotgun_poultry_final/MicrobiomeReconstruction")
+```{r loading/importing files}
 
+# Load the microbiome realtive abundance file and sample metadata file.
+# Note: All files are present in project folder and can be unploaded relatively.
 
-setwd("C:/Users/alinn/Box/Lab shared/Shotgun_poultry_final/MicrobiomeReconstruction")
-
-
-```
-
-```{r importing files}
-#importing file
 tbl_otu <- read.delim("Microbiome_RelAb.tsv") %>%
   column_to_rownames(var = "Taxon")
 
