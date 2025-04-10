@@ -17,6 +17,8 @@ output:
 
 #ABOUT
 
+# PANKAJ PUT MANY THINGS IN README AND KEEP THE SCRIPT CONCISE
+
 This script is designed for the analysis of the Shotgun_POULTRY microbiome data
 
 This script contains the statistical analysis, exploratory plots and publication plots. Each step of the analysis is discussed at my best capabilities.
@@ -85,7 +87,7 @@ setting work directory and loading necessary input files
 
 ```{r loading/importing files}
 
-# Load the microbiome realtive abundance file and sample metadata file.
+# Load the microbiome realtive abundance data, sample metadata, taxanomy metadata.
 # Note: All files are present in project folder and can be unploaded relatively.
 
 tbl_otu <- read.delim("Microbiome_RelAb.tsv") %>%
@@ -98,22 +100,25 @@ mt_smpl <- read.delim("Sample_metadata.tsv",
            mutate(sample = Sample) %>%
            column_to_rownames(var = "sample")
 
-#Reordering factors
+# Reordering factors
+# We have two fain groups: Farm types and Sample types. Within main group we have respective subgroups.
+
 mt_smpl$Farm_type <- factor(mt_smpl$Farm_type,
                          levels = c("Pullet", "Breeder", "Broiler", "Processing_plant")
                          )
 mt_smpl$Sample_type <- factor(mt_smpl$Sample_type,
-                             levels = c("Litter", "Soil", "Post_pick", "Post_chill", "Fecal")
+                             levels = c("Litter", "Soil")
                              )
-#unique command helps to avoid duplicates, arrange levels as per biological relevance, here based on company and production chain
+#unique command helps to avoid duplicates, arrange levels as per biological relevance, here based on poultry company and poultry production chain
+
 mt_smpl$Sample_group <- factor(mt_smpl$Sample_group, 
                                levels = unique(c("C2F4L","C2F4L","C2F4L","C2F1L","C3F10L","C3F14L","C2F4S","C2F4S","C2F4S","C2F1S","C3F10S","C3F14S","C2F4F","C2F4F","C2F4F","C4F17L","C4F17L","C4F17L","C4F8L","C4F17S","C4F17S","C4F17S","C4F8S","C4F17F","C4F17F","C4F17F","C8F40L","C8F40L","C8F40L","C6F35L","C6F37L","C6F60L","C7F14L","C7F22L","C7F81L","C8F40S","C8F40S","C8F40S","C6F35S","C6F37S","C6F60S","C7F14S","C7F22S","C7F81S","C8F40F","C8F40F","C8F40F","C4F8PP","C4F8PC","C12FCHL","C13FJBL","C12FCHS","C13FJBS","C14FJOL","C14FJOS","C15FNSL","C15FTCL","C16FHWL","C17FHEL","C18FCLL","C18FHHL","C18FTGL","C20FJAL","C19FTTL","C20FPHL","C15FNSS","C15FTCS","C16FHWS","C17FHES","C18FCLS","C18FHHS","C18FTGS","C20FJAS","C19FTTS","C20PHS")))
 
 
 mt_smpl$Sample <- factor(mt_smpl$Sample, 
-                               levels = c("C2F4L1","C2F4L2","C2F4L3","C2F1L","C3F10L","C3F14L","C2F4S1","C2F4S2","C2F4S3","C2F1S","C3F10S","C3F14S","C2F4F1","C2F4F2","C2F4F3","C4F17L1","C4F17L2","C4F17L3","C4F8L","C4F17S1","C4F17S2","C4F17S3","C4F8S","C4F17F1","C4F17F2","C4F17F3","C8F40L1","C8F40L2","C8F40L3","C6F35L","C6F37L","C6F60L","C7F14L","C7F22L","C7F81L","C8F40S1","C8F40S2","C8F40S3","C6F35S","C6F37S","C6F60S","C7F14S","C7F22S","C7F81S","C8F40F1","C8F40F2","C8F40F3","C4F8PP","C4F8PC","C12FCHL","C13FJBL","C12FCHS","C13FJBS","C14FJOL","C14FHOS","C15FNSL","C15FTCL","C16FHWL","C17FHEL","C18FCLL","C18FHHL","C18FTGL","C20FJAL","C19FTTL","C20FPHL","C15FNSS","C15FTCS","C16FHWS","C17FHES","C18FCLS","C18FHHS","C18FTGS","C20FJAS","C19FTTS","C20PHS"))
+                               levels = c("C2F4L1","C2F4L2","C2F4L3","C2F1L","C3F10L","C3F14L","C2F4S1","C2F4S2","C2F4S3","C2F1S","C3F10S","C3F14S","C2F4F1","C2F4F2","C2F4F3","C4F17L1","C4F17L2","C4F17L3","C4F8L","C4F17S1","C4F17S2","C4F17S3","C4F8S","C4F17F1","C4F17F2","C4F17F3","C8F40L1","C8F40L2","C8F40L3","C6F35L","C6F37L","C6F60L","C7F14L","C7F22L","C7F81L","C8F40S1","C8F40S2","C8F40S3","C6F35S","C6F37S","C6F60S","C7F14S","C7F22S","C7F81S","C8F40F1","C8F40F2","C8F40F3","C4F8PP","C4F8PC","C12FCHL","C13FJBL","C12FCHS","C13FJBS","C14FJOL","C14FJOS","C15FNSL","C15FTCL","C16FHWL","C17FHEL","C18FCLL","C18FHHL","C18FTGL","C20FJAL","C19FTTL","C20FPHL","C15FNSS","C15FTCS","C16FHWS","C17FHES","C18FCLS","C18FHHS","C18FTGS","C20FJAS","C19FTTS","C20PHS"))
 
-
+# Loading taxanomy metadata file
 
 mt_tax <- read.delim("Taxonomy_metadata.tsv", 
                      #row.names=1, 
@@ -122,33 +127,33 @@ mt_tax <- read.delim("Taxonomy_metadata.tsv",
 
 ```
 
-Setting colors
+
+# Setting colors
 
 It is important to follow a consistent coloring scheme throughout the plots and paper.
 
 Sample:
   --> Litter: "firebrick" (red)
   --> Soil: "#4daf4a" (green)
-  --> Feces: excluded
-  
+
 Source:
   --> Pullet: "#FC7A16" (light orange)
   --> Breeder: "#319dc8" (blue)
   --> Broiler: "#735794" (purple)
-  --> P.Plant & truck: excluded for main
+
   
-The color pallete for the taxa will be created using the package "Polychrome" 
+The color palette for the taxa will be created using the package "Polychrome" 
 
 ```{r color vectors}
 # Creating color vectors
 
-#Sample colors
+# Sample colors
 col_sample <- c("#D02C2C", "#5BBCD6", "#F2AD00", "#F98400","#00A08A")
 
-#Source colors
+# Source colors
 col_farm <- c("#E0BD48", "#319dc8", "#735794", "darkgrey" )
 
-##Phyla colors with Polycrome
+## Phyla colors with Polycrome
 # col_phy <- createPalette(27, c("#F44336", "#2886E2", "#F1C232","#984ea3","#4daf4a","#ff7f00"))
 # names(col_phy) <- NULL
 # col_phy <- rev(col_phy)
@@ -161,15 +166,11 @@ col_tax <- c("#b2df8a","#f781bf","#a65628","#ffff33","#984ea3","#4daf4a","#ff7f0
 
 
 
-##Phyla colors with Polycrome
+## Phyla colors with Polycrome
 col_genus <- createPalette(100, c("#F44336", "#2886E2", "#F1C232","#984ea3","#4daf4a","#ff7f00"))
 names(col_genus) <- NULL
 
-
-
-
-
-
+# We can use the following as our coloring scheme
 swatch(col_sample)
 swatch(col_farm)
 swatch(col_tax)
@@ -178,50 +179,41 @@ swatch(col_phy)
 
 #INTRODUCTION
 
-  The demand for producing animal protein has increased worldwide. In consequence, there is an increased in the need of AMU to prevent and treat animal diseases which have contributed to the increase in  AMR and its spread.Because of concerns with AMR,  the animal production industry has promoted reducing AMU to mitigate AMR. However, because of the extensive historic use of antimicrobial in farm, antimicrobial residues might have accumulated in these environments, contributing to the maintenance of AMR. In this study, we explore the between AMR and residues in poultry farms practicing restricted AMU.
+  The demand for producing animal protein has increased worldwide. In consequence, there is an increased in the need of AMU to prevent and treat animal diseases which have contributed to the increase in  AMR and its spread.Because of concerns with AMR,  the animal production industry has promoted reducing AMU to mitigate AMR. However, because of the extensive historic use of antimicrobial in farm, antimicrobial residues might have accumulated in these environments, contributing to the maintenance of AMR. In this study, we explore the microbiome diversity in differnt stages of production. This is the part of bigger study we are doing. Forthis class final project we will explore how the poultry microbiome dynamics is in its different production stages (Pullet -> Breeder -> Broiler) and farm enviornment (Litter and Soil).
 
 
 #HYPOTHESIS
 
- We have litter sample representing inside environment and soil representing outside environment We anticipate increase in AMR and residue in inside environment Whereas decrease in outside environment. It might be because of antimicrobial pressure at these points.
- OR
- Although farms in these study practice restricted AMU, because of historic AMU there can be persistence of residue leading to maintenance of AMR.
+ We have litter sample representing inside environment and soil representing outside environment. We anticipate selective pressure in the inside environment and in the broiler stage because of antimicrbial pressure. So higher antimicbrial pressure in litter samples and broiler stage might influence the micrbial dynamices.
 
 
-#OBJECTIVES
 
-  1.Determine AMR levels in the environment of poultry farms in different stages of production. (using qPCR)
-    
-  2.Determine antimicrobial residues in different stages of poultry production. (using HPLC)
+#OBJECTIVES 
+## (For this project)
+
+ *Reconstruct the microbiome of poultry farm environment (litter,soil) using shotgun metagenomics*
   
-  3.*Reconstruct the microbiome and resistome of poultry farm environment (litter,soil) using shotgun metagenomics*.   (using metagenomics)
-  
-  4.Determine the association of AMR with antimicrobial residues in poultry production.
 
-
-
-#MATERIAL AND METHODS
+#METHODS
 
 
 ##EXPERIMENTAL DESIGN
 
-  The samples were collected from two different poultry companies (Company A and Company B). The entire poultry complex was screened for each company representing approximately 10% of the respective farm types (pullet, breeder and broiler).
-  Total farm numbers (n)= Pullet, breeder, broiler
-**Note**: Only include those farms for which we did sequencing (as we did not include all farms for sequencing)
-  
+To evaluate AMR across different stages of poultry production, we conducted a systematic sampling of poultry farm environments from two poultry complexes in southeast USA and from three production stages: pullet (n=4), breeder (n=8), and broiler (n=14). Farms were selected to represent at least 10% of the poultry farms from each production complex. This approach ensured adequate representation of the production system
 
-    ##SAMPLING COLLECTION
- Farm types: Pullet, breeder, broiler
+## SAMPLING COLLECTION
+ Farm types: Pullet, breeder, broiler, processing plant
  Sample types: Litter, soil, post pick , post chill, fecal
- Transportation truck **(EXCLUDED)**: composite fecal samples from base of truck bed (Truck)
- Processing plant**(EXCLUDED)**: Carcass rinses from post pick (PP) and post chill (PC) stage.
+
+ Samples to exclude: Procesing plant, post pick, post chill, fecal
+
  
 
-    ##DNA ISOLATION
+## DNA ISOLATION
   DNA was isolated from Litter, soil, truck, and carcass rinses (PP and PC) using PowerSoil Pro kit (for litter,soil,truck) and PowerWater kit (for carcass rinses)
   
-        ###Sample Naming convention: 
-  Sample ID convention to identify sequencing groups
+## Sample Naming convention: 
+Sample ID convention to identify sequencing groups
       --> C: collection number
       --> F: followed by farm number OR farm name.
           Example:
@@ -232,25 +224,20 @@ swatch(col_phy)
       --> Example:
           C2F8L: collection 2, farm number 8, litter sample
           C17FHEL: collection 17, farm name HE, litter sample
-      --> Note in metadata in some samples they end with number 1,2,or3. They are the triplicate sample we used initially for shotgun sequencing standardization.
+      --> Note in sample_metadata in some samples they end with number 1,2,or3. They are the triplicate sample we used initially for shotgun sequencing standardization.
       
   
-  The whole sampling scheme can be seen the table bellow:  ##### ???????? #####
   
 ```{r print structure}
 
-##???### Did you already pull Sample_metadata on line 95?
- ##for personal PC
- # smpl_str <- read.delim("C:/Users/panka/Box/Lab shared/Shotgun_poultry_final/MicrobiomeReconstruction/Sample_metadata.tsv", stringsAsFactors=TRUE)
- ##smpl_str <- read.delim("C:/Users/ppg0001/Box/Lab shared/Shotgun_poultry_final/MicrobiomeReconstruction/Sample_metadata.tsv", stringsAsFactors=TRUE)
-
 as_tibble(mt_smpl)
+#REMEMBER TO REMOVE THE UNWANTED SAMPLES (PP AND FECES)
  
 ```
 
 
 
-    ##DNA SEQUENCING AND PROCESSING
+##DNA SEQUENCING AND PROCESSING
 
 The DNA was pair-end sequenced in an Illumina platform. The generated reads were quality checked with FAstQC v0.12.1. 
 
@@ -261,7 +248,6 @@ Reads were processed using Trimmomatic to the following parameters:
 
 After processing the reads were again quality checked using FastQC
 
-            -ADD FASTQC DATA ANALYSIS AND DISCUSSION HERE-
             
 #MICROBIOME RECONSTRUCTION WITH METAPHLAN4
 
@@ -269,44 +255,11 @@ software/package: MetaPhLAn 4
 publication: https://www.nature.com/articles/s41587-023-01688-w
 git: https://github.com/biobakery/MetaPhlAn/wiki/MetaPhlAn-4.1
 version: 4.0.2
-
----From git---
                       
-  MetaPhlAn is a computational tool for profiling the composition of microbial communities (Bacteria, Archaea and Eukaryotes) from metagenomic shotgun sequencing data (i.e. not 16S) with species-level. With StrainPhlAn, it is possible to perform accurate strain-level microbial profiling.
+MetaPhlAn is a computational tool for profiling the composition of microbial communities (Bacteria, Archaea and Eukaryotes) from metagenomic shotgun sequencing data with species-level.
 
-  MetaPhlAn 4 relies on ~5.1M unique clade-specific marker genes (the latest marker information file can be found here) identified from ~1M microbial genomes (~236,600 references and 771,500 metagenomic assembled genomes) spanning 26,970 species-level genome bins (SGBs, http://segatalab.cibio.unitn.it/data/Pasolli_et_al.html), 4,992 of them taxonomically unidentified at the species level (the full list of the species included in the latest database can be found here), allowing:
-  --> unambiguous taxonomic assignments;
-  --> an accurate estimation of organismal relative abundance;
-  --> SGB-level resolution for bacteria, archaea and eukaryotes;
-  --> strain identification and tracking orders of magnitude speedups compared to existing methods.
-  --> metagenomic strain-level population genomics
+Note: Metaphlan produces a table output with RELATIVE ABUNDANCES only. This choice by the developers is understandable since Metagenomic shotgun data is, by definition, compositional data.
 
----x---
-                             
-  Metaphlan produces a table output with RELATIVE ABUNDANCES only. 
-This choice by the developers is understandable since Metagenomic shotgun data is, by definition, compositional data.
-
-##COMPOSITIONALITY OF MICROBIOME DATA AND ANALYSIS
-
-The issue of compositionality with microbiome data is explored well by Gloor (2017) at: https://www.frontiersin.org/journals/microbiology/articles/10.3389/fmicb.2017.02224/full
-
-  In ecological studies observations are virtually always independent, i.e.: the ability to observe (count) Tigers does not affect or is affected by the ability to observe ladybugs. Observations (counts) are independent from each other. This assumption governs most of the statistical tools used for ecological data analysis.
-  
-  However,in HTS studies (such as shotgun metagenomics), the assumption of independence between observations *is not true*. HTS instruments have a fixed number of reads (observations) that can be output no matter the size of the community. This limited number of possible observations means that each count is dependent to every other count. If there's only 1000 observations available, the ability to count tigers is severely impacted by a sudden influx of hundreds of lady bugs.
-  
-    THE TOTAL READ COUNT OBSERVED IN A HTS RUN IS A FIXED-SIZE RANDOM SAMPLE OF THE *RELATIVE ABUNDANCES* IN THE ECOSYSTEM/COMMUNITY
-
-  Moreover, the read number is constant. It fails to capture every possible features in large communities, however in small communities the same feature is just observed (and counted) over and over again. This is the underlying factor behind sequence coverage, but it also means that there is *no relationship between read number and community size*. A higher coverage simply informs the precision of the observation but does not add any new biological information.
-  
-    IN HTS STUDIES THE RELATIONSHIP BETWEEN ABSOLUTE ABUNDANCE AND RELATIVE ABUNDANCE IS NOT PREDICTABLE
-  
-  This issue is compounded in the context of profiling relying in read mapping, since the profile is being drawn from a subset of the read pool, a read pool that is in itself a random sample of relative abundances with no predictable link to community size. It is a "subset" of a "random subset". This makes any attempts to backtrack original absolute abundances virtually impossible. 
-  
-  The only thing that can be known is the prevalence of a feature in the read pool and it's composition. Here, prevalence is described as:
-  
-    Prevalence = n feature observations (mapped reads) / Total observations (total reads)
-  
-  Since the only trustworthy biological information being recovered is relative abundances, microbiome data is more reliable when it is analysed in this context. Working with relative abundances means that  the sums of all observations in a sample always add up to 1. This constrain means the any change in one observation affects all others, since the sum cannot change. Therefore, *microbiome data is compositional and must be analysed as such*
 
 ##ALPHA DIVERSITY ANALYSIS WITH PHYLOSEQ
 
@@ -315,8 +268,7 @@ publication: https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0
 git: https://joey711.github.io/phyloseq/
 version: 1.44.0
 
-
-  Estimation of diversity within the community. For this two metrics will be calculated:
+Estimation of diversity within the community. For this two metrics will be calculated:
     1. RICHNESS: simple measure of the number of different Taxon (or OTU) observed in each sample
     2. SIMPSON INDEX (D): measure of diversity (richness x evenness). Calculates the probability of two randomly picked individual being of the same taxon.
         -->Min = 0 : Infinite diversity (zero probability)
@@ -326,13 +278,11 @@ version: 1.44.0
         -->Min = 0: No diversity (no uncertainty)
         -->Max = Hmax: Highest diversity (changes depending on S, caution with comparisons)
         
-  Metaphlan works with the concept of species-level genome bins (SGBs), which for alpha-diversity is functionally similar to the concept of OTUs in 16S profiling. Each SGB (SGB######) has a taxonomic metadata associated to it (mt_tax) with its taxonomic classification to the lowest possible level.
+Metaphlan works with the concept of species-level genome bins (SGBs), which for alpha-diversity is functionally similar to the concept of OTUs in 16S profiling. Each SGB (SGB######) has a taxonomic metadata associated to it (mt_tax) with its taxonomic classification to the lowest possible level.
 
-  As discussed before, Metaphlan outputs a table of relative abundances. However, phyloseq *only accepts absolute abundances for alpha-diversity analysis*.
+As discussed before, Metaphlan outputs a table of relative abundances. However, phyloseq *only accepts absolute abundances for alpha-diversity analysis*.
   
-  In order to use phyloseq the relative abundance data will be coerced into natural counts. This will done by multiplying the relative abundance by the number of mapped reads/sample (included in the table mt_smpl and obtained from metaphlan output), then rounding the table, thus creating a dummy table of natural counts. This table preserves the relative abundances relationships between SGBs and allows phyloseq to run. The impact in the metrics is minimal:
-      --> RICHNESS: no impact. It's the same for relative or absolute abundance 
-      --> Shannon and Simpson: Both transform absolute abundance into relative abundance to calculate the indexes. Negligible effect from eventual rounding.
+In order to use phyloseq the relative abundance data will be coerced into natural counts. This will done by multiplying the relative abundance by the number of mapped reads/sample (included in the table mt_smpl and obtained from metaphlan output), then rounding the table, thus creating a dummy table of natural counts. This table preserves the relative abundances relationships between SGBs and allows phyloseq to run.
       
 ```{r creating natural count table}
 
@@ -341,7 +291,7 @@ version: 1.44.0
 nreads <- mt_smpl$TotalReads
 nreads
 
-#Divinding all values in tbl_otu to shrink proportions to 0-1
+#Dividing all values in tbl_otu to shrink proportions to 0-1
 
 tbl_otu <- tbl_otu[,1:ncol(tbl_otu)]/100
 
@@ -355,7 +305,7 @@ tbl_otu_ecount <- as.data.frame(t(t(tbl_otu)*nreads)) %>%
 
 The count data is ready to be imported into phyloseq.
 
-For our analysis, we will focus only on the bacterial community.
+**For our analysis, we will focus only on the bacterial community.**
 
 ```{r importing files to phyloseq}
 
@@ -374,11 +324,10 @@ phycount_e = phyloseq(OTUcount, TAX, sampledata)
 #Excluding Unclassified, Archaea and Dropping other groups that needs to be excluded
 phycount_e <- phycount_e %>%
   subset_taxa(!Phylum == "UNCLASSIFIED") #%>%
- #subset_samples(!Sample_type == "Fecal")   #DID NIT EXCLUDE PPlant yet
 
 ```
 
-##phycount_e ITS OUR NATURAL COUNT
+Note: phycount_e it is our natural count
 
 
 ```{r phyloseq summary}
@@ -441,15 +390,14 @@ Alpha_descriptive_stats <- phycount_div %>%
 print(Alpha_descriptive_stats)
 
 
-
-
-
 ```
 
 
 ```{r alpha diversity t-test}
 
-##Comparing OBserved Richness
+# Using t.test to compare between the two groups
+
+##Comparing Observed Richness
 print("RICHNESS PULLET")
 phycount_div %>%
   filter(Sample_type %in% c("Soil", "Litter"),
@@ -790,21 +738,15 @@ bp_sp
 
 ```
 
-ADD INTERPRETATION____
+# Alpha diversity result explanation:
 
-Farm environment: Alpha diversity indexes show the significant differences between litter and soil.
+All alpha diversity indices were statistically significantly higher (P < 0.05) in soil compared to litter in all farm types. Observed richness was significantly higher in soil compared to litter in pullet and broiler farms (P < 0.05), while no statistically significant difference was observed in breeder farms. A similar trend was observed for Simpson’s diversity index, where pullet and broiler farms exhibited a significant difference between litter and soil (P < 0.05), whereas breeder farms did not. Shannon diversity index was significantly higher in soil compared to litter across all farm types (P < 0.05).
+  
 
-      A. Observed richness: it was higher in soil than litter in both companies. But there was exception where in company B litter was slightly higher than soil, but not statistically significant. This indicates number different taxons/species are more in soil samples than litter samples.
-      B. Sahnnon diversity index: It was higher in soil than litter. for both companies. This indicates..................
-      C. Simpson diversity index: It was higher in soil than litter. for both companies. This indicates .........................
+In our study, observed richness and Simpson diversity index were higher in the soil during the pullet and broiler stages, whereas no significant differences were found between litter and soil in the breeder stage. Moreover, the Shannon diversity index was higher in soil samples than in litter across all production stages. These findings indicate that soil contains a more diverse and evenly distributed microbiome, whereas litter is a more selective environment with limited microbes that make up its composition.
 
-Processing plant: Alpha diversity was higher for all three indexes in post pick than post chill stage. This indicates reduction in species diversity following the chilling process. Note: it is obvious for diversity and microbial load to be reduced in post pick stage because of all the sanitation steps that take place during processing of chicken.   
-    
-Statistically significant differences were observed (check the images of plots)  
-  
-  
-Conclusion: _______
-  
+
+
 
 
 
