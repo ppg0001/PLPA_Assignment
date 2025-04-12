@@ -66,7 +66,7 @@ To evaluate AMR across different stages of poultry production, we conducted a sy
     - C2F8L: collection 2, farm number 8, litter sample
     - C17FHEL: collection 17, farm name HE, litter sample
     - Note in sample_metadata in some samples they end with number 1,2,or3. They are the triplicate sample we used initially for shotgun sequencing standardization.
-    - - Note: Fecal samples and processing plant samples are excluded from current analysis.
+- Note: Fecal samples and processing plant samples are excluded from current analysis.
 
 
 ### DNA sequencing and processing
