@@ -70,12 +70,12 @@ Note: Fecal samples and processing plant samples are excluded from current analy
 
 
 ### DNA sequencing and processing
--The DNA was pair-end sequenced in an Illumina platform. The generated reads were quality checked with FAstQC v0.12.1. 
--Reads were processed using Trimmomatic to the following parameters:
+- The DNA was pair-end sequenced in an Illumina platform. The generated reads were quality checked with FAstQC v0.12.1. 
+- Reads were processed using Trimmomatic to the following parameters:
   --> Adapter clipping: universal Illumina adapter
   --> End trimming to quality phred 30
   --> Exclusion of resulting reads shorted than 50bp
--After processing the reads were again quality checked using FastQC
+- After processing the reads were again quality checked using FastQC
           
 ### Microbiome reconstructiopn with MetaPhlAn4
 *MetaPhlAn is a computational tool for profiling the composition of microbial communities (Bacteria, Archaea and Eukaryotes) from metagenomic shotgun sequencing data with species-level.*
