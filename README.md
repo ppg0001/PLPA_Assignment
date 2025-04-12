@@ -40,18 +40,20 @@ The demand for producing animal protein has increased worldwide. In consequence,
 ## HYPOTHESIS
 We have litter sample representing inside environment and soil representing outside environment. We anticipate selective pressure in the inside environment and in the broiler stage because of antimicrobial pressure. So higher antimicrobial pressure in litter samples and broiler stage might influence the microbial dynamics.
 
-## OBJECTIVES (For this final project)
- **Reconstruct the microbiome of poultry farm environment (litter,soil) using shotgun metagenomics**
+## OBJECTIVE
+ ***Reconstruct the microbiome of poultry farm environment (litter,soil) using shotgun metagenomics***
 
-## EXPERIMENTAL DESIGN
+## METHODS
+
+### Experimental design
 To evaluate AMR across different stages of poultry production, we conducted a systematic sampling of poultry farm environments from two poultry complexes in southeast USA and from three production stages: pullet (n=4), breeder (n=8), and broiler (n=14). Farms were selected to represent at least 10% of the poultry farms from each production complex. This approach ensured adequate representation of the production system
 
-## SAMPLE TYPES
+### Sample types
  Farm types: Pullet, breeder, broiler, processing plant
  Sample types: Litter, soil, post pick, post chill, fecal
  Samples to *exclude* in this analysis: Processing plant, post pick, post chill, fecal
 
-## Sample Naming convention
+### Sample naming convention
 Sample ID convention to identify sequencing groups
       --> C: collection number
       --> F: followed by farm number OR farm name.
@@ -64,11 +66,29 @@ Sample ID convention to identify sequencing groups
           C2F8L: collection 2, farm number 8, litter sample
           C17FHEL: collection 17, farm name HE, litter sample
       --> Note in sample_metadata in some samples they end with number 1,2,or3. They are the triplicate sample we used initially for shotgun sequencing standardization.
-
 Note: Fecal samples and processing plant samples are excluded from current analysis.
 
 
+### DNA sequencing and processing
+-The DNA was pair-end sequenced in an Illumina platform. The generated reads were quality checked with FAstQC v0.12.1. 
+-Reads were processed using Trimmomatic to the following parameters:
+  --> Adapter clipping: universal Illumina adapter
+  --> End trimming to quality phred 30
+  --> Exclusion of resulting reads shorted than 50bp
+-After processing the reads were again quality checked using FastQC
+          
+### Microbiome reconstructiopn with MetaPhlAn4
+*MetaPhlAn is a computational tool for profiling the composition of microbial communities (Bacteria, Archaea and Eukaryotes) from metagenomic shotgun sequencing data with species-level.*
+software/package: MetaPhLAn 4
+publication: https://www.nature.com/articles/s41587-023-01688-w
+git: https://github.com/biobakery/MetaPhlAn/wiki/MetaPhlAn-4.1
+version: 4.0.2                  
 
+### ALPHA DIVERSITY ANALYSIS WITH PHYLOSEQ
+software/package: phyloseq
+publication: https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0061217
+git: https://joey711.github.io/phyloseq/
+version: 1.44.0
 
 
 
