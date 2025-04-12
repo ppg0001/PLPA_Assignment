@@ -83,12 +83,12 @@ To evaluate AMR across different stages of poultry production, we conducted a sy
 - version: 4.0.2                  
 
 ### ALPHA DIVERSITY ANALYSIS
-- software/package: phyloseq
-- publication: https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0061217
-- git: https://joey711.github.io/phyloseq/
-- version: 1.44.0
+Alpha diversity indices, including Observed Richness and Simpson’s and Shannon’s diversity index, were calculated for litter and soil samples across pullet, breeder, and broiler farms at taxon level. A t-test was performed to compare the alpha diversity between litter and soil samples in respective farm types. 
 
 ### BETA DIVERSITY ANALYSIS
+Beta diversity was assessed to examine the compositional difference in microbial communities (taxon level) across the farm types and sample types. Principal Coordinate Analysis (PCoA) was performed using robust  Aitchison distance index , with statistical significance determined by PERMANOVA. Robust Aitchison distances were employed due to their suitability for non-negative datasets, including zero. PERMANOVA was used to compare the microbial and resistome composition among sample types and farm types.
+
+*All the statistical analyses were performed using RStudio, version 4.3.1 (2023-06-16 ucrt). All significance levels were set to P ≤ 0.05.*
 
 
 
