@@ -72,9 +72,7 @@ Note: Fecal samples and processing plant samples are excluded from current analy
 ### DNA sequencing and processing
 - The DNA was pair-end sequenced in an Illumina platform. The generated reads were quality checked with FAstQC v0.12.1. 
 - Reads were processed using Trimmomatic to the following parameters:
-  --> Adapter clipping: universal Illumina adapter
-  --> End trimming to quality phred 30
-  --> Exclusion of resulting reads shorted than 50bp
+  Adapter clipping: universal Illumina adapter, End trimming to quality phred 30, Exclusion of resulting reads shorted than 50bp
 - After processing the reads were again quality checked using FastQC
           
 ### Microbiome reconstructiopn with MetaPhlAn4
