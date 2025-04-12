@@ -101,6 +101,7 @@ These findings indicate that soil contains a more diverse and evenly distributed
 
 
 ### Microbial community (Phylum level)
+[Click Here: Figure Alpha Diversity](https://github.com/ppg0001/PLPA_Assignment/blob/main/Final_Project/Relative_abundance_Plots.svg)
 
 
 
