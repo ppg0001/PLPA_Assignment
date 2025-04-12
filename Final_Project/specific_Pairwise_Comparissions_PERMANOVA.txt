@@ -7,7 +7,7 @@ Model     1     7191 0.10806 7.2692  0.001 ***
 Residual 60    59357 0.89194                  
 Total    61    66548 1.00000                  
 ---
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 attr(,"class")
 [1] "pwadstrata" "list"      
@@ -16,11 +16,11 @@ $parent_call
 
 $Pullet_vs_Breeder
          Df SumOfSqs      R2     F Pr(>F)  
-Model     1   1410.9 0.04846 1.426  0.069 .
+Model     1   1410.9 0.04846 1.426  0.055 .
 Residual 28  27702.5 0.95154               
 Total    29  29113.4 1.00000               
 ---
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 $Pullet_vs_Broiler
          Df SumOfSqs      R2      F Pr(>F)    
@@ -28,15 +28,15 @@ Model     1     2975 0.06566 2.9515  0.001 ***
 Residual 42    42328 0.93434                  
 Total    43    45303 1.00000                  
 ---
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 $Breeder_vs_Broiler
-         Df SumOfSqs      R2      F Pr(>F)   
-Model     1     3247 0.05853 2.9839  0.002 **
-Residual 48    52240 0.94147                 
-Total    49    55488 1.00000                 
+         Df SumOfSqs      R2      F Pr(>F)    
+Model     1     3247 0.05853 2.9839  0.001 ***
+Residual 48    52240 0.94147                  
+Total    49    55488 1.00000                  
 ---
-Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 attr(,"class")
 [1] "pwadstrata" "list"      

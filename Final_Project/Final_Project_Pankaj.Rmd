@@ -3,14 +3,14 @@ title: "Final_Project"
 author: "Pankaj Gaonkar"
 date: "2025-04-10"
 output:
-    md_document:
-    variant: gfm
-  pdf_document:
-    toc: true
-  word_document:
   html_document:
     toc: true
     toc_float: true
+  pdf_document:
+    toc: true
+  word_document: default
+  md_document:
+    variant: gfm
 ---
 
 # **Final Project**
@@ -602,10 +602,6 @@ combined_plot_Alpha_Diversity <- ggarrange(bp_rc, bp_sn, bp_sp,
                            common.legend = TRUE
 )
 
-```
-
-
-```{r saving Alpha Diversity plots}
 
 #Saving plots
 ggsave(filename = "Alpha_Diversity_Plots.svg",
