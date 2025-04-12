@@ -50,7 +50,9 @@ To evaluate AMR across different stages of poultry production, we conducted a sy
 
 ### Sample types
  -Farm types: Pullet, breeder, broiler, processing plant
+ 
  -Sample types: Litter, soil, post pick, post chill, fecal
+ 
  -Samples to *exclude* in this analysis: Processing plant, post pick, post chill, fecal
 
 ### Sample naming convention
