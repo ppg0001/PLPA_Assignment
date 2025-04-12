@@ -49,9 +49,9 @@ We have litter sample representing inside environment and soil representing outs
 To evaluate AMR across different stages of poultry production, we conducted a systematic sampling of poultry farm environments from two poultry complexes in southeast USA and from three production stages: pullet (n=4), breeder (n=8), and broiler (n=14). Farms were selected to represent at least 10% of the poultry farms from each production complex. This approach ensured adequate representation of the production system
 
 ### Sample types
- Farm types: Pullet, breeder, broiler, processing plant
- Sample types: Litter, soil, post pick, post chill, fecal
- Samples to *exclude* in this analysis: Processing plant, post pick, post chill, fecal
+ -Farm types: Pullet, breeder, broiler, processing plant
+ -Sample types: Litter, soil, post pick, post chill, fecal
+ -Samples to *exclude* in this analysis: Processing plant, post pick, post chill, fecal
 
 ### Sample naming convention
 Sample ID convention to identify sequencing groups
@@ -79,16 +79,16 @@ Note: Fecal samples and processing plant samples are excluded from current analy
           
 ### Microbiome reconstructiopn with MetaPhlAn4
 *MetaPhlAn is a computational tool for profiling the composition of microbial communities (Bacteria, Archaea and Eukaryotes) from metagenomic shotgun sequencing data with species-level.*
-software/package: MetaPhLAn 4
-publication: https://www.nature.com/articles/s41587-023-01688-w
-git: https://github.com/biobakery/MetaPhlAn/wiki/MetaPhlAn-4.1
-version: 4.0.2                  
+-software/package: MetaPhLAn 4
+-publication: https://www.nature.com/articles/s41587-023-01688-w
+-git: https://github.com/biobakery/MetaPhlAn/wiki/MetaPhlAn-4.1
+-version: 4.0.2                  
 
 ### ALPHA DIVERSITY ANALYSIS WITH PHYLOSEQ
-software/package: phyloseq
-publication: https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0061217
-git: https://joey711.github.io/phyloseq/
-version: 1.44.0
+-software/package: phyloseq
+-publication: https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0061217
+-git: https://joey711.github.io/phyloseq/
+-version: 1.44.0
 
 
 
