@@ -96,8 +96,9 @@ To evaluate AMR across different stages of poultry production, we conducted a sy
 ## RESULTS
 
 ### Alpha Diversity
-    All alpha diversity indices were statistically significantly higher (P < 0.05) in soil compared to litter, with some exceptions in some farm types. Observed richness was significantly higher in soil compared to litter in pullet and broiler farms (P < 0.05), while no statistically significant difference was observed in breeder farms. A similar trend was observed for Simpson’s diversity index, where pullet and broiler farms exhibited a significant difference between litter and soil (P < 0.05), whereas breeder farms did not. Shannon diversity index was significantly higher in soil compared to litter across all farm types (P < 0.05).
-    These findings indicate that soil contains a more diverse and evenly distributed microbiome, whereas litter is a more selective environment with limited microbes that make up its composition.
+
+All alpha diversity indices were statistically significantly higher (P < 0.05) in soil compared to litter, with some exceptions in some farm types. Observed richness was significantly higher in soil compared to litter in pullet and broiler farms (P < 0.05), while no statistically significant difference was observed in breeder farms. A similar trend was observed for Simpson’s diversity index, where pullet and broiler farms exhibited a significant difference between litter and soil (P < 0.05), whereas breeder farms did not. Shannon diversity index was significantly higher in soil compared to litter across all farm types (P < 0.05).
+These findings indicate that soil contains a more diverse and evenly distributed microbiome, whereas litter is a more selective environment with limited microbes that make up its composition.
 
 
 
