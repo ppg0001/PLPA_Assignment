@@ -122,11 +122,8 @@ Evidence of microbiome clustering by sample type was observed in PCoA plots, sug
 
 # Other
 ## A clickable link in your README to your GitHub flavored .md file
-
-
+#NEED TO ADD
 [Readme.md Click me](https://github.com/ppg0001/PLPA_Assignment/blob/main/Coding_challenge_4/Coding_challenge_markdown.md)
-
-[Clickable link to GitHub main Repository](https://github.com/ppg0001/PLPA_Assignment/tree/main)
 
 ## Repository link
 - [Click here to visit the Repository](https://github.com/ppg0001/PLPA_Assignment)
