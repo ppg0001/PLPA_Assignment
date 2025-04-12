@@ -54,9 +54,9 @@ To evaluate AMR across different stages of poultry production, we conducted a sy
  - Samples to *exclude* in this analysis: Processing plant, post pick, post chill, fecal
 
 ### Sample naming convention
-Sample ID convention to identify sequencing groups
-- C: collection number
-- F: followed by farm number OR farm name.
+- Sample ID convention to identify sequencing groups
+    - C: collection number
+    - F: followed by farm number OR farm name.
           - Example:
           - F8: farm number eight
           - FHE: farm named HE
