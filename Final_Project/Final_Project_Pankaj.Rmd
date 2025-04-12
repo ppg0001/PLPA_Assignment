@@ -26,7 +26,8 @@ NOTE: This document is for class purpose and is intended to be updated
 
                             
 
-Preparing work environment
+## Loading packages
+### Note uncomment packages to install
 
 ```{r loading packages, echo=TRUE, results='hide'}
 # Loading Packages
@@ -82,13 +83,12 @@ library(grid)
 
 
 
-setting work directory and loading necessary input files
-
+## Loading required input files
 
 ```{r loading/importing files}
 
 # Load the microbiome realtive abundance data, sample metadata, taxanomy metadata.
-# Note: All files are present in project folder and can be unploaded relatively.
+# Note: All files are present in project folder and can be uploaded relatively.
 
 tbl_otu <- read.delim("Microbiome_RelAb.tsv") %>%
   column_to_rownames(var = "Taxon")
@@ -225,13 +225,16 @@ Sample ID convention to identify sequencing groups
           C2F8L: collection 2, farm number 8, litter sample
           C17FHEL: collection 17, farm name HE, litter sample
       --> Note in sample_metadata in some samples they end with number 1,2,or3. They are the triplicate sample we used initially for shotgun sequencing standardization.
+
+Note: Fecal samples andf processing plant samples are excluded from current analysis.
       
   
   
 ```{r print structure}
 
 as_tibble(mt_smpl)
-#REMEMBER TO REMOVE THE UNWANTED SAMPLES (PP AND FECES)
+
+#Note the NA values belong to the Fecal samples and Processing plant samples, which are not included in analysis and are filtered out and will not be included in further analysis for this final project.
  
 ```
 
@@ -369,6 +372,9 @@ phycount_div <- phycount_div %>%
 
 phycount_div
 
+#Write the alpha diversity values for each sample and average the replicates
+write.csv(phycount_div, "Phycount_div_each_sample.csv")
+
 
 ## Table for alpha diversity
 
@@ -389,10 +395,12 @@ Alpha_descriptive_stats <- phycount_div %>%
 # Print the table
 print(Alpha_descriptive_stats)
 
+write.csv(Alpha_descriptive_stats, "Alpha_Divertsity_descriptive_stats.csv")
 
 ```
 
 
+## Alpha diversity: t-test comparision between Litter and Soil within each farm types
 ```{r alpha diversity t-test}
 
 # Using t.test to compare between the two groups
@@ -470,6 +478,7 @@ phycount_div %>%
 
 ```
 
+
 ```{R writing alpha div ttest to file}
 
 ##Saving results (CAUTION!Run ONLY WHEN READY! Leave commented to avoid overwriting already generated files)
@@ -477,83 +486,82 @@ phycount_div %>%
 
 set.seed(43)
 
-##----------------SINK STARTS
 
-# sink("AlphaDiversity_ttest.txt")
-# 
-#   ##Comparing OBserved Richness
-#   print("RICHNESS PULLET")
-#   phycount_div %>%
-#     filter(Sample_type %in% c("Soil", "Litter"),
-#            Farm_type == "Pullet") %>%
-#     t.test(Observed ~ Sample_type, 
-#          data = .
-#          )
-#   print("RICHNESS BREEDER")
-#   phycount_div %>%
-#     filter(Sample_type %in% c("Soil", "Litter"),
-#            Farm_type == "Breeder") %>%
-#     t.test(Observed ~ Sample_type, 
-#          data = .
-#          )
-#   print("RICHNESS BROILER")
-#   phycount_div %>%
-#     filter(Sample_type %in% c("Soil", "Litter"),
-#            Farm_type == "Broiler") %>%
-#     t.test(Observed ~ Sample_type, 
-#          data = .
-#          )
-#   
-#   
-#   ##Comparing Shannon index
-#   print("SHANNON PULLET")
-#   phycount_div %>%
-#     filter(Sample_type %in% c("Soil", "Litter"),
-#            Farm_type == "Pullet") %>%
-#     t.test(Shannon ~ Sample_type, 
-#          data = .
-#          )
-#   print("SHANNON BREEDER")
-#   phycount_div %>%
-#     filter(Sample_type %in% c("Soil", "Litter"),
-#            Farm_type == "Breeder") %>%
-#     t.test(Shannon ~ Sample_type, 
-#          data = .
-#          )
-#   print("SHANNON BROILER")
-#   phycount_div %>%
-#     filter(Sample_type %in% c("Soil", "Litter"),
-#            Farm_type == "Broiler") %>%
-#     t.test(Shannon ~ Sample_type, 
-#          data = .
-#          )
-#   
-#   ##Comparing Simpson index
-#   print("SIMPSON PULLET")
-#   phycount_div %>%
-#     filter(Sample_type %in% c("Soil", "Litter"),
-#            Farm_type == "Pullet") %>%
-#     t.test(Simpson ~ Sample_type, 
-#          data = .
-#          )
-#   print("SIMPSON BREEDER")
-#   phycount_div %>%
-#     filter(Sample_type %in% c("Soil", "Litter"),
-#            Farm_type == "Breeder") %>%
-#     t.test(Simpson ~ Sample_type, 
-#          data = .
-#          )
-#   print("SIMPSON BROILER")
-#   phycount_div %>%
-#     filter(Sample_type %in% c("Soil", "Litter"),
-#            Farm_type == "Broiler") %>%
-#     t.test(Observed ~ Sample_type, 
-#          data = .
-#          )
-# 
-# sink()
 
-##----------------SINK ENDS
+sink("AlphaDiversity_ttest.txt")
+ 
+   ##Comparing OBserved Richness
+   print("RICHNESS PULLET")
+   phycount_div %>%
+     filter(Sample_type %in% c("Soil", "Litter"),
+            Farm_type == "Pullet") %>%
+     t.test(Observed ~ Sample_type, 
+          data = .
+          )
+   print("RICHNESS BREEDER")
+   phycount_div %>%
+     filter(Sample_type %in% c("Soil", "Litter"),
+            Farm_type == "Breeder") %>%
+     t.test(Observed ~ Sample_type, 
+          data = .
+          )
+   print("RICHNESS BROILER")
+   phycount_div %>%
+     filter(Sample_type %in% c("Soil", "Litter"),
+            Farm_type == "Broiler") %>%
+     t.test(Observed ~ Sample_type, 
+          data = .
+          )
+   
+   
+   ##Comparing Shannon index
+   print("SHANNON PULLET")
+   phycount_div %>%
+     filter(Sample_type %in% c("Soil", "Litter"),
+            Farm_type == "Pullet") %>%
+     t.test(Shannon ~ Sample_type, 
+          data = .
+          )
+   print("SHANNON BREEDER")
+   phycount_div %>%
+     filter(Sample_type %in% c("Soil", "Litter"),
+            Farm_type == "Breeder") %>%
+    t.test(Shannon ~ Sample_type,
+         data = .
+         )
+  print("SHANNON BROILER")
+  phycount_div %>%
+    filter(Sample_type %in% c("Soil", "Litter"),
+           Farm_type == "Broiler") %>%
+    t.test(Shannon ~ Sample_type,
+         data = .
+         )
+
+  ##Comparing Simpson index
+  print("SIMPSON PULLET")
+  phycount_div %>%
+    filter(Sample_type %in% c("Soil", "Litter"),
+           Farm_type == "Pullet") %>%
+    t.test(Simpson ~ Sample_type,
+         data = .
+         )
+  print("SIMPSON BREEDER")
+  phycount_div %>%
+    filter(Sample_type %in% c("Soil", "Litter"),
+           Farm_type == "Breeder") %>%
+    t.test(Simpson ~ Sample_type,
+         data = .
+         )
+  print("SIMPSON BROILER")
+  phycount_div %>%
+    filter(Sample_type %in% c("Soil", "Litter"),
+           Farm_type == "Broiler") %>%
+    t.test(Observed ~ Sample_type,
+         data = .
+         )
+
+sink()
+
 
 ```
 
@@ -564,7 +572,7 @@ Drawing Richness and Diversity plots
 #Creating vector for comparing samples
  complist <- list(c("Soil", "Litter"))
 
-t.test()
+
 
 #Creating vector with new names
  Farm_name <- c("Pullet", "Breeder", "Broiler", "Processing\nPlant")
@@ -712,34 +720,33 @@ bp_sn
 bp_sp
 ```
 
-```{r saving bp plots}
-#Saving plots (CAUTION!Run ONLY WHEN READY! Leave commented to avoid overwriting already generated plots)
+```{r saving Alpha Diversity plots}
+#Saving plots
 
-# ggsave(filename = "BoxPlot_Richness_Litter-Soil.svg",
-#        plot = bp_rc,
-#        device = "svg",
-#        units = "mm",
-#        width = 150,
-#        height = 159)
-# 
-# ggsave(filename = "BoxPlot_Shannon_Litter-Soil.svg",
-#        plot = bp_sn,
-#        device = "svg",
-#        units = "mm",
-#        width = 150,
-#        height = 159)
-# 
-# ggsave(filename = "BoxPlot_Simpson_Litter-Soil.svg",
-#        plot = bp_sp,
-#        device = "svg",
-#        units = "mm",
-#        width = 150,
-#        height = 159)
+#Combined plots
+combined_plot_Alpha_Diversity <- ggarrange(bp_rc, bp_sn, bp_sp,
+                           ncol = 3,
+                           nrow = 1,
+                           common.legend = TRUE
+)
+
+```
+
+
+```{r saving Alpha Diversity plots}
+
+#Saving plots
+ggsave(filename = "Alpha_Diversity_Plots.svg",
+       plot = combined_plot_Alpha_Diversity,
+       device = "svg",
+       units = "mm",
+       width = 300,
+       height = 250)
+
 
 ```
 
 # Alpha diversity result explanation:
-
 All alpha diversity indices were statistically significantly higher (P < 0.05) in soil compared to litter in all farm types. Observed richness was significantly higher in soil compared to litter in pullet and broiler farms (P < 0.05), while no statistically significant difference was observed in breeder farms. A similar trend was observed for Simpson’s diversity index, where pullet and broiler farms exhibited a significant difference between litter and soil (P < 0.05), whereas breeder farms did not. Shannon diversity index was significantly higher in soil compared to litter across all farm types (P < 0.05).
   
 
@@ -750,10 +757,9 @@ In our study, observed richness and Simpson diversity index were higher in the s
 
 
 
-##Exploring the microbial community
+## Exploring the microbial community
 
-
-
+## Lets check which phylum are overall present in our dataset
 
 ```{r metaphlan taxa}
 table(tax_table(phycount_e)[,"Phylum"])
@@ -761,10 +767,9 @@ table(tax_table(phycount_e)[,"Phylum"])
 
 
   
-###Community bar plots
+## Community bar plots
 
-First step in visualizing the community structure.
-In order to create the barplots, the data needs to be transformed from wide to long. This will also allow all the metadata to be incorporated into the table
+First step in visualizing the community structure. In order to create the barplots, the data needs to be transformed from wide to long. This will also allow all the metadata to be incorporated into the table
 
 ```{r creating data frame}
 
@@ -785,7 +790,7 @@ tbl_mstr_pc <- melt(rownames_to_column(tbl_otu, var = "Taxon"),
 Re-ordering factors so that the main colors of the swatch correspond to the most abundant phyla across:
 
 ```{r reordering}
-#Summerizing counts by phyla
+#Summarizing counts by phyla
 
 tbl_mstr_pc %>% 
   group_by(Phylum) %>% 
@@ -795,7 +800,7 @@ tbl_mstr_pc %>%
   ungroup()
 
 #Reordering factors in Phylum column according to most abundant.
-  # NOTE: Phyla will be reordered in ascending order (from least to most). This allows us to drop some levels (ex: Unclassified), without changing the color key for the other levels
+#NOTE: Phyla will be reordered in ascending order (from least to most). This allows us to drop some levels (ex: Unclassified), without changing the color key for the other levels
 
 tbl_mstr_pc$Phylum <- factor(tbl_mstr_pc$Phylum, 
                           levels = c("Deferribacteres","Rhodothermaeota","Candidatus_Adlerbacteria","Candidatus_Saccharibacteria","Lentisphaerae","Spirochaetes","Chlamydiae","Synergistetes","Verrucomicrobia","Candidatus_Thermoplasmatota","Gemmatimonadetes","Nitrospirae","Candidatus_Melainabacteria","Bacteria_unclassified","Fusobacteria","Acidobacteria","Planctomycetes","Chloroflexi","Deinococcus_Thermus","Cyanobacteria","Bacteroidetes","Proteobacteria","Actinobacteria","Firmicutes","Ascomycota","Thaumarchaeota","Euryarchaeota","UNCLASSIFIED"))
@@ -803,8 +808,6 @@ tbl_mstr_pc$Phylum <- factor(tbl_mstr_pc$Phylum,
 ```
 
 Creating summarised table for barplots
-  -->NOTE: If table is not summarised, i.e. taxa summed *before* plotting, the result is a barplot filled with thin ligther lines. That happens as every single SGB is stacked on top of each other as a strip with white borders. When 300 are stacked the lines become apparent and degrade the graph.
-        SOLUTION: Eithr sum before OR set color = "transparent"
   
 ```{r creating barplot table}
 
@@ -819,167 +822,6 @@ tbl_mstr_bp <- tbl_mstr_pc %>%
 
 ```
 
-```{r drawing bar plots}
-
-relbp_all <- 
-  tbl_mstr_bp %>%
-  filter(Sample_type!="Post_pick" & Sample_type!="Post_chill") %>%
-  ggplot(aes(x = Sample,
-           y = Count,
-           fill = Phylum
-           )
-       ) +
-  geom_bar(position="fill", stat= "identity") +
-  scale_y_continuous(labels = percent) +
-  scale_fill_manual(values = col_phy) +
-  theme_bw() +
-  labs(title = "Microbiome Composition") +
-  ylab("Relative Abundance") +
-  theme_bw() +
-  theme(axis.text = element_text(size = 12,
-                                 color = "black"),
-        axis.text.x = element_text(hjust = 1,
-                                 vjust = 0.5,
-                                 angle = 90),
-        axis.title = element_blank(),
-        panel.grid.minor = element_blank(),
-        panel.grid.major = element_line(color = "azure2"),
-        plot.title = element_text(size = 14, face = "bold"),
-        strip.background = element_rect(fill = "transparent",
-                                        color = "transparent"),
-        strip.text = element_text(size = 12,
-                                  face = "bold"
-                                  )
-        ) +
-    facet_wrap( Sample_type ~ Farm_type, 
-              scales = "free", 
-              nrow = 4,
-              ncol = 3
-              )
- # facet_grid(Farm_type ~ Company, scales = "free", space = "free_x") 
-
-  
-  
-  
-# subset(tbl_mstr_bp,Phylum!="UNCLASSIFIED"),
-
-relbp_cla <- 
-  tbl_mstr_bp %>%
-  filter(Phylum!="UNCLASSIFIED") %>%
-  filter(Sample_type!="Post_pick" & Sample_type!="Post_chill") %>%
-  ggplot(aes(x = Sample, 
-             y = Count, 
-             fill = Phylum 
-             )
-         ) + 
-  geom_bar(position="fill", stat= "identity") +
-  scale_y_continuous(labels = percent) +
-  scale_fill_manual(values = col_phy) +
-  theme_bw() + 
-  labs(title = "Microbiome Composition - Classified") +
-  ylab("Relative Abundance") +
-  theme_bw() +
-  theme(axis.text = element_text(size = 12, 
-                                 color = "black"),
-        axis.text.x = element_text(hjust = 1,
-                                 vjust = 0.5,
-                                 angle = 90), 
-        axis.title = element_blank(),
-        panel.grid.minor = element_blank(),
-        panel.grid.major = element_line(color = "azure2"),
-        plot.title = element_text(size = 14, face = "bold"),
-        strip.background = element_rect(fill = "transparent",
-                                        color = "transparent"),
-        strip.text = element_text(size = 12,
-                                  face = "bold"
-                                  )
-        ) +
-    facet_wrap( Sample_type ~ Farm_type, 
-              scales = "free", 
-              nrow = 4,
-              ncol = 3
-              )
-#facet_grid(Farm_type ~ Company, scales = "free", space = "free_x")
-
-
-relbp_bac <- 
-  tbl_mstr_bp %>% 
-  filter(Phylum!="UNCLASSIFIED" & Phylum!="Thaumarchaeota" & Phylum!="Euryarchaeota" & Phylum!="Ascomycota") %>%
-  #filter(Company=="A") %>%
-  filter(Sample_type!="Post_pick" & Sample_type!="Post_chill") %>%
-  ggplot(aes(x = Sample, 
-             y = Count, 
-             fill = Phylum
-             )
-         ) + 
-  geom_bar(position="fill", stat= "identity") +
-  scale_y_continuous(labels = percent) +
-  scale_fill_manual(values = col_phy) +
-  theme_bw() + 
-  labs(title = "Microbiome Composition - Bacterial") +
-  ylab("Relative Abundance") +
-  theme_bw() +
-  theme(axis.text = element_text(size = 12, 
-                                 color = "black"),
-        axis.text.x = element_text(hjust = 1,
-                                 vjust = 0.5,
-                                 angle = 90), 
-        axis.title = element_blank(),
-        panel.grid.minor = element_blank(),
-        panel.grid.major = element_line(color = "azure2"),
-        plot.title = element_text(size = 14, face = "bold"),
-        strip.background = element_rect(fill = "transparent",
-                                        color = "transparent"),
-        strip.text = element_text(size = 12,
-                                  face = "bold"
-                                  )
-        ) +
-  facet_wrap( Sample_type ~ Farm_type, 
-              scales = "free", 
-              nrow = 4,
-              ncol = 3
-              )
-
-```
-
-```{r drawing relab plots}
-
-relbp_all
-relbp_cla
-relbp_bac
-
-
-```
-Saving plots
-
-```{r saving relative abundance plots}
-
-#Saving plots (CAUTION!Run ONLY WHEN READY! Leave commented to avoid overwriting already generated plots)
-
-# ggsave(filename = "Barplot_RelAb_All.svg",
-#        plot = relbp_all,
-#        device = "svg",
-#        units = "mm",
-#        width = 500,
-#         height = 300)
-#  
-#  ggsave(filename = "Barplot_RelAb_Classified.svg",
-#         plot = relbp_cla,
-#         device = "svg",
-#         units = "mm",
-#         width = 500,
-#         height = 300)
-#  
-#  ggsave(filename = "Barplot_RelAb_Bacterial.svg",
-#         plot = relbp_bac,
-#         device = "svg",
-#         units = "mm",
-#        width = 500,
-#        height = 300)
-
-```
-
-These plots show the relative abundance of the taxa per sample replicate. For increased robustness, the replicates will averaged at taxon (SGB) level
 
 ```{r creating averaged table}
 # Averaging taxons by Sample_group
@@ -1024,84 +866,12 @@ tbl_mstr_av_bp$Phylum <- factor(tbl_mstr_av_bp$Phylum,
 
 ```{r drawing AVERAGED bar plots}
 
-relbp_av_all <- 
-  tbl_mstr_av_bp %>%
-  subset(Sample_type != "Fecal" & Farm_type != "Processing_plant") %>%
-  ggplot(aes(x = Sample_group, 
-             y = Count, 
-             fill = Phylum
-             )
-         ) + 
-  geom_bar(position="fill", stat= "identity") +
-  scale_y_continuous(labels = percent) +
-  scale_fill_manual(values = col_phy) +
-  theme_bw() +
-  labs(title = "Microbiome Composition") +
-  ylab("Relative Abundance") +
-  theme_bw() +
-  theme(axis.text = element_text(size = 12,
-                                 color = "black"),
-        axis.text.x = element_text(hjust = 1,
-                                 vjust = 0.5,
-                                 angle = 90),
-        axis.title = element_blank(),
-        panel.grid.minor = element_blank(),
-        panel.grid.major = element_line(color = "azure2"),
-        plot.title = element_text(size = 14, face = "bold"),
-        strip.background = element_rect(fill = "transparent",
-                                        color = "transparent"),
-        strip.text = element_text(size = 12,
-                                  face = "bold"
-                                  )
-        ) +
-  facet_grid(Sample_type ~ Farm_type, scales = "free", space = "free")
-  #facet_wrap(Company ~ Sample_type ~ Farm_type,
-             #scales = "free",
-              #nrow = 4,
-              #ncol = 3
-            #  )
 
+####Litter bac
 
-relbp_av_cla <- 
- tbl_mstr_av_bp %>%
-  subset(Phylum!="UNCLASSIFIED" & Sample_type != "Fecal" & Farm_type != "Processing_plant") %>%
-  ggplot(aes(x = Sample_group, 
-             y = Count, 
-             fill = Phylum
-             )
-         ) + 
-  geom_bar(position="fill", stat= "identity") +
-  scale_y_continuous(labels = percent) +
-  scale_fill_manual(values = col_phy) +
-  theme_bw() + 
-  labs(title = "Microbiome Composition - Classified") +
-  ylab("Relative Abundance") +
-  theme_bw() +
-  theme(axis.text = element_text(size = 12, 
-                                 color = "black"),
-        axis.text.x = element_text(hjust = 1,
-                                 vjust = 0.5,
-                                 angle = 90), 
-        axis.title = element_blank(),
-        panel.grid.minor = element_blank(),
-        panel.grid.major = element_line(color = "azure2"),
-        plot.title = element_text(size = 14, face = "bold"),
-        strip.background = element_rect(fill = "transparent",
-                                        color = "transparent"),
-        strip.text = element_text(size = 12,
-                                  face = "bold"
-                                  )
-        ) +
-  facet_grid(Sample_type ~ Farm_type, scales = "free", space = "free")
-    #facet_wrap(Company ~ Sample_type ~ Farm_type,
-     #         scales = "free",
-      #        nrow = 4,
-       #       ncol = 3
-          #    )
-
-relbp_av_bac <- 
-  tbl_mstr_av_bp %>%
-  subset(Phylum!="UNCLASSIFIED" & Phylum!="Thaumarchaeota" & Phylum!= "Euryarchaeota" & Phylum!= "Ascomycota" & Sample_type != "Fecal" & Farm_type != "Processing_plant") %>%
+relbp_av_bac_Litter <- 
+tbl_mstr_av_bp %>%
+  subset(Phylum!="UNCLASSIFIED" & Phylum!="Thaumarchaeota" & Phylum!= "Euryarchaeota" & Phylum!= "Ascomycota" & Sample_type == "Litter"  & Farm_type != "Processing_plant") %>%
   ggplot(aes(x = Sample_group, 
              y = Count, 
              fill = Phylum
@@ -1122,51 +892,7 @@ relbp_av_bac <-
         axis.title = element_blank(),
         panel.grid.minor = element_blank(),
         panel.grid.major = element_line(color = "azure2"),
-        plot.title = element_text(size = 14, face = "bold"),
-        strip.background = element_rect(fill = "transparent",
-                                        color = "transparent"),
-        strip.text = element_text(size = 12,
-                                  face = "bold"
-                                  )
-        ) +
-    facet_grid(Sample_type ~ Farm_type, scale = "free", space = "free")
- 
-    # facet_wrap(Company ~ Sample_type ~ Farm_type,
-    #           scales = "free",
-    #           nrow = 4,
-    #           ncol = 3
-    #           )
-
-
-
-### seperating according to sample type because with facetwrap and facet grid i couldnt get the structure the way i wanted.
-
-####Litter bac
-
-relbp_av_bac_Litter <- 
-tbl_mstr_av_bp %>%
-  subset(Phylum!="UNCLASSIFIED" & Phylum!="Thaumarchaeota" & Phylum!= "Euryarchaeota" & Phylum!= "Ascomycota" & Sample_type == "Litter"  & Farm_type != "Processing_plant") %>%
-  ggplot(aes(x = Sample_group, 
-             y = Count, 
-             fill = Phylum
-             )
-         ) + 
-  geom_bar(position="fill", stat= "identity") +
-  scale_y_continuous(labels = percent) +
-  scale_fill_manual(values = col_phy) +
-  theme_bw() + 
-  labs(title = "Microbiome Composition - Bacterial_Litter") +
-  ylab("Relative Abundance") +
-  theme_bw() +
-  theme(axis.text = element_text(size = 12, 
-                                 color = "black"),
-        axis.text.x = element_text(hjust = 1,
-                                 vjust = 0.5,
-                                 angle = 90), 
-        axis.title = element_blank(),
-        panel.grid.minor = element_blank(),
-        panel.grid.major = element_line(color = "azure2"),
-        plot.title = element_text(size = 14, face = "bold"),
+        plot.title = element_text(hjust = 0.5, size = 14, face = "bold"),
         strip.background = element_rect(fill = "transparent",
                                         color = "transparent"),
         strip.text = element_text(size = 12,
@@ -1191,7 +917,6 @@ tbl_mstr_av_bp %>%
   scale_y_continuous(labels = percent) +
   scale_fill_manual(values = col_phy) +
   theme_bw() + 
-  labs(title = "Microbiome Composition - Bacterial_Soil") +
   ylab("Relative Abundance") +
   theme_bw() +
   theme(axis.text = element_text(size = 12, 
@@ -1202,7 +927,6 @@ tbl_mstr_av_bp %>%
         axis.title = element_blank(),
         panel.grid.minor = element_blank(),
         panel.grid.major = element_line(color = "azure2"),
-        plot.title = element_text(size = 14, face = "bold"),
         strip.background = element_rect(fill = "transparent",
                                         color = "transparent"),
         strip.text = element_text(size = 12,
@@ -1212,166 +936,37 @@ tbl_mstr_av_bp %>%
   facet_grid(Sample_type ~ Farm_type, scale = "free_x", space = "free_x")
 ```
 
-
-```{r drawing AVERAGED bar plots_PP}
-#Processing Plant
-# Note: Subsetting using ! command is different than inclusion command. For inclusion in eed to use %in% followed by all things I want to include inside bracket.
-relbp_av_bac_PP <- 
-  tbl_mstr_av_bp %>%
-  subset(Phylum!="UNCLASSIFIED" & Phylum!="Thaumarchaeota" & Phylum!= "Euryarchaeota" & Phylum!= "Ascomycota" & Sample_group %in% c("C4F8PP", "C4F8PC", "C8F40L", "C8F40S")) %>%
-  ggplot(aes(x = Sample_group, 
-             y = Count, 
-             fill = Phylum
-             )
-         ) + 
-  geom_bar(position="fill", stat= "identity") +
-  scale_y_continuous(labels = percent) +
-  scale_fill_manual(values = col_phy) +
-  theme_bw() + 
-  labs(title = "Microbiome Composition - Bacterial") +
-  ylab("Relative Abundance") +
-  theme_bw() +
-  theme(axis.text = element_text(size = 12, 
-                                 color = "black"),
-        axis.text.x = element_text(hjust = 1,
-                                 vjust = 0.5,
-                                 angle = 90), 
-        axis.title = element_blank(),
-        panel.grid.minor = element_blank(),
-        panel.grid.major = element_line(color = "azure2"),
-        plot.title = element_text(size = 14, face = "bold"),
-        strip.background = element_rect(fill = "transparent",
-                                        color = "transparent"),
-        strip.text = element_text(size = 12,
-                                  face = "bold"
-                                  )
-        ) +
-    facet_grid(Sample_type ~ Farm_type, scale = "free", space = "free")
-       #facet_wrap(Company ~ Sample_type ~ Farm_type,
-        #     scales = "free",
-         #     nrow = 4,
-          #    ncol = 3
-           #   )
-
-
-
-  
-
-```
-
 ```{r drawing averaged relab plots}
-
-relbp_av_all
-relbp_av_cla
-relbp_av_bac
-# relbp_av_bac_combined
 relbp_av_bac_Litter
 relbp_av_bac_Soil
-relbp_av_bac_PP
-
 ```
 Saving plots
 
-```{r saving averaged relative abundance plots}
+```{r saving averaged relative abundance plots_Bacteria}
 
-# #Saving plots (CAUTION!Run ONLY WHEN READY! Leave commented to avoid overwriting already generated plots)
+#Saving plots
 
-# ggsave(filename = "Barplot_RelAbAV_All.svg",
-#        plot = relbp_av_all,
-#        device = "svg",
-#        units = "mm",
-#        width = 240,
-#        height = 350)
-# 
-# ggsave(filename = "Barplot_RelAbAv_Classified.svg",
-#        plot = relbp_av_cla,
-#        device = "svg",
-#        units = "mm",
-#        width = 240,
-#        height = 350)
-# 
-# ggsave(filename = "Barplot_RelAbAv_Bacterial.svg",
-#        plot = relbp_av_bac,
-#        device = "svg",
-#        units = "mm",
-#        width = 240,
-#        height = 350)
-# 
-# 
-# 
-# ggsave(filename = "Barplot_RelAbAv_Bacterial_Litter.svg",
-#        plot = relbp_av_bac_Litter,
-#        device = "svg",
-#        units = "mm",
-#        width = 500,
-#        height = 350)
-# 
-# 
-# ggsave(filename = "Barplot_RelAbAv_Bacterial_Soil.svg",
-#        plot = relbp_av_bac_Soil,
-#        device = "svg",
-#        units = "mm",
-#        width = 500,
-#        height = 350)
-# 
-# 
-# 
-# ggsave(filename = "Barplot_RelAbAv_Bacterial_PP.svg",
-#        plot = relbp_av_bac_PP,
-#        device = "svg",
-#        units = "mm",
-#        width = 500,
-#        height = 350)
-# 
+#Combined plots
+combined_plot_relative_abundance_bacteria <- ggarrange(relbp_av_bac_Litter, relbp_av_bac_Soil,
+                           ncol = 1,
+                           nrow = 2,
+                           common.legend = TRUE,
+                           legend = "right")
 
-```
-
-
-
-  The bar plots above align the initial assumptions about these two environments:
-    --> Soil has a markedly different microbiome profile with much higher phyla diversity than that found in the bee microbiome. 
-    Let's count the number of Taxa present in each Source
-    
- 
- 
-## Remember our OTU counts are converted to be between 0-1. 
-
-
-
-##Getting table for percent microbe in plots
-
-```{r percent count from plots}
-# Generate percent composition table ensuring each Sample_group sums to 100% and removing 0% values
-percent_composition_table <- tbl_mstr_av_bp %>%
-  filter(Phylum != "UNCLASSIFIED", 
-         Phylum != "Thaumarchaeota", 
-         Phylum != "Euryarchaeota", 
-         Phylum != "Ascomycota",
-         Sample_type != "Fecal"  & Farm_type != "Processing_plant") %>% 
-  group_by(Sample_group, Farm_type, Sample_type, Company, Phylum) %>%
-  summarise(Total_Count = sum(Count), .groups = "drop") %>%
-  group_by(Sample_group, Farm_type, Sample_type, Company) %>%
-  mutate(Percent_Composition = (Total_Count / sum(Total_Count)) * 100) %>%
-  filter(Percent_Composition > 0) %>%  # Remove Phyla with 0% abundance
-  arrange(Sample_group, Farm_type, Sample_type, Company, desc(Percent_Composition)) %>% 
-  ungroup()
-
-
-##Save everything in one CSV file
-##write.csv(percent_composition_table, "percent_composition_all_sample_groups.csv", row.names = FALSE)
+#Saving plots
+ggsave(filename = "Relative_abundance_Plots.svg",
+       plot = combined_plot_relative_abundance_bacteria,
+       device = "svg",
+       units = "mm",
+       width = 350,
+       height = 220)
 
 
 ```
 
 
 
-
-
-
-
-
-
-### Exploring Beta-Diversity
+# **Exploring Beta-Diversity**
 
   If alpha-diversity is the diversity *within* a community, beta-diversity is the diversity across communities. In beta-diversity we are concerned with comparing and contrasting different profiles.
 
@@ -1393,15 +988,13 @@ sampledata = sample_data(mt_smpl)
 
 #Creating phyloseq objects
 phycount = phyloseq(OTUcount, TAX, sampledata)
-      #Tree doesn't need to be processed. Direct import
+
 
 #Excluding Unclassified, Archaea and Dropping incomplete sample groups: Larvae and Pollen
 phycount <- phycount %>%
   subset_taxa(!Phylum == "UNCLASSIFIED" & !Kingdom == "Archaea" & !Kingdom == "Eukaryota") %>%
   subset_samples(!Sample_type == "Fecal" & !Farm_type == "Processing_plant")
 
-
-phycount_e %>%
   
 
 ```
@@ -1466,8 +1059,8 @@ Importing Phyloseq data into teh package Vegan
 
 ```{r data import }
 
-vegan_count <- pssd2veg(phycount_e)
-vegan_otu <- psotu2veg(phycount_e)
+vegan_count <- pssd2veg(phycount)
+vegan_otu <- psotu2veg(phycount)
 
 ```
 
@@ -1480,100 +1073,16 @@ veg_count_raitch <- vegdist(vegan_otu, "robust.aitchison")
 
 ```
 
-###RUNNING PERMDISP
 
-Calculating Multivariate homogeneity of groups dispersions
-
-```{r running PERMDISP}
-###Calculating distances and Comparing dispersions
-
-set.seed(43) #Set seed allows the random permutations to be reproducible
-
-    ##--> Group = Source
-print("---Estimating Dispersion for $Sample_type---", quote = FALSE, justify = "centre")
-betadisper(veg_count_raitch, 
-           vegan_count$Sample_type,
-           type = "centroid")
-print("", quote = FALSE)
-print("", quote = FALSE)
-print("---Comparing Source dispersions by permutation test---", quote = FALSE, justify = "centre")
-permutest(betadisper(veg_count_raitch, 
-                     vegan_count$Sample_type), 
-          pairwise = TRUE)
-print("------xxx------", quote = FALSE, justify = "centre")
-print("", quote = FALSE)
-print("", quote = FALSE)
-
-
-###Calculating distances and Comparing dispersions
-    ##--> Group = Farm_type
-print("---Estimating Dispersion for $Farm_type---", quote = FALSE, justify = "centre")
-betadisper(veg_count_raitch, 
-           vegan_count$Farm_type,
-           type = "centroid")
-print("", quote = FALSE)
-print("", quote = FALSE)
-print("---Comparing Farm_type disprsions by permutation test---", quote = FALSE, justify = "centre")
-permutest(betadisper(veg_count_raitch, 
-                     vegan_count$Farm_type),
-          pairwise = TRUE)
-print("------xxx------", quote = FALSE, justify = "centre")
-print("", quote = FALSE)
-print("", quote = FALSE)
-
-
-###Calculating distances and Comparing dispersions
-    ##--> Group = Company
-print("---Estimating Dispersion for $Company---", quote = FALSE, justify = "centre")
-betadisper(veg_count_raitch, 
-           vegan_count$Company,
-           type = "centroid")
-print("", quote = FALSE)
-print("", quote = FALSE)
-print("---Comparing Company betadisper by permutation test---", quote = FALSE, justify = "centre")
-permutest(betadisper(veg_count_raitch, 
-                     vegan_count$Company), 
-          pairwise = TRUE)
-print("------xxx------", quote = FALSE, justify = "centre")
-print("", quote = FALSE)
-print("", quote = FALSE)
-
-
-###Calculating distances and Comparing dispersions
-    ##--> Group = Sample_group
-print("---Estimating Dispersion for $Sample_group---", quote = FALSE, justify = "centre")
-betadisper(veg_count_raitch, 
-           vegan_count$Sample_group,
-           type = "centroid")
-print("", quote = FALSE)
-print("", quote = FALSE)
-print("---Comparing Sample_group betadisper by permutation test---", quote = FALSE, justify = "centre")
-permutest(betadisper(veg_count_raitch, 
-                     vegan_count$Sample_group),
-          pairwise = FALSE)
-print("------xxx------", quote = FALSE, justify = "centre")
-
-```
-
-
-
-
-```{r plotting PERMDISP dispersions}
-# Plotting dispersions
-plot(betadisper(veg_count_raitch, vegan_count$Sample_type))
-plot(betadisper(veg_count_raitch, vegan_count$Farm_type))
-plot(betadisper(veg_count_raitch, vegan_count$Company))
-plot(betadisper(veg_count_raitch, vegan_count$Sample_group))
-
-
-```
-
-PERMDISP analysis shows that:
 
  
-###RUNNING PERMANOVAs
+## RUNNING PERMANOVAs
 
 ```{r running distance PERMANOVA}
+
+#Writing the overall PERMANOVA results in text file
+sink("PERMANOVA_Overall_Results.txt")
+
 
 set.seed(43)
 
@@ -1594,14 +1103,20 @@ print("Grouping by Company",quote = FALSE, justify = "centre")
 
 adonis2(veg_count_raitch ~ Company, data = vegan_count, permutations = 999)
 
+sink()
+
 ```
 
 ```{r specific adonis pariwise}
+
+#Writing the specific pariwise comparission of interest in text file
+sink("specific_Pairwise_Comparissions_PERMANOVA.txt")
+
 ## Install pairwiseAdonis package if not already installed
-if (!requireNamespace("devtools", quietly = TRUE)) {
- install.packages("devtools")
-}
-devtools::install_github("pmartinezarbizu/pairwiseAdonis/pairwiseAdonis")
+#if (!requireNamespace("devtools", quietly = TRUE)) {
+# install.packages("devtools")
+#}
+#devtools::install_github("pmartinezarbizu/pairwiseAdonis/pairwiseAdonis")
 
 # Load the package
 library(pairwiseAdonis)
@@ -1612,9 +1127,10 @@ pairwise.adonis2(veg_count_raitch ~ Sample_type, data = vegan_count, permutation
 # Perform pairwise PERMANOVA for Farm_type
 pairwise.adonis2(veg_count_raitch ~ Farm_type, data = vegan_count, permutations = 999)
 
+
+sink()
+
 ```
-
-
 
 
 
@@ -1630,51 +1146,9 @@ Drawing PCA plots
 
 ```{r drawing PCoA + Aithcison plots}
 
-##As per the instructions in the man page, data needs to be UNORMALIZED!Attempting to normalize relative abundances with CLR will create negative values for abundances 0< x<1 and break on zeros.
-##As per the instructions in the man page, data needs to be passed as is 'trans="identity"'. Dist calc robust.aitchison will calculate robust CLR and compute distance
-
 #Sample type
-pcoa_sp_clr <-
-  phycount_e %>%
- tax_transform(rank = "Species", 
-               trans = "identity") %>%  
- dist_calc(dist = "robust.aitchison") %>%
- ord_calc(method = "PCoA") %>% 
- ord_plot(axes = c(1, 2),
-          plot_taxa = 1:3,
-          colour = "black", 
-          fill = "Farm_type",
-          shape = "Sample_type",
-          alpha = 0.8,
-          size = 5
-          ) + 
-  stat_ellipse(aes(colour = Sample_type), linewidth = 0.3) +
-  scale_shape_girafe_filled() +
-  ggtitle("PCoA by Species-level Genomic Bins") +
-   guides(fill = guide_legend(override.aes=list(shape = 21)),
-          color = FALSE) +
-  scale_fill_manual(values = col_farm) +
-  # scale_color_manual(values = col_sample) +
-  # scale_alpha_discrete(range = c(0.35, 1)) +
-  theme_linedraw() +
-  theme(panel.grid = element_blank(),
-        panel.background = element_rect(fill = "#fdfdfd"),
-        axis.text = element_text(size = 14,
-                                 color = "black"),
-        axis.title = element_text(size = 16,
-                                  color = "black")) +
-  geom_text(x = 2.5, 
-            y = -3.4, 
-            hjust =0,
-            vjust = 1,
-            label="Sample Type:\nPERMANOVA=0.001\nPERMDISP=0.001",
-            size = 3.5,
-            fontface = "plain") #+
-  #facet_grid(. ~ Company, scale = "free")
-
-
 pcoa_sp_clr_S <-
-  phycount_e %>%
+  phycount %>%
  tax_transform(rank = "Species", 
                trans = "identity") %>%  
  dist_calc(dist = "robust.aitchison") %>%
@@ -1689,7 +1163,7 @@ pcoa_sp_clr_S <-
           ) + 
   stat_ellipse(aes(colour = Sample_type), linewidth = 0.3) +
   scale_shape_girafe_filled() +
-  ggtitle("PCoA by Species-level Genomic Bins") +
+  ggtitle("PCoA Plot: Beta Diversity - Sample Types") +
    guides(fill = guide_legend(override.aes=list(shape = 21)),
           color = FALSE) +
   scale_fill_manual(values = col_sample) +
@@ -1706,15 +1180,14 @@ pcoa_sp_clr_S <-
             y = -3.4, 
             hjust =0,
             vjust = 1,
-            label="Sample Type:\nPERMANOVA=0.001\nPERMDISP=0.001",
+            label="Sample Type:\nPERMANOVA=0.001",
             size = 3.5,
-            fontface = "plain") #+
-  #facet_grid(. ~ Company, scale = "free")
+            fontface = "plain")
 
 
 #Farm type
 pcoa_sp_clr_farm <-
-  phycount_e %>%
+  phycount %>%
  tax_transform(rank = "Species", 
                trans = "identity") %>%  
  dist_calc(dist = "robust.aitchison") %>%
@@ -1729,7 +1202,7 @@ pcoa_sp_clr_farm <-
           ) + 
   stat_ellipse(aes(colour = Farm_type), linewidth = 0.3) +
   scale_shape_girafe_filled() +
-  ggtitle("PCoA by Species-level Genomic Bins") +
+  ggtitle("PCoA Plot: Beta Diversity - Farm Types") +
    guides(fill = guide_legend(override.aes=list(shape = 21)),
           color = FALSE) +
   scale_fill_manual(values = col_farm) +
@@ -1746,51 +1219,10 @@ pcoa_sp_clr_farm <-
             y = -3.4, 
             hjust =0,
             vjust = 1,
-            label="Farm Type:\nPERMANOVA=0.001\nPERMDISP=0.191\nCompany:\nPERMANOVA=0.009\nPERMDISP=0.081",
+            label="Farm Type:\nPERMANOVA=0.001",
             size = 3.5,
             fontface = "plain") #+
   #facet_grid(. ~ Company, scale = "free")
-
-
-pcoa_sp_clr_S_farm <-
-  phycount_e %>%
- tax_transform(rank = "Species", 
-               trans = "identity") %>%  
- dist_calc(dist = "robust.aitchison") %>%
- ord_calc(method = "PCoA") %>% 
- ord_plot(axes = c(1, 2),
-          plot_taxa = 1:3,
-          colour = "black", 
-          fill = "Sample_type",
-          shape = "Farm_type",
-          alpha = 0.8,
-          size = 5
-          ) + 
-  stat_ellipse(aes(colour = Farm_type), linewidth = 0.3) +
-  scale_shape_girafe_filled() +
-  ggtitle("PCoA by Species-level Genomic Bins") +
-   guides(fill = guide_legend(override.aes=list(shape = 21)),
-          color = FALSE) +
-  # scale_fill_manual(values = col_farm) +
-  # scale_color_manual(values = col_farm) +
-  # scale_alpha_discrete(range = c(0.35, 1)) +
-  theme_linedraw() +
-  theme(panel.grid = element_blank(),
-        panel.background = element_rect(fill = "#fdfdfd"),
-        axis.text = element_text(size = 14,
-                                 color = "black"),
-        axis.title = element_text(size = 16,
-                                  color = "black")) +
-  geom_text(x = 2.5, 
-            y = -3.4, 
-            hjust =0,
-            vjust = 1,
-            label="Farm Type:\nPERMANOVA=0.001\nPERMDISP=0.191\nCompany:\nPERMANOVA=0.009\nPERMDISP=0.081",
-            size = 3.5,
-            fontface = "plain") #+
-  #facet_grid(. ~ Company, scale = "free")
-
-
 
 
 ```
@@ -1798,55 +1230,36 @@ pcoa_sp_clr_S_farm <-
 
 
 ```{r drawing PCoA plots}
-
-pcoa_sp_clr
 pcoa_sp_clr_S
 
 pcoa_sp_clr_farm
-pcoa_sp_clr_S_farm
 
 ```
 
 ```{r saving PCoA}
 #Saving plots (CAUTION!Run ONLY WHEN READY! Leave commented to avoid overwriting already generated plots)
 
- # ggsave(filename = "PCoA_Microbiome_SourceEllip_SampleColor_SAMPLETYPE.svg",
- #        plot = pcoa_sp_clr,
- #        device = "svg",        
- #        units = "mm",
- #        width = 300,
- #        height = 200)
- # 
- # ggsave(filename = "PCoA_Microbiome_SourceEllip_FarmColor_SAMPLETYPE.svg",
- #        plot = pcoa_sp_clr_S,
- #        device = "svg",        
- #        units = "mm",
- #        width = 300,
- #        height = 200)
- # 
- #  ggsave(filename = "PCoA_Microbiome_SourceEllip_SampleColor_FARMTYPE.svg",
- #        plot = pcoa_sp_clr_farm,
- #        device = "svg",        
- #        units = "mm",
- #        width = 300,
- #        height = 200)
- # 
- # ggsave(filename = "PCoA_Microbiome_SourceEllip_FarmColor_FARMTYPE.svg",
- #        plot = pcoa_sp_clr_S_farm,
- #        device = "svg",        
- #        units = "mm",
- #        width = 300,
- #        height = 200)
+
+#Combined plots
+combined_PCoA <- ggarrange(pcoa_sp_clr_S, pcoa_sp_clr_farm,
+                           ncol = 1,
+                           nrow = 2)
+
+
+
+ ggsave(filename = "Combined_PCoA_plots_betadiversity.svg",
+        plot = combined_PCoA,
+        device = "svg",
+        units = "mm",
+        width = 250,
+        height = 300)
+
 
 
 ```
 
-The ordination shows that .....
 
-
-PERMDISP analysis shows that.......................
-
-
+# Compiling all generated plots as per the figure number
 
 
 #################################################################################

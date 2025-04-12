@@ -1,0 +1,52 @@
+[1] Comparing profiles by PERMANOVA
+[1] Grouping by Sample_group (Sample_type*Farm_type*Company
+Permutation test for adonis under reduced model
+Permutation: free
+Number of permutations: 999
+
+adonis2(formula = veg_count_raitch ~ Sample_type * Farm_type * Company, data = vegan_count, permutations = 999)
+         Df SumOfSqs      R2      F Pr(>F)    
+Model    11    25672 0.38576 2.8547  0.001 ***
+Residual 50    40876 0.61424                  
+Total    61    66548 1.00000                  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+[1] 
+[1] Grouping by Sample_type
+Permutation test for adonis under reduced model
+Permutation: free
+Number of permutations: 999
+
+adonis2(formula = veg_count_raitch ~ Sample_type, data = vegan_count, permutations = 999)
+         Df SumOfSqs      R2      F Pr(>F)    
+Model     1     7191 0.10806 7.2692  0.001 ***
+Residual 60    59357 0.89194                  
+Total    61    66548 1.00000                  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+[1] 
+[1] Grouping by Farm_type
+Permutation test for adonis under reduced model
+Permutation: free
+Number of permutations: 999
+
+adonis2(formula = veg_count_raitch ~ Farm_type, data = vegan_count, permutations = 999)
+         Df SumOfSqs      R2      F Pr(>F)    
+Model     2     5413 0.08133 2.6118  0.001 ***
+Residual 59    61135 0.91867                  
+Total    61    66548 1.00000                  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+[1] 
+[1] Grouping by Company
+Permutation test for adonis under reduced model
+Permutation: free
+Number of permutations: 999
+
+adonis2(formula = veg_count_raitch ~ Company, data = vegan_count, permutations = 999)
+         Df SumOfSqs      R2      F Pr(>F)  
+Model     1     1485 0.02231 1.3691  0.082 .
+Residual 60    65063 0.97769                
+Total    61    66548 1.00000                
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
