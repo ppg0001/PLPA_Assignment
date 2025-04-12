@@ -16,16 +16,12 @@ output:
 # **Final Project**
 
 #ABOUT
+This script is designed for the analysis of the Shotgun_POULTRY microbiome data This script contains the statistical analysis, exploratory plots and publication plots. Each step of the analysis is discussed at my best capabilities.For more detailed understanding please refer the Readme file.
+[Click Here: Readme File](https://github.com/ppg0001/PLPA_Assignment/blob/main/README.md)
 
-# PANKAJ PUT MANY THINGS IN README AND KEEP THE SCRIPT CONCISE
-
-This script is designed for the analysis of the Shotgun_POULTRY microbiome data
-
-This script contains the statistical analysis, exploratory plots and publication plots. Each step of the analysis is discussed at my best capabilities.
 NOTE: This document is for class purpose and is intended to be updated
 
                             
-
 ## Loading packages
 ### Note uncomment packages to install
 
@@ -134,7 +130,7 @@ It is important to follow a consistent coloring scheme throughout the plots and 
 
 Sample:
   --> Litter: "firebrick" (red)
-  --> Soil: "#4daf4a" (green)
+  --> Soil: "#4daf4a" (blue)
 
 Source:
   --> Pullet: "#FC7A16" (light orange)
@@ -153,13 +149,6 @@ col_sample <- c("#D02C2C", "#5BBCD6", "#F2AD00", "#F98400","#00A08A")
 # Source colors
 col_farm <- c("#E0BD48", "#319dc8", "#735794", "darkgrey" )
 
-## Phyla colors with Polycrome
-# col_phy <- createPalette(27, c("#F44336", "#2886E2", "#F1C232","#984ea3","#4daf4a","#ff7f00"))
-# names(col_phy) <- NULL
-# col_phy <- rev(col_phy)
-# ##Adding dark grey for UNcLASSIFIED
-# col_phy <- append(col_phy,"#535454")
-
 col_phy <- c ("#0DFFCA","#DDE996","#FB6CE0","#71BDA3","#FFAE8D","#A90040","#C2C8FE","#72722A","#D1EE0D","#FD89BB","#1CFE1C","#FD00FB","#165A6A","#79351C","#9E00FF","#E8DAD4","#26FAFD","#FF00B1","#FF7E1C","#51B44F","#9B4FA7","#F4C538","#2287E2","#ED3B2E","#1C5CFD","#B684FF","#835D75","#535454")
 
 col_tax <- c("#b2df8a","#f781bf","#a65628","#ffff33","#984ea3","#4daf4a","#ff7f00","#377eb8","#e41a1c","#999999")
@@ -177,59 +166,6 @@ swatch(col_tax)
 swatch(col_phy)
 ```
 
-#INTRODUCTION
-
-  The demand for producing animal protein has increased worldwide. In consequence, there is an increased in the need of AMU to prevent and treat animal diseases which have contributed to the increase in  AMR and its spread.Because of concerns with AMR,  the animal production industry has promoted reducing AMU to mitigate AMR. However, because of the extensive historic use of antimicrobial in farm, antimicrobial residues might have accumulated in these environments, contributing to the maintenance of AMR. In this study, we explore the microbiome diversity in differnt stages of production. This is the part of bigger study we are doing. Forthis class final project we will explore how the poultry microbiome dynamics is in its different production stages (Pullet -> Breeder -> Broiler) and farm enviornment (Litter and Soil).
-
-
-#HYPOTHESIS
-
- We have litter sample representing inside environment and soil representing outside environment. We anticipate selective pressure in the inside environment and in the broiler stage because of antimicrbial pressure. So higher antimicbrial pressure in litter samples and broiler stage might influence the micrbial dynamices.
-
-
-
-#OBJECTIVES 
-## (For this project)
-
- *Reconstruct the microbiome of poultry farm environment (litter,soil) using shotgun metagenomics*
-  
-
-#METHODS
-
-
-##EXPERIMENTAL DESIGN
-
-To evaluate AMR across different stages of poultry production, we conducted a systematic sampling of poultry farm environments from two poultry complexes in southeast USA and from three production stages: pullet (n=4), breeder (n=8), and broiler (n=14). Farms were selected to represent at least 10% of the poultry farms from each production complex. This approach ensured adequate representation of the production system
-
-## SAMPLING COLLECTION
- Farm types: Pullet, breeder, broiler, processing plant
- Sample types: Litter, soil, post pick , post chill, fecal
-
- Samples to exclude: Procesing plant, post pick, post chill, fecal
-
- 
-
-## DNA ISOLATION
-  DNA was isolated from Litter, soil, truck, and carcass rinses (PP and PC) using PowerSoil Pro kit (for litter,soil,truck) and PowerWater kit (for carcass rinses)
-  
-## Sample Naming convention: 
-Sample ID convention to identify sequencing groups
-      --> C: collection number
-      --> F: followed by farm number OR farm name.
-          Example:
-          F8: farm number eight
-          FHE: farm named HE
-      --> Letter at end: sample types
-          L: litter, S: soil
-      --> Example:
-          C2F8L: collection 2, farm number 8, litter sample
-          C17FHEL: collection 17, farm name HE, litter sample
-      --> Note in sample_metadata in some samples they end with number 1,2,or3. They are the triplicate sample we used initially for shotgun sequencing standardization.
-
-Note: Fecal samples andf processing plant samples are excluded from current analysis.
-      
-  
-  
 ```{r print structure}
 
 as_tibble(mt_smpl)
@@ -240,50 +176,7 @@ as_tibble(mt_smpl)
 
 
 
-##DNA SEQUENCING AND PROCESSING
-
-The DNA was pair-end sequenced in an Illumina platform. The generated reads were quality checked with FAstQC v0.12.1. 
-
-Reads were processed using Trimmomatic to the following parameters:
-  --> Adapter clipping: universal Illumina adapter
-  --> End trimming to quality phred 30
-  --> Exclusion of resulting reads shorted than 50bp
-
-After processing the reads were again quality checked using FastQC
-
-            
-#MICROBIOME RECONSTRUCTION WITH METAPHLAN4
-
-software/package: MetaPhLAn 4
-publication: https://www.nature.com/articles/s41587-023-01688-w
-git: https://github.com/biobakery/MetaPhlAn/wiki/MetaPhlAn-4.1
-version: 4.0.2
-                      
-MetaPhlAn is a computational tool for profiling the composition of microbial communities (Bacteria, Archaea and Eukaryotes) from metagenomic shotgun sequencing data with species-level.
-
-Note: Metaphlan produces a table output with RELATIVE ABUNDANCES only. This choice by the developers is understandable since Metagenomic shotgun data is, by definition, compositional data.
-
-
-##ALPHA DIVERSITY ANALYSIS WITH PHYLOSEQ
-
-software/package: phyloseq
-publication: https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0061217
-git: https://joey711.github.io/phyloseq/
-version: 1.44.0
-
-Estimation of diversity within the community. For this two metrics will be calculated:
-    1. RICHNESS: simple measure of the number of different Taxon (or OTU) observed in each sample
-    2. SIMPSON INDEX (D): measure of diversity (richness x evenness). Calculates the probability of two randomly picked individual being of the same taxon.
-        -->Min = 0 : Infinite diversity (zero probability)
-        -->Max = 1: No diversity (100% probability)
-        OBS: usually expressed as 1-D so the results are more intuitive
-    3. SHANNON INDEX: measure of diversity (richness x evenness). Estimates the level of uncertainty that a randomly picked individual belongs to any particular taxon.
-        -->Min = 0: No diversity (no uncertainty)
-        -->Max = Hmax: Highest diversity (changes depending on S, caution with comparisons)
-        
-Metaphlan works with the concept of species-level genome bins (SGBs), which for alpha-diversity is functionally similar to the concept of OTUs in 16S profiling. Each SGB (SGB######) has a taxonomic metadata associated to it (mt_tax) with its taxonomic classification to the lowest possible level.
-
-As discussed before, Metaphlan outputs a table of relative abundances. However, phyloseq *only accepts absolute abundances for alpha-diversity analysis*.
+Metaphlan outputs a table of relative abundances. However, phyloseq *only accepts absolute abundances for alpha-diversity analysis*.
   
 In order to use phyloseq the relative abundance data will be coerced into natural counts. This will done by multiplying the relative abundance by the number of mapped reads/sample (included in the table mt_smpl and obtained from metaphlan output), then rounding the table, thus creating a dummy table of natural counts. This table preserves the relative abundances relationships between SGBs and allows phyloseq to run.
       
@@ -330,7 +223,6 @@ phycount_e <- phycount_e %>%
 
 ```
 
-Note: phycount_e it is our natural count
 
 
 ```{r phyloseq summary}
@@ -746,18 +638,11 @@ ggsave(filename = "Alpha_Diversity_Plots.svg",
 
 ```
 
-# Alpha diversity result explanation:
-All alpha diversity indices were statistically significantly higher (P < 0.05) in soil compared to litter in all farm types. Observed richness was significantly higher in soil compared to litter in pullet and broiler farms (P < 0.05), while no statistically significant difference was observed in breeder farms. A similar trend was observed for Simpson’s diversity index, where pullet and broiler farms exhibited a significant difference between litter and soil (P < 0.05), whereas breeder farms did not. Shannon diversity index was significantly higher in soil compared to litter across all farm types (P < 0.05).
-  
-
+## Alpha diversity result explanation:
 In our study, observed richness and Simpson diversity index were higher in the soil during the pullet and broiler stages, whereas no significant differences were found between litter and soil in the breeder stage. Moreover, the Shannon diversity index was higher in soil samples than in litter across all production stages. These findings indicate that soil contains a more diverse and evenly distributed microbiome, whereas litter is a more selective environment with limited microbes that make up its composition.
 
 
-
-
-
-
-## Exploring the microbial community
+# Exploring the microbial community
 
 ## Lets check which phylum are overall present in our dataset
 
@@ -1012,27 +897,9 @@ levels(sample_data(phycount)$Farm_type)
 ```
 ##Performing PERMANOVAS
 
---- from: https://cscu.cornell.edu/workshop/introduction-to-permanova/
-PERMANOVA, (permutational multivariate ANOVA), is a non-parametric alternative to MANOVA, or multivariate ANOVA test. It is appropriate with multiple sets of variables that do not meet the assumptions of MANOVA, namely multivariate normality. It is often used with data that is highly skewed, zero-inflated, ordinal, or qualitative, such as ecological community data, microbiome data, or genetic data.
-
-It operates on a distance matrix constructed from any dissimilarity measure, and tests the null hypothesis that there are no differences in the relative magnitude (or presence/absence) of a set of variables among objects from different treatments or groups. P-values are calculated via permutation tests.  PERMANOVA tests often accompany ordination plots from PCoA or NMDS.
-
----
-
-  For calculating our distance matrices, Aithcison distances will be employed since the are equivalent to euclidean-distances of CLR transformed data. As discussed int he beginning of this document, the robust Aitchison distance will be employed since it is applicable to non-negative data inclusing zeroes (which is the case of microbiome data)
-(https://rdrr.io/cran/vegan/man/vegdist.html).
-
-  PERMANOVA sensitivity is dependent on group dispersion. A significant result in a PERMANOVA can be attributed to either groups differing in their location (on an ordination), their dispersion or both. In order to understand what is driving the differences between groups the dispersions will be checked using PERMDISP: a multivariate Levene's test that checks the homogeneity of dispersion. "A non-significant result from PERMDISP would indicate that groups do not differ in dispersion and that therefore the differences are entirely due to differences in location.  A significant result from PERMDISP would indicate that the groups differ in dispersion." But in the later case they could *also* differ in location, thus visual inspection would be necessary.
-  >NOTE: Permutational techniques do not assume homogeneity of variances. PERMANOVA is safe to be employed even if dispersion (variances) are not homogenous. The test is necessary to better interpret the results
-
-For more in depth explanations on PERMANOVA: https://uw.pressbooks.pub/appliedmultivariatestatistics/chapter/permanova/
-
-For more in depth explanations on PERMDISP: https://uw.pressbooks.pub/appliedmultivariatestatistics/chapter/permdisp/
-
-PERMANOVAS and PERMDISP are calculated using the adonis and betadisper functions in the package Vegan. To use Vegan, phyloseq objects need to be turned into Vegan objects.
-  
-  Next functions convert physeq format into Vegan. Source: https://jacobrprice.github.io/2017/08/26/phyloseq-to-vegan-and-back.html
-  >NOTE: The fuctions keep refering to OTU since all of these packages were designed to work with 16S data. SGBs are functionally similar to OTUs for our purpuses.
+- PERMANOVA, (permutational multivariate ANOVA), is a non-parametric alternative to MANOVA, or multivariate ANOVA test.
+- PERMANOVAS are calculated using the adonis functions in the package Vegan. To use Vegan, phyloseq objects need to be turned into Vegan objects.
+- Next functions convert physeq format into Vegan.
 
 ```{r creating pssd2veg function}
 
@@ -1135,12 +1002,6 @@ sink()
 
 
 ### ORDINATION WITH PCOA
-
-  For the ordination we will use PCoA with robust Aitchison distances of CLR transforms, which (for reasons I honestly do not fully understand statistically) is the same thing as performing a PCA on a CLR transformed data. PCA + rCLR as the go-to ordination for compositional data, has been championed and commonly applied to COmpositional Data Analysis (CODA) (https://www.frontiersin.org/journals/microbiology/articles/10.3389/fmicb.2017.02224/full).
-  However, I'd be remiss if I did not bring up that there has been objections to this practice, arguing that a rCLR transform is not enough to allow the data to be handled by PCA and might introduce biases. The most powerfull way to deal with microbial compositional data is the Isometric Log-ratio transform (ILR). However, I could not find good implementation and pipelines using it, and thus seems to require much heavier and deeper statistical knowledge to implement (which I don't have). Nonetheless, below are some papers that did use ILR for more information:
-    > https://journals.asm.org/doi/10.1128/msystems.00162-16
-    > https://peerj.com/articles/2969/
-    > https://elifesciences.org/articles/21887
 
 Drawing PCA plots
 
