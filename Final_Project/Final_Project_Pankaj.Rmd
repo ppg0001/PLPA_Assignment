@@ -61,7 +61,6 @@ library(readxl)
 library(tidyverse)
 library(ggpubr)
 
-
 library(phyloseq)
 library(vegan)
 library(microViz)
@@ -69,9 +68,6 @@ library(microbiomeMarker)
 library(dplyr)
 library(tidyr)
 
-#install.packages("UpSetR")
-#library(UpSetR)
-#install.packages("VennDiagram")
 library(VennDiagram)
 library(grid)
 
@@ -114,7 +110,7 @@ mt_smpl$Sample_group <- factor(mt_smpl$Sample_group,
 mt_smpl$Sample <- factor(mt_smpl$Sample, 
                                levels = c("C2F4L1","C2F4L2","C2F4L3","C2F1L","C3F10L","C3F14L","C2F4S1","C2F4S2","C2F4S3","C2F1S","C3F10S","C3F14S","C2F4F1","C2F4F2","C2F4F3","C4F17L1","C4F17L2","C4F17L3","C4F8L","C4F17S1","C4F17S2","C4F17S3","C4F8S","C4F17F1","C4F17F2","C4F17F3","C8F40L1","C8F40L2","C8F40L3","C6F35L","C6F37L","C6F60L","C7F14L","C7F22L","C7F81L","C8F40S1","C8F40S2","C8F40S3","C6F35S","C6F37S","C6F60S","C7F14S","C7F22S","C7F81S","C8F40F1","C8F40F2","C8F40F3","C4F8PP","C4F8PC","C12FCHL","C13FJBL","C12FCHS","C13FJBS","C14FJOL","C14FJOS","C15FNSL","C15FTCL","C16FHWL","C17FHEL","C18FCLL","C18FHHL","C18FTGL","C20FJAL","C19FTTL","C20FPHL","C15FNSS","C15FTCS","C16FHWS","C17FHES","C18FCLS","C18FHHS","C18FTGS","C20FJAS","C19FTTS","C20PHS"))
 
-# Loading taxanomy metadata file
+# Loading taxonomy metadata file
 
 mt_tax <- read.delim("Taxonomy_metadata.tsv", 
                      #row.names=1, 
@@ -127,18 +123,7 @@ mt_tax <- read.delim("Taxonomy_metadata.tsv",
 # Setting colors
 
 It is important to follow a consistent coloring scheme throughout the plots and paper.
-
-Sample:
-  --> Litter: "firebrick" (red)
-  --> Soil: "#4daf4a" (blue)
-
-Source:
-  --> Pullet: "#FC7A16" (light orange)
-  --> Breeder: "#319dc8" (blue)
-  --> Broiler: "#735794" (purple)
-
-  
-The color palette for the taxa will be created using the package "Polychrome" 
+The color palette for the taxa will be created using the package "Polychrome".
 
 ```{r color vectors}
 # Creating color vectors
@@ -153,12 +138,6 @@ col_phy <- c ("#0DFFCA","#DDE996","#FB6CE0","#71BDA3","#FFAE8D","#A90040","#C2C8
 
 col_tax <- c("#b2df8a","#f781bf","#a65628","#ffff33","#984ea3","#4daf4a","#ff7f00","#377eb8","#e41a1c","#999999")
 
-
-
-## Phyla colors with Polycrome
-col_genus <- createPalette(100, c("#F44336", "#2886E2", "#F1C232","#984ea3","#4daf4a","#ff7f00"))
-names(col_genus) <- NULL
-
 # We can use the following as our coloring scheme
 swatch(col_sample)
 swatch(col_farm)
@@ -170,11 +149,12 @@ swatch(col_phy)
 
 as_tibble(mt_smpl)
 
-#Note the NA values belong to the Fecal samples and Processing plant samples, which are not included in analysis and are filtered out and will not be included in further analysis for this final project.
+#Note the NA values belong to the Fecal samples and Processing plant samples, which are not included in analysis and will not be included in further analysis for this final project.
  
 ```
 
 
+# Getting ready for Metaphlan and phyloseq
 
 Metaphlan outputs a table of relative abundances. However, phyloseq *only accepts absolute abundances for alpha-diversity analysis*.
   
@@ -652,7 +632,7 @@ table(tax_table(phycount_e)[,"Phylum"])
 
 
   
-## Community bar plots
+## Microbial community bar plots
 
 First step in visualizing the community structure. In order to create the barplots, the data needs to be transformed from wide to long. This will also allow all the metadata to be incorporated into the table
 
