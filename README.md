@@ -96,13 +96,16 @@ Beta diversity was assessed to examine the compositional difference in microbial
 ### Alpha Diversity
 [Click Here: Figure Alpha Diversity](https://github.com/ppg0001/PLPA_Assignment/blob/main/Final_Project/Alpha_Diversity_Plots.svg)
 
-All alpha diversity indices were statistically significantly higher (P < 0.05) in soil compared to litter, with some exceptions in some farm types. Observed richness was significantly higher in soil compared to litter in pullet and broiler farms (P < 0.05), while no statistically significant difference was observed in breeder farms. A similar trend was observed for Simpson’s diversity index, where pullet and broiler farms exhibited a significant difference between litter and soil (P < 0.05), whereas breeder farms did not. Shannon diversity index was significantly higher in soil compared to litter across all farm types (P < 0.05).
+All alpha diversity indices were statistically significantly higher (P < 0.05) in soil than in litter, with some exceptions in some farm types. Observed richness was significantly higher in soil compared to litter in pullet and broiler farms (P < 0.05), while no statistically significant difference was observed in breeder farms. A similar trend was observed for Simpson’s diversity index, where pullet and broiler farms exhibited a significant difference between litter and soil (P < 0.05), whereas breeder farms did not. Shannon diversity index was significantly higher in soil compared to litter across all farm types (P < 0.05).
 These findings indicate that soil contains a more diverse and evenly distributed microbiome, whereas litter is a more selective environment with limited microbes that make up its composition.
 
 
 ### Microbial community (Phylum level)
 [Click Here: Figure Microbiome Profile - Phylum](https://github.com/ppg0001/PLPA_Assignment/blob/main/Final_Project/Relative_abundance_Plots.svg)
 
+Here, we have a snapshot of microbial community and their composition from different farm types and sample types. Soil has a higher diversity of phyla compared to Litter. Firmicutes is dominant in Litter. Actinobacter dominant in soil Firmicutes increases along the production chain, with being highest in broiler farm stage.
+
+*Note: For the class project, I only explored the phylum level, but eventually, I will be exploring the  genus and species levels for a better understanding of microbial dynamics.*
 
 
 
