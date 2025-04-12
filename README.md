@@ -50,9 +50,7 @@ To evaluate AMR across different stages of poultry production, we conducted a sy
 
 ### Sample types
  - Farm types: Pullet, breeder, broiler, processing plant
- 
  - Sample types: Litter, soil, post pick, post chill, fecal
- 
  - Samples to *exclude* in this analysis: Processing plant, post pick, post chill, fecal
 
 ### Sample naming convention
@@ -81,16 +79,16 @@ Note: Fecal samples and processing plant samples are excluded from current analy
           
 ### Microbiome reconstructiopn with MetaPhlAn4
 *MetaPhlAn is a computational tool for profiling the composition of microbial communities (Bacteria, Archaea and Eukaryotes) from metagenomic shotgun sequencing data with species-level.*
--software/package: MetaPhLAn 4
--publication: https://www.nature.com/articles/s41587-023-01688-w
--git: https://github.com/biobakery/MetaPhlAn/wiki/MetaPhlAn-4.1
--version: 4.0.2                  
+- software/package: MetaPhLAn 4
+- publication: https://www.nature.com/articles/s41587-023-01688-w
+- git: https://github.com/biobakery/MetaPhlAn/wiki/MetaPhlAn-4.1
+- version: 4.0.2                  
 
 ### ALPHA DIVERSITY ANALYSIS WITH PHYLOSEQ
--software/package: phyloseq
--publication: https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0061217
--git: https://joey711.github.io/phyloseq/
--version: 1.44.0
+- software/package: phyloseq
+- publication: https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0061217
+- git: https://joey711.github.io/phyloseq/
+- version: 1.44.0
 
 
 
