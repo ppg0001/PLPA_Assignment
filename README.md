@@ -73,24 +73,22 @@ To evaluate AMR across different stages of poultry production, we conducted a sy
 - The DNA was pair-end sequenced in an Illumina platform. The generated reads were quality checked with FAstQC v0.12.1. 
 - Reads were processed using Trimmomatic to the following parameters:
   Adapter clipping: universal Illumina adapter, End trimming to quality phred 30, Exclusion of resulting reads shorted than 50bp
-- After processing the reads were again quality checked using FastQC
+- After processing, the reads were again quality checked using FastQC
           
-### Microbiome reconstructiopn with MetaPhlAn4
+### Microbiome reconstruction with MetaPhlAn4
 *MetaPhlAn is a computational tool for profiling the composition of microbial communities (Bacteria, Archaea and Eukaryotes) from metagenomic shotgun sequencing data with species-level.*
 - software/package: MetaPhLAn 4
 - publication: https://www.nature.com/articles/s41587-023-01688-w
 - git: https://github.com/biobakery/MetaPhlAn/wiki/MetaPhlAn-4.1
 - version: 4.0.2                  
 
-### ALPHA DIVERSITY ANALYSIS
+### Alpha diversity analysis
 Alpha diversity indices, including Observed Richness and Simpson’s and Shannon’s diversity index, were calculated for litter and soil samples across pullet, breeder, and broiler farms at taxon level. A t-test was performed to compare the alpha diversity between litter and soil samples in respective farm types. 
 
-### BETA DIVERSITY ANALYSIS
+### Beta diversity analysis
 Beta diversity was assessed to examine the compositional difference in microbial communities (taxon level) across the farm types and sample types. Principal Coordinate Analysis (PCoA) was performed using robust  Aitchison distance index , with statistical significance determined by PERMANOVA. Robust Aitchison distances were employed due to their suitability for non-negative datasets, including zero. PERMANOVA was used to compare the microbial and resistome composition among sample types and farm types.
 
 *All the statistical analyses were performed using RStudio, version 4.3.1 (2023-06-16 ucrt). All significance levels were set to P ≤ 0.05.*
-
-
 
 
 ## RESULTS
@@ -102,7 +100,7 @@ All alpha diversity indices were statistically significantly higher (P < 0.05) i
 These findings indicate that soil contains a more diverse and evenly distributed microbiome, whereas litter is a more selective environment with limited microbes that make up its composition.
 
 
-
+### Microbial community (Phylum level)
 
 
 
