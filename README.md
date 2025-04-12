@@ -82,11 +82,32 @@ To evaluate AMR across different stages of poultry production, we conducted a sy
 - git: https://github.com/biobakery/MetaPhlAn/wiki/MetaPhlAn-4.1
 - version: 4.0.2                  
 
-### ALPHA DIVERSITY ANALYSIS WITH PHYLOSEQ
+### ALPHA DIVERSITY ANALYSIS
 - software/package: phyloseq
 - publication: https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0061217
 - git: https://joey711.github.io/phyloseq/
 - version: 1.44.0
+
+### BETA DIVERSITY ANALYSIS
+
+
+
+
+## RESULTS
+
+### Alpha Diversity
+    All alpha diversity indices were statistically significantly higher (P < 0.05) in soil compared to litter, with some exceptions in some farm types. Observed richness was significantly higher in soil compared to litter in pullet and broiler farms (P < 0.05), while no statistically significant difference was observed in breeder farms. A similar trend was observed for Simpson’s diversity index, where pullet and broiler farms exhibited a significant difference between litter and soil (P < 0.05), whereas breeder farms did not. Shannon diversity index was significantly higher in soil compared to litter across all farm types (P < 0.05).
+    These findings indicate that soil contains a more diverse and evenly distributed microbiome, whereas litter is a more selective environment with limited microbes that make up its composition.
+
+
+
+
+
+
+
+
+
+
 
 
 
