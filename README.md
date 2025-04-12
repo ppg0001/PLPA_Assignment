@@ -49,11 +49,11 @@ We have litter sample representing inside environment and soil representing outs
 To evaluate AMR across different stages of poultry production, we conducted a systematic sampling of poultry farm environments from two poultry complexes in southeast USA and from three production stages: pullet (n=4), breeder (n=8), and broiler (n=14). Farms were selected to represent at least 10% of the poultry farms from each production complex. This approach ensured adequate representation of the production system
 
 ### Sample types
- -Farm types: Pullet, breeder, broiler, processing plant
+ - Farm types: Pullet, breeder, broiler, processing plant
  
- -Sample types: Litter, soil, post pick, post chill, fecal
+ - Sample types: Litter, soil, post pick, post chill, fecal
  
- -Samples to *exclude* in this analysis: Processing plant, post pick, post chill, fecal
+ - Samples to *exclude* in this analysis: Processing plant, post pick, post chill, fecal
 
 ### Sample naming convention
 Sample ID convention to identify sequencing groups
