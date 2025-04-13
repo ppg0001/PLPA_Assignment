@@ -13,17 +13,16 @@ output:
     variant: gfm
 ---
 
-# **Final Project**
+# **Final Project _ Script**
 
-#ABOUT
+## ABOUT
 This script is designed for the analysis of the Shotgun_POULTRY microbiome data This script contains the statistical analysis, exploratory plots and publication plots. Each step of the analysis is discussed at my best capabilities.For more detailed understanding please refer the Readme file.
 [Click Here: Readme File](https://github.com/ppg0001/PLPA_Assignment/blob/main/README.md)
 
-NOTE: This document is for class purpose and is intended to be updated
+*NOTE: This document is for class purpose and is intended to be updated*
 
                             
 ## Loading packages
-### Note uncomment packages to install
 
 ```{r loading packages, echo=TRUE, results='hide'}
 # Loading Packages
@@ -120,10 +119,9 @@ mt_tax <- read.delim("Taxonomy_metadata.tsv",
 ```
 
 
-# Setting colors
+## Setting colors
 
-It is important to follow a consistent coloring scheme throughout the plots and paper.
-The color palette for the taxa will be created using the package "Polychrome".
+It is important to follow a consistent coloring scheme throughout the plots and paper. The color palette for the taxa will be created using the package "Polychrome".
 
 ```{r color vectors}
 # Creating color vectors
@@ -145,6 +143,7 @@ swatch(col_tax)
 swatch(col_phy)
 ```
 
+## Print dataset structure
 ```{r print structure}
 
 as_tibble(mt_smpl)
@@ -154,15 +153,17 @@ as_tibble(mt_smpl)
 ```
 
 
-# Getting ready for Metaphlan and phyloseq
+# Metaphlan and phyloseq
 
-Metaphlan outputs a table of relative abundances. However, phyloseq *only accepts absolute abundances for alpha-diversity analysis*.
+- Metaphlan outputs a table of relative abundances. However, phyloseq *only accepts absolute abundances for alpha-diversity analysis*.
   
-In order to use phyloseq the relative abundance data will be coerced into natural counts. This will done by multiplying the relative abundance by the number of mapped reads/sample (included in the table mt_smpl and obtained from metaphlan output), then rounding the table, thus creating a dummy table of natural counts. This table preserves the relative abundances relationships between SGBs and allows phyloseq to run.
+- In order to use phyloseq the relative abundance data will be coerced into natural counts. This will done by multiplying the relative abundance by the number of mapped reads/sample (included in the table mt_smpl and obtained from metaphlan output), then rounding the table, thus creating a dummy table of natural counts. This table preserves the relative abundances relationships between SGBs and allows phyloseq to run.
+
+## Creating natural count table
       
 ```{r creating natural count table}
 
-#Creating a vector containing the the total number of reads in the same order as the columns in tbl_otu so they match
+#Creating a vector containing the the total number of reads in the same order as the columns in tbl_otu so they match.
 
 nreads <- mt_smpl$TotalReads
 nreads
@@ -175,15 +176,17 @@ tbl_otu <- tbl_otu[,1:ncol(tbl_otu)]/100
 
 tbl_otu_ecount <- as.data.frame(t(t(tbl_otu)*nreads)) %>%
                   dplyr::mutate(across(is.numeric, round))
-# The table is being transposed so that every row (i) matches with the vector entry (i'), then performing the multiplication. After this the table is transposed again to original wide shape. Then the muliplied table is fed into the mutate function which goes across and rounds all of the numerical values.
+# The table is being transposed so that every row (i) matches with the vector entry (i'), then performing the multiplication. After this the table is transposed again to original wide shape. Then the multiplied table is fed into the mutate function which goes across and rounds all of the numerical values.
 
 ```
 
-The count data is ready to be imported into phyloseq.
+## The count data is ready to be imported into phyloseq
 
 **For our analysis, we will focus only on the bacterial community.**
 
 ```{r importing files to phyloseq}
+
+#Importing files to phyloseq
 
 OTUcount = otu_table(tbl_otu_ecount, 
                 taxa_are_rows = TRUE)
@@ -195,7 +198,6 @@ sampledata = sample_data(mt_smpl)
 
 #Creating phyloseq objects
 phycount_e = phyloseq(OTUcount, TAX, sampledata)
-      #Tree doesn't need to be processed. Direct import
 
 #Excluding Unclassified, Archaea and Dropping other groups that needs to be excluded
 phycount_e <- phycount_e %>%
@@ -204,6 +206,7 @@ phycount_e <- phycount_e %>%
 ```
 
 
+## phyloseq summary
 
 ```{r phyloseq summary}
 phycount_e
@@ -215,7 +218,9 @@ levels(sample_data(phycount_e)$Sample_type)
 
 ```
 
-Calculating alpha-diversity indexes
+# Alpha Diversity
+
+## Calculating alpha-diversity indexes
 
 ```{r rich & diversity}
 
@@ -273,6 +278,7 @@ write.csv(Alpha_descriptive_stats, "Alpha_Divertsity_descriptive_stats.csv")
 
 
 ## Alpha diversity: t-test comparision between Litter and Soil within each farm types
+
 ```{r alpha diversity t-test}
 
 # Using t.test to compare between the two groups
@@ -350,16 +356,12 @@ phycount_div %>%
 
 ```
 
-
+Writing alpha diversity t-test to file
 ```{R writing alpha div ttest to file}
 
-##Saving results (CAUTION!Run ONLY WHEN READY! Leave commented to avoid overwriting already generated files)
 ## Sink command, it print everything betweeN sinks()
 
 set.seed(43)
-
-
-
 sink("AlphaDiversity_ttest.txt")
  
    ##Comparing OBserved Richness
@@ -439,17 +441,13 @@ sink()
 
 
 Drawing Richness and Diversity plots
-
 ```{r boxplot rich $ diversity}
 #Creating vector for comparing samples
  complist <- list(c("Soil", "Litter"))
 
-
-
 #Creating vector with new names
  Farm_name <- c("Pullet", "Breeder", "Broiler", "Processing\nPlant")
 names(Farm_name) <- c("Pullet", "Breeder", "Broiler", "Processing_plant")
-
 
 #Drawing Observed Richness plot
 bp_rc <- 
