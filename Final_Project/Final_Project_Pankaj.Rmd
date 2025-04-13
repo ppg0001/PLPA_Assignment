@@ -359,7 +359,7 @@ phycount_div %>%
 Writing alpha diversity t-test to file
 ```{R writing alpha div ttest to file}
 
-## Sink command, it print everything betweeN sinks()
+## Sink command, it print everything between sinks()
 
 set.seed(43)
 sink("AlphaDiversity_ttest.txt")
@@ -493,7 +493,6 @@ bp_rc <-
              )
 
 
-
 #Drawing Shannon diversity index plot
 bp_sn <- 
     phycount_div %>%
@@ -609,12 +608,14 @@ ggsave(filename = "Alpha_Diversity_Plots.svg",
        width = 300,
        height = 250)
 
+combined_plot_Alpha_Diversity
 
 ```
 
 ## Alpha diversity result explanation:
 In our study, observed richness and Simpson diversity index were higher in the soil during the pullet and broiler stages, whereas no significant differences were found between litter and soil in the breeder stage. Moreover, the Shannon diversity index was higher in soil samples than in litter across all production stages. These findings indicate that soil contains a more diverse and evenly distributed microbiome, whereas litter is a more selective environment with limited microbes that make up its composition.
 
+----------------------------------------------------------------------------------------------------------------------------------
 
 # Exploring the microbial community
 
