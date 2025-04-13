@@ -3,11 +3,11 @@ title: "Final_Project"
 author: "Pankaj Gaonkar"
 date: "2025-04-10"
 output:
+  pdf_document:
+    toc: true
   html_document:
     toc: true
     toc_float: true
-  pdf_document:
-    toc: true
   word_document: default
   md_document:
     variant: gfm
@@ -16,6 +16,8 @@ output:
 
 # **ABOUT**
 This script is designed for the analysis of the Shotgun_POULTRY microbiome data This script contains the statistical analysis, exploratory plots and publication plots. Each step of the analysis is discussed at my best capabilities.For more detailed understanding please refer the Readme file.
+
+## Readme file link
 [Click Here: Readme File](https://github.com/ppg0001/PLPA_Assignment/blob/main/README.md)
 
 *NOTE: This document is for class purpose and is intended to be updated*
@@ -795,6 +797,9 @@ tbl_mstr_av_bp %>%
                                   )
         ) +
   facet_grid(Sample_type ~ Farm_type, scale = "free_x", space = "free_x")
+
+
+
 ```
 
 ```{r drawing averaged relab plots}
