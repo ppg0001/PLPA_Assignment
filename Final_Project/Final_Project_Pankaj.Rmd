@@ -13,14 +13,14 @@ output:
     variant: gfm
 ---
 
-# **Final Project _ Script**
 
-## ABOUT
+# **ABOUT**
 This script is designed for the analysis of the Shotgun_POULTRY microbiome data This script contains the statistical analysis, exploratory plots and publication plots. Each step of the analysis is discussed at my best capabilities.For more detailed understanding please refer the Readme file.
 [Click Here: Readme File](https://github.com/ppg0001/PLPA_Assignment/blob/main/README.md)
 
 *NOTE: This document is for class purpose and is intended to be updated*
 
+# **Getting ready**
                             
 ## Loading packages
 
@@ -136,11 +136,11 @@ col_phy <- c ("#0DFFCA","#DDE996","#FB6CE0","#71BDA3","#FFAE8D","#A90040","#C2C8
 
 col_tax <- c("#b2df8a","#f781bf","#a65628","#ffff33","#984ea3","#4daf4a","#ff7f00","#377eb8","#e41a1c","#999999")
 
-# We can use the following as our coloring scheme
-swatch(col_sample)
-swatch(col_farm)
-swatch(col_tax)
-swatch(col_phy)
+# We can use the following as our coloring scheme (uncomment if needed below)
+#swatch(col_sample)
+#swatch(col_farm)
+#swatch(col_tax)
+#swatch(col_phy)
 ```
 
 ## Print dataset structure
@@ -153,7 +153,7 @@ as_tibble(mt_smpl)
 ```
 
 
-# Metaphlan and phyloseq
+# **Metaphlan and phyloseq**
 
 - Metaphlan outputs a table of relative abundances. However, phyloseq *only accepts absolute abundances for alpha-diversity analysis*.
   
@@ -166,7 +166,7 @@ as_tibble(mt_smpl)
 #Creating a vector containing the the total number of reads in the same order as the columns in tbl_otu so they match.
 
 nreads <- mt_smpl$TotalReads
-nreads
+#nreads   #Uncomment to see output
 
 #Dividing all values in tbl_otu to shrink proportions to 0-1
 
@@ -176,13 +176,14 @@ tbl_otu <- tbl_otu[,1:ncol(tbl_otu)]/100
 
 tbl_otu_ecount <- as.data.frame(t(t(tbl_otu)*nreads)) %>%
                   dplyr::mutate(across(is.numeric, round))
-# The table is being transposed so that every row (i) matches with the vector entry (i'), then performing the multiplication. After this the table is transposed again to original wide shape. Then the multiplied table is fed into the mutate function which goes across and rounds all of the numerical values.
+
+#The table is being transposed so that every row (i) matches with the vector entry (i'), then performing the multiplication. After this the table is transposed again to original wide shape. Then the multiplied table is fed into the mutate function which goes across and rounds all of the numerical values.
 
 ```
 
 ## The count data is ready to be imported into phyloseq
 
-**For our analysis, we will focus only on the bacterial community.**
+***For our analysis, we will focus only on the bacterial community.***
 
 ```{r importing files to phyloseq}
 
@@ -206,7 +207,7 @@ phycount_e <- phycount_e %>%
 ```
 
 
-## phyloseq summary
+## Phyloseq summary
 
 ```{r phyloseq summary}
 phycount_e
@@ -218,7 +219,7 @@ levels(sample_data(phycount_e)$Sample_type)
 
 ```
 
-# Alpha Diversity
+# **Alpha Diversity**
 
 ## Calculating alpha-diversity indexes
 
@@ -589,6 +590,8 @@ bp_sn
 bp_sp
 ```
 
+Saving combined alpha diversity plots
+
 ```{r saving Alpha Diversity plots}
 #Saving plots
 
@@ -608,16 +611,15 @@ ggsave(filename = "Alpha_Diversity_Plots.svg",
        width = 300,
        height = 250)
 
-combined_plot_Alpha_Diversity
-
 ```
 
 ## Alpha diversity result explanation:
 In our study, observed richness and Simpson diversity index were higher in the soil during the pullet and broiler stages, whereas no significant differences were found between litter and soil in the breeder stage. Moreover, the Shannon diversity index was higher in soil samples than in litter across all production stages. These findings indicate that soil contains a more diverse and evenly distributed microbiome, whereas litter is a more selective environment with limited microbes that make up its composition.
 
-----------------------------------------------------------------------------------------------------------------------------------
 
-# Exploring the microbial community
+
+
+# **Exploring the microbial community**
 
 ## Lets check which phylum are overall present in our dataset
 
@@ -682,7 +684,7 @@ tbl_mstr_bp <- tbl_mstr_pc %>%
 
 ```
 
-
+creating averaged table
 ```{r creating averaged table}
 # Averaging taxons by Sample_group
 
@@ -694,7 +696,6 @@ tbl_mstr_av <- tbl_mstr_pc %>%
   distinct() %>%
   droplevels() %>%
   ungroup()
-
 
 
 ##Summarising by Phylum count
@@ -722,12 +723,12 @@ tbl_mstr_av_bp$Phylum <- factor(tbl_mstr_av_bp$Phylum,
 
 
 
-
+Drawing AVERAGED microbiome bar plots
 
 ```{r drawing AVERAGED bar plots}
 
 
-####Litter bac
+####Litter bacterial
 
 relbp_av_bac_Litter <- 
 tbl_mstr_av_bp %>%
@@ -763,7 +764,7 @@ tbl_mstr_av_bp %>%
 
 
 
-####Soil bac
+####Soil bacterial
 
 relbp_av_bac_Soil <- 
 tbl_mstr_av_bp %>%
@@ -800,7 +801,7 @@ tbl_mstr_av_bp %>%
 relbp_av_bac_Litter
 relbp_av_bac_Soil
 ```
-Saving plots
+Saving combined relative abundance plots
 
 ```{r saving averaged relative abundance plots_Bacteria}
 
@@ -821,7 +822,6 @@ ggsave(filename = "Relative_abundance_Plots.svg",
        width = 350,
        height = 220)
 
-
 ```
 
 
@@ -836,6 +836,10 @@ ggsave(filename = "Relative_abundance_Plots.svg",
       --> Vegan: where PERMANOVA and PERMAdisp will be calculates
       --> MicrobiomeMarker: where Ordinations and normalization will be performed
       
+
+
+
+Creating relative abundance phyloseq object      
 ```{r creating relative abundance phyloseq object}
 
 OTUcount = otu_table(tbl_otu, 
@@ -860,6 +864,8 @@ phycount <- phycount %>%
 ```
 
 ```{r printing phyloseq summary}
+# printing phyloseq summary
+
 phycount
 
 print("")
@@ -876,6 +882,7 @@ levels(sample_data(phycount)$Farm_type)
 - PERMANOVAS are calculated using the adonis functions in the package Vegan. To use Vegan, phyloseq objects need to be turned into Vegan objects.
 - Next functions convert physeq format into Vegan.
 
+creating pssd2veg function
 ```{r creating pssd2veg function}
 
 pssd2veg <- function(physeq) {
@@ -885,6 +892,7 @@ pssd2veg <- function(physeq) {
 
 ```
 
+Creating psotu2veg function
 ```{r creating psotu2veg }
 
 psotu2veg <- function(physeq) {
@@ -898,7 +906,6 @@ psotu2veg <- function(physeq) {
 ```
 
 Importing Phyloseq data into teh package Vegan
-
 ```{r data import }
 
 vegan_count <- pssd2veg(phycount)
@@ -907,7 +914,6 @@ vegan_otu <- psotu2veg(phycount)
 ```
 
 Calculating distance matrix
-
 ```{r distance matrix}
 ##Calculating distance matrix using Robust Aitchinson (Euclidean distance of the CLR transform of non-zero values)
 veg_count_raitch <- vegdist(vegan_otu, "robust.aitchison")
@@ -949,6 +955,7 @@ sink()
 
 ```
 
+Specific adonis pariwise comparision
 ```{r specific adonis pariwise}
 
 #Writing the specific pariwise comparission of interest in text file
@@ -979,7 +986,6 @@ sink()
 ### ORDINATION WITH PCOA
 
 Drawing PCA plots
-
 ```{r drawing PCoA + Aithcison plots}
 
 #Sample type
@@ -1063,27 +1069,21 @@ pcoa_sp_clr_farm <-
 
 ```
 
-
-
 ```{r drawing PCoA plots}
 pcoa_sp_clr_S
 
 pcoa_sp_clr_farm
 
 ```
-
+Saving combined beta diversity - PCoA plots
 ```{r saving PCoA}
-#Saving plots (CAUTION!Run ONLY WHEN READY! Leave commented to avoid overwriting already generated plots)
-
-
 #Combined plots
 combined_PCoA <- ggarrange(pcoa_sp_clr_S, pcoa_sp_clr_farm,
                            ncol = 1,
                            nrow = 2)
 
 
-
- ggsave(filename = "Combined_PCoA_plots_betadiversity.svg",
+ggsave(filename = "Combined_PCoA_plots_betadiversity.svg",
         plot = combined_PCoA,
         device = "svg",
         units = "mm",
@@ -1095,7 +1095,7 @@ combined_PCoA <- ggarrange(pcoa_sp_clr_S, pcoa_sp_clr_farm,
 ```
 
 
-# Compiling all generated plots as per the figure number
+# Link to GitHub repository
+[Click here to go to GitHub repository](https://github.com/ppg0001/PLPA_Assignment)
 
 
-#################################################################################
