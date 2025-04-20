@@ -3,8 +3,6 @@ This is a repository for the PLPA6820 class - **Final Project**.
 
 ## Repository Structure
 ### File tree
-    Final Project: All files related to the final project of class
-    Other Class Assignment: All practice and coding challenges assignments
 ```
 ├── Final_Project                                    # FINAL PROJECT FOLDER WITH ALL THE INPUT AND OUTPUT FILES
 │   ├── AlphaDiversity_ttest.txt
@@ -20,7 +18,7 @@ This is a repository for the PLPA6820 class - **Final Project**.
 │   ├── Sample_metadata.tsv
 │   ├── specific_Pairwise_Comparissions_PERMANOVA.txt
 │   └── Taxonomy_metadata.tsv
-├── PLPA_Assignment.Rproj
+├── PLPA_Assignment.Rproj                    # R project file
 ├── README.html
 └── README.md
 
