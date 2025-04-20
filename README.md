@@ -1,5 +1,5 @@
 # PLPA 6820 Principles and techniques of reproducible science
-This is a repository for the PLPA6820 class. Including Final Project.
+This is a repository for the PLPA6820 class - **Final Project**.
 
 ## Repository Structure
 ### File tree
@@ -20,7 +20,6 @@ This is a repository for the PLPA6820 class. Including Final Project.
 │   ├── Sample_metadata.tsv
 │   ├── specific_Pairwise_Comparissions_PERMANOVA.txt
 │   └── Taxonomy_metadata.tsv
-├── Other_Class_Assignments                          # All practice and coding challenges assignments
 ├── PLPA_Assignment.Rproj
 ├── README.html
 └── README.md
