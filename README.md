@@ -1,10 +1,8 @@
 # PLPA 6820 Principles and techniques of reproducible science
-This is a repository for the PLPA6820 class. Including Final Project.
+This is a repository for the PLPA6820 class - **Final Project**.
 
 ## Repository Structure
 ### File tree
-    Final Project: All files related to the final project of class
-    Other Class Assignment: All practice and coding challenges assignments
 ```
 ├── Final_Project                                    # FINAL PROJECT FOLDER WITH ALL THE INPUT AND OUTPUT FILES
 │   ├── AlphaDiversity_ttest.txt
@@ -20,8 +18,7 @@ This is a repository for the PLPA6820 class. Including Final Project.
 │   ├── Sample_metadata.tsv
 │   ├── specific_Pairwise_Comparissions_PERMANOVA.txt
 │   └── Taxonomy_metadata.tsv
-├── Other_Class_Assignments                          # All practice and coding challenges assignments
-├── PLPA_Assignment.Rproj
+├── PLPA_Assignment.Rproj                    # R project file
 ├── README.html
 └── README.md
 
@@ -118,7 +115,7 @@ Evidence of microbiome clustering by sample type was observed in PCoA plots, sug
 
 
 
-
+# NEED TO UPDATE THE BELOW THINGS AND LINKS -------
 
 # Other
 ## A clickable link in your README to your GitHub flavored .md file
@@ -129,4 +126,4 @@ Evidence of microbiome clustering by sample type was observed in PCoA plots, sug
 - [Click here to visit the Repository](https://github.com/ppg0001/PLPA_Assignment)
 
 ### **Link to analysis**
-- [Analysis 1](Coding_practice_Rmarkdown.md)
+- [Analysis](https://github.com/ppg0001/PLPA_Assignment/blob/main/Final_Project/Final_Project_Pankaj.Rmd)
