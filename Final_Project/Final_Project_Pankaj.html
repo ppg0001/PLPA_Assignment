@@ -2493,8 +2493,10 @@ tbl_mstr_av_bp %&gt;%
 <pre class="r"><code># Uncomment to see the plot during R analysis
 #relbp_av_bac_Litter
 #relbp_av_bac_Soil</code></pre>
-<p>Saving combined relative abundance plots Note: Please look the saved
-file to have better visualization of microbiome plot</p>
+<p>Saving combined relative abundance plots <strong>Note: Please look
+the saved file to have better visualization of microbiome plot</strong>
+<a href="https://github.com/ppg0001/PLPA_Assignment/blob/main/Final_Project/Relative_abundance_Plots.svg">Click
+Here: Figure Microbiome Profile - Phylum</a></p>
 <pre class="r"><code>#Saving plots
 
 #Combined plots
@@ -2527,10 +2529,9 @@ are calculated, profiles can be statistically compared using PERMANOVA
 and visualized using ordination plots, such as PCoA or PCA.</p>
 <p>In order to perform these analysis the abundances will be again
 exported into phyloseq but this time as relative abundances. The
-phyloseq object will be used as input into two different packages: –&gt;
-Vegan: where PERMANOVA and PERMAdisp will be calculates –&gt;
-MicrobiomeMarker: where Ordinations and normalization will be
-performed</p>
+phyloseq object will be used as input into two different packages: -
+Vegan: where PERMANOVA will be calculated - MicrobiomeMarker: where
+Ordinations and normalization will be performed</p>
 <p>Creating relative abundance phyloseq object</p>
 <pre class="r"><code>OTUcount = otu_table(tbl_otu, 
                 taxa_are_rows = TRUE)
@@ -2578,8 +2579,8 @@ phycount</code></pre>
 <pre><code>## [1] &quot;Litter&quot; &quot;Soil&quot;</code></pre>
 <pre class="r"><code>levels(sample_data(phycount)$Farm_type)</code></pre>
 <pre><code>## [1] &quot;Pullet&quot;  &quot;Breeder&quot; &quot;Broiler&quot;</code></pre>
-<div id="performing-permanovas" class="section level2">
-<h2>Performing PERMANOVAS</h2>
+<div id="performing-permanova" class="section level2">
+<h2>Performing PERMANOVA</h2>
 <ul>
 <li>PERMANOVA, (permutational multivariate ANOVA), is a non-parametric
 alternative to MANOVA, or multivariate ANOVA test.</li>
@@ -2608,8 +2609,8 @@ vegan_otu &lt;- psotu2veg(phycount)</code></pre>
 <pre class="r"><code>##Calculating distance matrix using Robust Aitchinson (Euclidean distance of the CLR transform of non-zero values)
 veg_count_raitch &lt;- vegdist(vegan_otu, &quot;robust.aitchison&quot;)</code></pre>
 </div>
-<div id="running-permanovas" class="section level2">
-<h2>RUNNING PERMANOVAs</h2>
+<div id="running-permanova" class="section level2">
+<h2>Running PERMANOVA</h2>
 <pre class="r"><code>#Writing the overall PERMANOVA results in text file
 sink(&quot;PERMANOVA_Overall_Results.txt&quot;)
 

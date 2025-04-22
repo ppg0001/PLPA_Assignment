@@ -1229,8 +1229,10 @@ tbl_mstr_av_bp %>%
 #relbp_av_bac_Soil
 ```
 
-Saving combined relative abundance plots Note: Please look the saved
-file to have better visualization of microbiome plot
+Saving combined relative abundance plots **Note: Please look the saved
+file to have better visualization of microbiome plot** [Click Here:
+Figure Microbiome Profile -
+Phylum](https://github.com/ppg0001/PLPA_Assignment/blob/main/Final_Project/Relative_abundance_Plots.svg)
 
 ``` r
 #Saving plots
@@ -1271,9 +1273,9 @@ and visualized using ordination plots, such as PCoA or PCA.
 
 In order to perform these analysis the abundances will be again exported
 into phyloseq but this time as relative abundances. The phyloseq object
-will be used as input into two different packages: –\> Vegan: where
-PERMANOVA and PERMAdisp will be calculates –\> MicrobiomeMarker: where
-Ordinations and normalization will be performed
+will be used as input into two different packages: - Vegan: where
+PERMANOVA will be calculated - MicrobiomeMarker: where Ordinations and
+normalization will be performed
 
 Creating relative abundance phyloseq object
 
@@ -1354,7 +1356,7 @@ levels(sample_data(phycount)$Farm_type)
 
     ## [1] "Pullet"  "Breeder" "Broiler"
 
-## Performing PERMANOVAS
+## Performing PERMANOVA
 
 - PERMANOVA, (permutational multivariate ANOVA), is a non-parametric
   alternative to MANOVA, or multivariate ANOVA test.
@@ -1398,7 +1400,7 @@ Calculating distance matrix
 veg_count_raitch <- vegdist(vegan_otu, "robust.aitchison")
 ```
 
-## RUNNING PERMANOVAs
+## Running PERMANOVA
 
 ``` r
 #Writing the overall PERMANOVA results in text file
