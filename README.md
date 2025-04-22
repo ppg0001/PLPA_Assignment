@@ -107,7 +107,7 @@ Here, we have a snapshot of microbial community and their composition from diffe
 
 
 ### 6.3. Beta Diversity
-[Click Here: Figure Alpha Diversity](https://github.com/ppg0001/PLPA_Assignment/blob/main/Final_Project/Combined_PCoA_plots_betadiversity.svg)
+[Click Here: Figure Beta Diversity](https://github.com/ppg0001/PLPA_Assignment/blob/main/Final_Project/Combined_PCoA_plots_betadiversity.svg)
 
 Evidence of microbiome clustering by sample type was observed in PCoA plots, suggesting that litter and soil samples are significantly different from each other (PERMANOVA: P=0.001). Furthermore, clustering by farm types revealed significant differences across different stages of production (PERMANOVA: P=0.001). Pullet and breeder farms clustered together and had no statistically different microbial composition (P = 0.059). Broiler farms formed a distinct cluster and the microbial composition was statistically different than pullet and breeder farms (PERMANOVA: P = 0.001). 
 
