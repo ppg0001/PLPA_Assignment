@@ -3,11 +3,11 @@ title: "Final_Project"
 author: "Pankaj Gaonkar"
 date: "2025-04-10"
 output:
+  md_document:
+    variant: gfm
   html_document:
     toc: true
     toc_float: true
-  md_document:
-    variant: gfm
   word_document: default
   pdf_document:
     toc: true
@@ -803,10 +803,12 @@ tbl_mstr_av_bp %>%
 ```
 
 ```{r drawing averaged relab plots}
-relbp_av_bac_Litter
-relbp_av_bac_Soil
+# Uncomment to see the plot during R analysis
+#relbp_av_bac_Litter
+#relbp_av_bac_Soil
 ```
 Saving combined relative abundance plots
+Note: Please look the saved file to have better visualization of microbiome plot
 
 ```{r saving averaged relative abundance plots_Bacteria}
 
@@ -818,6 +820,8 @@ combined_plot_relative_abundance_bacteria <- ggarrange(relbp_av_bac_Litter, relb
                            nrow = 2,
                            common.legend = TRUE,
                            legend = "right")
+
+combined_plot_relative_abundance_bacteria
 
 #Saving plots
 ggsave(filename = "Relative_abundance_Plots.svg",
@@ -881,7 +885,7 @@ levels(sample_data(phycount)$Sample_type)
 levels(sample_data(phycount)$Farm_type)
 
 ```
-##Performing PERMANOVAS
+## Performing PERMANOVAS
 
 - PERMANOVA, (permutational multivariate ANOVA), is a non-parametric alternative to MANOVA, or multivariate ANOVA test.
 - PERMANOVAS are calculated using the adonis functions in the package Vegan. To use Vegan, phyloseq objects need to be turned into Vegan objects.

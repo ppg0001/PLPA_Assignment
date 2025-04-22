@@ -1224,17 +1224,13 @@ tbl_mstr_av_bp %>%
 ```
 
 ``` r
-relbp_av_bac_Litter
+# Uncomment to see the plot during R analysis
+#relbp_av_bac_Litter
+#relbp_av_bac_Soil
 ```
 
-![](Final_Project_Pankaj_files/figure-gfm/drawing%20averaged%20relab%20plots-1.png)<!-- -->
-
-``` r
-relbp_av_bac_Soil
-```
-
-![](Final_Project_Pankaj_files/figure-gfm/drawing%20averaged%20relab%20plots-2.png)<!-- -->
-Saving combined relative abundance plots
+Saving combined relative abundance plots Note: Please look the saved
+file to have better visualization of microbiome plot
 
 ``` r
 #Saving plots
@@ -1246,6 +1242,12 @@ combined_plot_relative_abundance_bacteria <- ggarrange(relbp_av_bac_Litter, relb
                            common.legend = TRUE,
                            legend = "right")
 
+combined_plot_relative_abundance_bacteria
+```
+
+![](Final_Project_Pankaj_files/figure-gfm/saving%20averaged%20relative%20abundance%20plots_Bacteria-1.png)<!-- -->
+
+``` r
 #Saving plots
 ggsave(filename = "Relative_abundance_Plots.svg",
        plot = combined_plot_relative_abundance_bacteria,
@@ -1352,7 +1354,7 @@ levels(sample_data(phycount)$Farm_type)
 
     ## [1] "Pullet"  "Breeder" "Broiler"
 
-\##Performing PERMANOVAS
+## Performing PERMANOVAS
 
 - PERMANOVA, (permutational multivariate ANOVA), is a non-parametric
   alternative to MANOVA, or multivariate ANOVA test.
@@ -1582,7 +1584,7 @@ ggsave(filename = "Combined_PCoA_plots_betadiversity.svg",
         height = 300)
 ```
 
-# Important links
+# **Important links**
 
 ## A clickable link to GitHub repository
 
