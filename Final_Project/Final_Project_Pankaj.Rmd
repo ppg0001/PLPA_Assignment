@@ -808,7 +808,8 @@ tbl_mstr_av_bp %>%
 #relbp_av_bac_Soil
 ```
 Saving combined relative abundance plots
-Note: Please look the saved file to have better visualization of microbiome plot
+**Note: Please look the saved file to have better visualization of microbiome plot**
+[Click Here: Figure Microbiome Profile - Phylum](https://github.com/ppg0001/PLPA_Assignment/blob/main/Final_Project/Relative_abundance_Plots.svg)
 
 ```{r saving averaged relative abundance plots_Bacteria}
 
@@ -842,8 +843,8 @@ ggsave(filename = "Relative_abundance_Plots.svg",
   Communities can be statistically compared by producing distance matrices. On compositional data we will use robust Aitchison distances, which relies on the centered log ratio transform. Once these distances are calculated, profiles can be statistically compared using PERMANOVA and visualized using ordination plots, such as PCoA or PCA.
   
   In order to perform these analysis the abundances will be again exported into phyloseq but this time as relative abundances. The phyloseq object will be used as input into two different packages:
-      --> Vegan: where PERMANOVA and PERMAdisp will be calculates
-      --> MicrobiomeMarker: where Ordinations and normalization will be performed
+  - Vegan: where PERMANOVA will be calculated
+  - MicrobiomeMarker: where Ordinations and normalization will be performed
       
 
 
@@ -885,7 +886,7 @@ levels(sample_data(phycount)$Sample_type)
 levels(sample_data(phycount)$Farm_type)
 
 ```
-## Performing PERMANOVAS
+## Performing PERMANOVA
 
 - PERMANOVA, (permutational multivariate ANOVA), is a non-parametric alternative to MANOVA, or multivariate ANOVA test.
 - PERMANOVAS are calculated using the adonis functions in the package Vegan. To use Vegan, phyloseq objects need to be turned into Vegan objects.
@@ -933,7 +934,7 @@ veg_count_raitch <- vegdist(vegan_otu, "robust.aitchison")
 
 
  
-## RUNNING PERMANOVAs
+## Running PERMANOVA
 
 ```{r running distance PERMANOVA}
 
