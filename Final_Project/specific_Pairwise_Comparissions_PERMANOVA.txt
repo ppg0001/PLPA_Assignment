@@ -3,9 +3,9 @@ $parent_call
 
 $Litter_vs_Soil
          Df SumOfSqs      R2      F Pr(>F)    
-Model     1     7191 0.10806 7.2692  0.001 ***
-Residual 60    59357 0.89194                  
-Total    61    66548 1.00000                  
+Model     1     7486 0.10721 7.4453  0.001 ***
+Residual 62    62338 0.89279                  
+Total    63    69824 1.00000                  
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
@@ -15,10 +15,10 @@ $parent_call
 [1] "veg_count_raitch ~ Farm_type , strata = Null , permutations 999"
 
 $Pullet_vs_Breeder
-         Df SumOfSqs      R2     F Pr(>F)  
-Model     1   1410.9 0.04846 1.426  0.055 .
-Residual 28  27702.5 0.95154               
-Total    29  29113.4 1.00000               
+         Df SumOfSqs      R2      F Pr(>F)  
+Model     1     1459 0.04509 1.4164  0.059 .
+Residual 30    30904 0.95491                
+Total    31    32363 1.00000                
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
@@ -31,10 +31,10 @@ Total    43    45303 1.00000
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 $Breeder_vs_Broiler
-         Df SumOfSqs      R2      F Pr(>F)    
-Model     1     3247 0.05853 2.9839  0.001 ***
-Residual 48    52240 0.94147                  
-Total    49    55488 1.00000                  
+         Df SumOfSqs     R2      F Pr(>F)    
+Model     1     3339 0.0568 3.0112  0.001 ***
+Residual 50    55442 0.9432                  
+Total    51    58780 1.0000                  
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 

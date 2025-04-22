@@ -5,10 +5,10 @@ Permutation: free
 Number of permutations: 999
 
 adonis2(formula = veg_count_raitch ~ Sample_type * Farm_type * Company, data = vegan_count, permutations = 999)
-         Df SumOfSqs      R2      F Pr(>F)    
-Model    11    25672 0.38576 2.8547  0.001 ***
-Residual 50    40876 0.61424                  
-Total    61    66548 1.00000                  
+         Df SumOfSqs      R2     F Pr(>F)    
+Model    11    26314 0.37687 2.859  0.001 ***
+Residual 52    43510 0.62313                 
+Total    63    69824 1.00000                 
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 [1] 
@@ -19,9 +19,9 @@ Number of permutations: 999
 
 adonis2(formula = veg_count_raitch ~ Sample_type, data = vegan_count, permutations = 999)
          Df SumOfSqs      R2      F Pr(>F)    
-Model     1     7191 0.10806 7.2692  0.001 ***
-Residual 60    59357 0.89194                  
-Total    61    66548 1.00000                  
+Model     1     7486 0.10721 7.4453  0.001 ***
+Residual 62    62338 0.89279                  
+Total    63    69824 1.00000                  
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 [1] 
@@ -32,9 +32,9 @@ Number of permutations: 999
 
 adonis2(formula = veg_count_raitch ~ Farm_type, data = vegan_count, permutations = 999)
          Df SumOfSqs      R2      F Pr(>F)    
-Model     2     5413 0.08133 2.6118  0.001 ***
-Residual 59    61135 0.91867                  
-Total    61    66548 1.00000                  
+Model     2     5487 0.07859 2.6014  0.001 ***
+Residual 61    64337 0.92141                  
+Total    63    69824 1.00000                  
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 [1] 
@@ -45,8 +45,8 @@ Number of permutations: 999
 
 adonis2(formula = veg_count_raitch ~ Company, data = vegan_count, permutations = 999)
          Df SumOfSqs      R2      F Pr(>F)  
-Model     1     1485 0.02231 1.3691  0.082 .
-Residual 60    65063 0.97769                
-Total    61    66548 1.00000                
+Model     1     1526 0.02186 1.3854  0.056 .
+Residual 62    68298 0.97814                
+Total    63    69824 1.00000                
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1

@@ -16,13 +16,13 @@ mean in group Litter   mean in group Soil
 	Welch Two Sample t-test
 
 data:  Observed by Sample_type
-t = -1.3218, df = 13.876, p-value = 0.2076
+t = -0.69508, df = 17.885, p-value = 0.4959
 alternative hypothesis: true difference in means between group Litter and group Soil is not equal to 0
 95 percent confidence interval:
- -221.00037   52.55593
+ -183.08883   92.08883
 sample estimates:
 mean in group Litter   mean in group Soil 
-            243.5556             327.7778 
+               274.9                320.4 
 
 [1] "RICHNESS BROILER"
 
@@ -55,13 +55,13 @@ mean in group Litter   mean in group Soil
 	Welch Two Sample t-test
 
 data:  Shannon by Sample_type
-t = -4.6001, df = 15.972, p-value = 0.000297
+t = -4.1251, df = 17.863, p-value = 0.0006447
 alternative hypothesis: true difference in means between group Litter and group Soil is not equal to 0
 95 percent confidence interval:
- -1.3030532 -0.4808508
+ -1.1830222 -0.3843323
 sample estimates:
 mean in group Litter   mean in group Soil 
-            3.177859             4.069811 
+            3.223258             4.006936 
 
 [1] "SHANNON BROILER"
 
@@ -94,13 +94,13 @@ mean in group Litter   mean in group Soil
 	Welch Two Sample t-test
 
 data:  Simpson by Sample_type
-t = -2.0496, df = 14.013, p-value = 0.0596
+t = -1.7467, df = 16.246, p-value = 0.09957
 alternative hypothesis: true difference in means between group Litter and group Soil is not equal to 0
 95 percent confidence interval:
- -0.103409053  0.002342238
+ -0.089546681  0.008589404
 sample estimates:
 mean in group Litter   mean in group Soil 
-           0.8960792            0.9466126 
+           0.9007753            0.9412540 
 
 [1] "SIMPSON BROILER"
 
