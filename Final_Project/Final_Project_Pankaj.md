@@ -3,8 +3,8 @@
 This script is designed for the analysis of the Shotgun_POULTRY
 microbiome data This script contains the statistical analysis,
 exploratory plots and publication plots. Each step of the analysis is
-discussed at my best capabilities.For more detailed understanding please
-refer the Readme file.
+discussed at my best capabilities.For more detailed understanding
+(including biological interpretation) please refer the Readme file.
 
 ## Readme file link
 
@@ -1582,9 +1582,19 @@ ggsave(filename = "Combined_PCoA_plots_betadiversity.svg",
         height = 300)
 ```
 
-# Link to GitHub repository
+# A clickable link to GitHub repository
 
-[Click here to go to GitHub
-repository](https://github.com/ppg0001/PLPA_Assignment)
+[Click here to visit the GitHub
+Repository](https://github.com/ppg0001/PLPA_Assignment)
+
+# A clickable link to GitHub flavored .md file
+
+[Click here to go to GitHub flavored .md
+file](https://github.com/ppg0001/PLPA_Assignment/blob/main/Final_Project/Final_Project_Pankaj.md)
+
+# A clickable link to R codes
+
+[Click here to go to Analysis/R codes(.Rmd
+file)](https://github.com/ppg0001/PLPA_Assignment/blob/main/Final_Project/Final_Project_Pankaj.Rmd)
 
 ## Note: Zenod hasnt been created yet because this data is yet to be published.

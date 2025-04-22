@@ -3,11 +3,11 @@ title: "Final_Project"
 author: "Pankaj Gaonkar"
 date: "2025-04-10"
 output:
-  md_document:
-    variant: gfm
   html_document:
     toc: true
     toc_float: true
+  md_document:
+    variant: gfm
   word_document: default
   pdf_document:
     toc: true
@@ -15,7 +15,7 @@ output:
 
 
 # **ABOUT**
-This script is designed for the analysis of the Shotgun_POULTRY microbiome data This script contains the statistical analysis, exploratory plots and publication plots. Each step of the analysis is discussed at my best capabilities.For more detailed understanding please refer the Readme file.
+This script is designed for the analysis of the Shotgun_POULTRY microbiome data This script contains the statistical analysis, exploratory plots and publication plots. Each step of the analysis is discussed at my best capabilities.For more detailed understanding (including biological interpretation) please refer the Readme file.
 
 ## Readme file link
 [Click Here: Readme File](https://github.com/ppg0001/PLPA_Assignment/blob/main/README.md)
@@ -1099,14 +1099,15 @@ ggsave(filename = "Combined_PCoA_plots_betadiversity.svg",
 
 ```
 
+# Important links
 
-# A clickable link to GitHub repository
+## A clickable link to GitHub repository
 [Click here to visit the GitHub Repository](https://github.com/ppg0001/PLPA_Assignment)
 
-# A clickable link to GitHub flavored .md file
+## A clickable link to GitHub flavored .md file
 [Click here to go to GitHub flavored .md file](https://github.com/ppg0001/PLPA_Assignment/blob/main/Final_Project/Final_Project_Pankaj.md)
 
-# A clickable link to R codes
+## A clickable link to R codes
 [Click here to go to Analysis/R codes(.Rmd file)](https://github.com/ppg0001/PLPA_Assignment/blob/main/Final_Project/Final_Project_Pankaj.Rmd)
 
 ## Note: Zenod hasnt been created yet because this data is yet to be published.
