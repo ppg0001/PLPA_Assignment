@@ -31,16 +31,16 @@ NOTE: This document is for class purpose and is intended to be updated
 
 # Title: Microbiome profile in different stages of commercial poultry environment
 
-## INTRODUCTION
+## 1. INTRODUCTION
 The demand for producing animal protein has increased worldwide. In consequence, there is an increased in the need of AMU to prevent and treat animal diseases which have contributed to the increase in  AMR and its spread.Because of concerns with AMR,  the animal production industry has promoted reducing AMU to mitigate AMR. However, because of the extensive historic use of antimicrobial in farm, antimicrobial residues might have accumulated in these environments, contributing to the maintenance of AMR. In this study, we explore the microbiome diversity in different stages of production. This is the part of bigger study we are doing. For this class final project we will explore how the poultry microbiome dynamics in the different production stages (Pullet -> Breeder -> Broiler) and farm environment (Litter and Soil).
 
-## HYPOTHESIS
+## 2. HYPOTHESIS
 We have litter sample representing inside environment and soil representing outside environment. We anticipate selective pressure in the inside environment and in the broiler stage because of antimicrobial pressure. So higher antimicrobial pressure in litter samples and broiler stage might influence the microbial dynamics.
 
-## OBJECTIVE
+## 3. OBJECTIVE
  ***Reconstruct the microbiome of poultry farm environment (litter,soil) using shotgun metagenomics***
 
-## METHODS
+## 4. METHODS
 
 ### Experimental design
 To evaluate AMR across different stages of poultry production, we conducted a systematic sampling of poultry farm environments from two poultry complexes in southeast USA and from three production stages: pullet (n=4), breeder (n=8), and broiler (n=14). Farms were selected to represent at least 10% of the poultry farms from each production complex. This approach ensured adequate representation of the production system
