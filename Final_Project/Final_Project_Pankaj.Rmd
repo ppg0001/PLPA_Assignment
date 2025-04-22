@@ -1099,7 +1099,7 @@ ggsave(filename = "Combined_PCoA_plots_betadiversity.svg",
 
 ```
 
-# Important links
+# **Important links**
 
 ## A clickable link to GitHub repository
 [Click here to visit the GitHub Repository](https://github.com/ppg0001/PLPA_Assignment)
