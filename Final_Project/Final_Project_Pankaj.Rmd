@@ -1100,10 +1100,13 @@ ggsave(filename = "Combined_PCoA_plots_betadiversity.svg",
 ```
 
 
-# Link to GitHub repository
-[Click here to go to GitHub repository](https://github.com/ppg0001/PLPA_Assignment)
+# A clickable link to GitHub repository
+[Click here to visit the GitHub Repository](https://github.com/ppg0001/PLPA_Assignment)
 
 # A clickable link to GitHub flavored .md file
-[Readme.md Click me](https://github.com/ppg0001/PLPA_Assignment/blob/main/Final_Project/Final_Project_Pankaj.md)
+[Click here to go to GitHub flavored .md file](https://github.com/ppg0001/PLPA_Assignment/blob/main/Final_Project/Final_Project_Pankaj.md)
+
+# A clickable link to R codes
+[Click here to go to Analysis/R codes(.Rmd file)](https://github.com/ppg0001/PLPA_Assignment/blob/main/Final_Project/Final_Project_Pankaj.Rmd)
 
 ## Note: Zenod hasnt been created yet because this data is yet to be published.
