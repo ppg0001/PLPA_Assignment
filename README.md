@@ -112,8 +112,8 @@ Evidence of microbiome clustering by sample type was observed in PCoA plots, sug
 
 
 # Other links
+- [Click here to visit the GitHub Repository](https://github.com/ppg0001/PLPA_Assignment)
+- 
 - [Click here to go to GitHub flavored .md file](https://github.com/ppg0001/PLPA_Assignment/blob/main/Final_Project/Final_Project_Pankaj.md)
-
-- [Click here to visit the Repository](https://github.com/ppg0001/PLPA_Assignment)
-
-- [Click here to go to Analysis/R_Codes](https://github.com/ppg0001/PLPA_Assignment/blob/main/Final_Project/Final_Project_Pankaj.Rmd)
+  
+- [Click here to go to Analysis/R codes(.Rmd file)](https://github.com/ppg0001/PLPA_Assignment/blob/main/Final_Project/Final_Project_Pankaj.Rmd)
