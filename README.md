@@ -26,7 +26,7 @@ This is a repository for the PLPA6820 class - **Final Project**.
 
 # Final Project
 
-This script is designed for the analysis of the Shotgun_POULTRY microbiome data. This script contains the statistical analysis, exploratory plots and publication plots. Each step of the analysis is discussed at my best capabilities. **Link to analysis**[Analysis-R codes]((https://github.com/ppg0001/PLPA_Assignment/blob/main/Final_Project/Final_Project_Pankaj.Rmd)
+This script is designed for the analysis of the Shotgun_POULTRY microbiome data. This script contains the statistical analysis, exploratory plots and publication plots. Each step of the analysis is discussed at my best capabilities. **Link to analysis**[R codes- .Rmd file](https://github.com/ppg0001/PLPA_Assignment/blob/main/Final_Project/Final_Project_Pankaj.Rmd), [R codes- .md file](https://github.com/ppg0001/PLPA_Assignment/blob/main/Final_Project/Final_Project_Pankaj.md)
 NOTE: This document is for class purpose and is intended to be updated
 
 # Title: Microbiome profile in different stages of commercial poultry environment
