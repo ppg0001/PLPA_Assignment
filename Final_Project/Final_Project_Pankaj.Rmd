@@ -1,16 +1,16 @@
 ---
 title: "Final_Project"
 author: "Pankaj Gaonkar"
-date: "2025-04-10"
+date: "2025-04-22"
 output:
+  md_document:
+    variant: gfm
+  pdf_document:
+    toc: true
+  word_document: default
   html_document:
     toc: true
     toc_float: true
-  md_document:
-    variant: gfm
-  word_document: default
-  pdf_document:
-    toc: true
 ---
 
 

@@ -307,8 +307,8 @@ phycount_e
 ```
 
     ## phyloseq-class experiment-level object
-    ## otu_table()   OTU Table:         [ 3535 taxa and 73 samples ]
-    ## sample_data() Sample Data:       [ 73 samples by 7 sample variables ]
+    ## otu_table()   OTU Table:         [ 3535 taxa and 75 samples ]
+    ## sample_data() Sample Data:       [ 75 samples by 7 sample variables ]
     ## tax_table()   Taxonomy Table:    [ 3535 taxa by 7 taxonomic ranks ]
 
 ``` r
@@ -394,21 +394,21 @@ phycount_div <- phycount_div %>%
 phycount_div
 ```
 
-    ## # A tibble: 73 × 16
-    ## # Groups:   Sample_group [55]
+    ## # A tibble: 75 × 16
+    ## # Groups:   Sample_group [57]
     ##    Sample  Observed Shannon Simpson Farm_Num Sample_group Farm_type Sample_type
     ##    <chr>      <dbl>   <dbl>   <dbl> <fct>    <fct>        <fct>     <fct>      
     ##  1 C12FCHL      320    3.85   0.961 FN21     C12FCHL      Pullet    Litter     
     ##  2 C12FCHS      503    5.14   0.990 FN21     C12FCHS      Pullet    Soil       
     ##  3 C13FJBL      219    3.40   0.927 FN22     C13FJBL      Pullet    Litter     
     ##  4 C13FJBS      600    5.06   0.984 FN22     C13FJBS      Pullet    Soil       
-    ##  5 C15FNSL      299    2.91   0.808 FN24     C15FNSL      Breeder   Litter     
-    ##  6 C15FNSS      385    4.82   0.986 FN24     C15FNSS      Breeder   Soil       
-    ##  7 C15FTCL      398    3.34   0.884 FN25     C15FTCL      Breeder   Litter     
-    ##  8 C15FTCS      318    3.40   0.849 FN25     C15FTCS      Breeder   Soil       
-    ##  9 C16FHWL      390    3.90   0.952 FN26     C16FHWL      Breeder   Litter     
-    ## 10 C16FHWS      457    3.80   0.939 FN26     C16FHWS      Breeder   Soil       
-    ## # ℹ 63 more rows
+    ##  5 C14FJOS      254    3.44   0.893 FN23     C14FJOS      Breeder   Soil       
+    ##  6 C14FJOL      557    3.63   0.943 FN23     C14FJOL      Breeder   Litter     
+    ##  7 C15FNSL      299    2.91   0.808 FN24     C15FNSL      Breeder   Litter     
+    ##  8 C15FNSS      385    4.82   0.986 FN24     C15FNSS      Breeder   Soil       
+    ##  9 C15FTCL      398    3.34   0.884 FN25     C15FTCL      Breeder   Litter     
+    ## 10 C15FTCS      318    3.40   0.849 FN25     C15FTCS      Breeder   Soil       
+    ## # ℹ 65 more rows
     ## # ℹ 8 more variables: Company <fct>, TotalReads <int>, m_Observed <dbl>,
     ## #   sd_Observed <dbl>, m_Shannon <dbl>, sd_Shannon <dbl>, m_Simpson <dbl>,
     ## #   sd_Simpson <dbl>
@@ -448,8 +448,8 @@ print(Alpha_descriptive_stats)
     ##   <fct>     <fct>            <dbl>       <dbl>     <dbl>      <dbl>     <dbl>
     ## 1 Pullet    Litter            140.       105.      0.892    0.0767       2.99
     ## 2 Pullet    Soil              340.       168.      0.979    0.00657      4.54
-    ## 3 Breeder   Litter            244.       105.      0.896    0.0614       3.18
-    ## 4 Breeder   Soil              328.       159.      0.947    0.0413       4.07
+    ## 3 Breeder   Litter            275.       140.      0.901    0.0597       3.22
+    ## 4 Breeder   Soil              320.       152.      0.941    0.0425       4.01
     ## 5 Broiler   Litter            240.        58.5     0.919    0.0291       3.17
     ## 6 Broiler   Soil              367.       176.      0.961    0.0190       4.19
     ## # ℹ 1 more variable: sd_Shannon <dbl>
@@ -509,13 +509,13 @@ phycount_div %>%
     ##  Welch Two Sample t-test
     ## 
     ## data:  Observed by Sample_type
-    ## t = -1.3218, df = 13.876, p-value = 0.2076
+    ## t = -0.69508, df = 17.885, p-value = 0.4959
     ## alternative hypothesis: true difference in means between group Litter and group Soil is not equal to 0
     ## 95 percent confidence interval:
-    ##  -221.00037   52.55593
+    ##  -183.08883   92.08883
     ## sample estimates:
     ## mean in group Litter   mean in group Soil 
-    ##             243.5556             327.7778
+    ##                274.9                320.4
 
 ``` r
 print("RICHNESS BROILER")
@@ -591,13 +591,13 @@ phycount_div %>%
     ##  Welch Two Sample t-test
     ## 
     ## data:  Shannon by Sample_type
-    ## t = -4.6001, df = 15.972, p-value = 0.000297
+    ## t = -4.1251, df = 17.863, p-value = 0.0006447
     ## alternative hypothesis: true difference in means between group Litter and group Soil is not equal to 0
     ## 95 percent confidence interval:
-    ##  -1.3030532 -0.4808508
+    ##  -1.1830222 -0.3843323
     ## sample estimates:
     ## mean in group Litter   mean in group Soil 
-    ##             3.177859             4.069811
+    ##             3.223258             4.006936
 
 ``` r
 print("SHANNON BROILER")
@@ -673,13 +673,13 @@ phycount_div %>%
     ##  Welch Two Sample t-test
     ## 
     ## data:  Simpson by Sample_type
-    ## t = -2.0496, df = 14.013, p-value = 0.0596
+    ## t = -1.7467, df = 16.246, p-value = 0.09957
     ## alternative hypothesis: true difference in means between group Litter and group Soil is not equal to 0
     ## 95 percent confidence interval:
-    ##  -0.103409053  0.002342238
+    ##  -0.089546681  0.008589404
     ## sample estimates:
     ## mean in group Litter   mean in group Soil 
-    ##            0.8960792            0.9466126
+    ##            0.9007753            0.9412540
 
 ``` r
 print("SIMPSON BROILER")
@@ -1305,8 +1305,8 @@ phycount
 ```
 
     ## phyloseq-class experiment-level object
-    ## otu_table()   OTU Table:         [ 3506 taxa and 62 samples ]
-    ## sample_data() Sample Data:       [ 62 samples by 7 sample variables ]
+    ## otu_table()   OTU Table:         [ 3506 taxa and 64 samples ]
+    ## sample_data() Sample Data:       [ 64 samples by 7 sample variables ]
     ## tax_table()   Taxonomy Table:    [ 3506 taxa by 7 taxonomic ranks ]
 
 ``` r
@@ -1503,7 +1503,7 @@ pcoa_sp_clr_S <-
 ```
 
     ## Warning: otu_table of counts is NOT available!
-    ## Available otu_table contains 16736 values that are not non-negative integers
+    ## Available otu_table contains 17483 values that are not non-negative integers
 
     ## Warning: The `<scale>` argument of `guides()` cannot be `FALSE`. Use "none" instead as
     ## of ggplot2 3.3.4.
@@ -1552,7 +1552,7 @@ pcoa_sp_clr_farm <-
 ```
 
     ## Warning: otu_table of counts is NOT available!
-    ## Available otu_table contains 16736 values that are not non-negative integers
+    ## Available otu_table contains 17483 values that are not non-negative integers
 
 ``` r
   #facet_grid(. ~ Company, scale = "free")
