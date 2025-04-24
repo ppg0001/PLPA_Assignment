@@ -3,10 +3,10 @@ title: "Final_Project"
 author: "Pankaj Gaonkar"
 date: "2025-04-22"
 output:
-  md_document:
-    variant: gfm
   pdf_document:
     toc: true
+  md_document:
+    variant: gfm
   word_document: default
   html_document:
     toc: true
