@@ -68,8 +68,8 @@ To evaluate AMR across different stages of poultry production, we conducted a sy
 
 ### 5. Whole genome sequencing and bioinformatics analysis
 ### 5.1. DNA sequencing and processing
-- The DNA was pair-end sequenced in an Illumina platform. The generated reads were quality checked with FAstQC v0.12.1. 
-- Reads were processed using Trimmomatic to the following parameters:
+- The DNA was pair-end sequenced in an Illumina platform. The generated reads were quality checked with [FAstQC v0.12.1.](https://www.bioinformatics.babraham.ac.uk/projects/fastqc/) 
+- Reads were processed using [Trimmomatic](https://academic.oup.com/bioinformatics/article/30/15/2114/2390096) to the following parameters:
   Adapter clipping: universal Illumina adapter, End trimming to quality phred 30, Exclusion of resulting reads shorted than 50bp
 - After processing, the reads were again quality checked using FastQC
           
