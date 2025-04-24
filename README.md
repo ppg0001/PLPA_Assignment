@@ -19,7 +19,6 @@ This is a repository for the PLPA6820 class - **Final Project**.
 │   ├── specific_Pairwise_Comparissions_PERMANOVA.txt
 │   └── Taxonomy_metadata.tsv
 ├── PLPA_Assignment.Rproj                 # R project file
-├── README.html
 └── README.md
 
 ```
